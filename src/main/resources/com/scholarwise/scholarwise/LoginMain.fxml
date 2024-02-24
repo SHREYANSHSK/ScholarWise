@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="764.0" styleClass="Main_page" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scholarwise.scholarwise.function">
+    <cursor>
+        <Cursor fx:constant="HAND" />
+    </cursor>
+    <children>
+        <TextField fx:id="Netid" alignment="CENTER" blendMode="EXCLUSION" cache="true" layoutX="272.0" layoutY="193.0" opacity="0.8" prefHeight="27.0" prefWidth="231.0" promptText="NET ID" style="-fx-background-color: #151928; -fx-text-fill: while;" stylesheets="@style.css">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <effect>
+                <Lighting>
+                    <bumpInput>
+                        <Shadow />
+                    </bumpInput>
+                    <light>
+                        <Light.Distant />
+                    </light>
+                </Lighting>
+            </effect>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </TextField>
+        <PasswordField fx:id="Password" alignment="CENTER" blendMode="EXCLUSION" layoutX="272.0" layoutY="253.0" opacity="0.8" prefHeight="27.0" prefWidth="231.0" promptText="PASSWORD" style="-fx-background-color: #151928; -fx-fill: while;" stylesheets="@style.css">
+            <effect>
+                <Lighting>
+                    <bumpInput>
+                        <Shadow />
+                    </bumpInput>
+                    <light>
+                        <Light.Distant />
+                    </light>
+                </Lighting>
+            </effect>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </PasswordField>
+        <Button fx:id="LognButton" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="309.0" layoutY="366.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="30.0" prefWidth="158.0" style="-fx-background-radius: 5;" styleClass="contact_details" stylesheets="@style.css" text="LOG IN" textAlignment="CENTER" textFill="#d4d4d4">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <CheckBox fx:id="Login_Remember" layoutX="401.0" layoutY="315.0" mnemonicParsing="false" text="REMEMBER ME" textFill="#a0a2ab">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </CheckBox>
+        <ButtonBar layoutX="265.0" layoutY="283.0" />
+        <ComboBox fx:id="login_combo" blendMode="COLOR_DODGE" layoutX="276.0" layoutY="309.0" opacity="0.8" prefHeight="30.0" prefWidth="97.0" promptText="YOU ARE?" style="-fx-background-radius: 5;" styleClass="text_white1" stylesheets="@style.css">
+            <effect>
+                <Lighting bumpInput="$null" diffuseConstant="1.53" specularConstant="0.74" specularExponent="40.0" surfaceScale="10.0">
+                    <light>
+                        <Light.Distant>
+                            <color>
+                                <Color red="0.7894737124443054" green="0.7894737124443054" blue="0.7894737124443054" />
+                            </color>
+                        </Light.Distant>
+                    </light>
+                </Lighting>
+            </effect></ComboBox>
+        <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="225.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/icons png/icons8-user-24.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="225.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/icons png/icons8-password-32.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="134.0" fitWidth="354.0" layoutX="190.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/logo1.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="ProgressBar" fitHeight="46.0" fitWidth="52.0" layoutX="365.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/37.gif" />
+            </image>
+        </ImageView>
+        <Label fx:id="error_label" alignment="CENTER" layoutX="276.0" layoutY="166.0" prefHeight="20.0" prefWidth="217.0" textFill="#f70000" wrapText="true">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="NetId_error" layoutX="503.0" layoutY="199.0" textFill="RED">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="Pass_error" layoutX="505.0" layoutY="259.0" textFill="RED">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="combo_error" layoutX="251.0" layoutY="315.0" prefHeight="20.0" prefWidth="0.0" textFill="RED">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
