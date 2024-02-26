@@ -1375,7 +1375,8 @@ n5.setText(Overall[4]);
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
-            pst = con.prepareStatement("SELECT * FROM studentdb where Net_id  IN(SELECT password FROM student_login where net_id=?)");
+            pst = con.prepareStatement("SELECT * FROM studentdb where Net_id  IN(SELECT password FROM login where " +
+                    "net_id=?)");
       
             pst.setString(1, net_id);
             
