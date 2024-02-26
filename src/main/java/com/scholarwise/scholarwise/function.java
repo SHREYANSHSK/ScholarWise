@@ -149,7 +149,8 @@
 					
 	
 					con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB","root","0000");
-					pst=con.prepareStatement("select net_id,password,designation from student_login where net_id=? and password=? and designation=?;");
+					pst=con.prepareStatement("select net_id,password,designation from login where net_id=? and " +
+							"password=? and designation=?;");
 					pst.setString(1, Netid.getText());
 					pst.setString(2, Password.getText());
 					pst.setString(3, login_combo.getSelectionModel().getSelectedItem());
