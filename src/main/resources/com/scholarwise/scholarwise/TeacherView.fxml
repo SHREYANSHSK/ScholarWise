@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="1080.0" minWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" styleClass="Main_page" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scholarwise.scholarwise.TeacherView">
+<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="1080.0" minWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" styleClass="Main_page" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scholarwise.scholarwise.TeacherView">
     <children>
         <VBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1080.0" prefWidth="170.0" styleClass="NavBar" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1739.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -23,12 +26,12 @@
                         </ImageView>
                         <Label alignment="CENTER" layoutX="13.0" layoutY="193.0" prefHeight="50.0" prefWidth="154.0" stylesheets="@style.css" text="TEACHER" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="11.0">
                             <font>
-                                <Font size="14.0" />
+                                <Font name="System Bold" size="14.0" />
                             </font>
                         </Label>
-                        <Text layoutX="11.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBOARD" textAlignment="CENTER" textOrigin="CENTER">
+                        <Text layoutX="15.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBOARD" textAlignment="CENTER" textOrigin="CENTER" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="16.365624999999994">
                             <font>
-                                <Font size="24.0" />
+                                <Font name="System Bold" size="24.0" />
                             </font>
                         </Text>
                         <Button fx:id="Profile_Button" alignment="CENTER" graphicTextGap="6.0" layoutX="6.0" layoutY="346.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="150.0" styleClass="NavBar_Button" stylesheets="@style.css" text="  PROFILE" textFill="WHITE">
@@ -49,7 +52,7 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="Marks_Button" alignment="CENTER" graphicTextGap="6.0" layoutX="12.0" layoutY="433.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="137.0" styleClass="NavBar_Button" stylesheets="@style.css" text="   MARKS" textFill="WHITE">
+                        <Button fx:id="Marks_Button" alignment="CENTER" graphicTextGap="6.0" layoutX="6.0" layoutY="433.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="137.0" styleClass="NavBar_Button" stylesheets="@style.css" text="   MARKS" textFill="WHITE">
                             <graphic>
                                 <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -58,7 +61,7 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="Course_Button" alignment="CENTER" graphicTextGap="6.0" layoutX="12.0" layoutY="476.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="137.0" styleClass="NavBar_Button" stylesheets="@style.css" text="   COURSE" textFill="WHITE" wrapText="true">
+                        <Button fx:id="Course_Button" alignment="CENTER" graphicTextGap="6.0" layoutX="6.0" layoutY="476.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="137.0" styleClass="NavBar_Button" stylesheets="@style.css" text="   COURSE" textFill="WHITE" wrapText="true">
                             <graphic>
                                 <ImageView fitHeight="32.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -67,7 +70,7 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="logout_btn" alignment="CENTER" layoutX="24.0" layoutY="702.0" mnemonicParsing="false" onAction="#logoutBtn" prefHeight="34.0" prefWidth="126.0" style="-fx-font-size: 15px; -fx-font-weight: 700;" stylesheets="@style.css" text="   LOGOUT" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="logout_btn" alignment="CENTER" layoutX="17.0" layoutY="740.0" mnemonicParsing="false" onAction="#logoutBtn" prefHeight="34.0" prefWidth="126.0" style="-fx-font-size: 15px; -fx-font-weight: 700;" stylesheets="@style.css" text="   LOGOUT" textAlignment="CENTER" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="12.0" />
                             </font>
@@ -88,13 +91,304 @@
             </children>
         </VBox>
         <AnchorPane layoutX="181.0" prefHeight="1080.0" prefWidth="1734.0">
-            <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="124.0" prefHeight="538.0" prefWidth="604.0" text="TEACHER VIEW COMING SOON........" textFill="#efefef" wrapText="true">
-                    <font>
-                        <Font name="System Bold" size="61.0" />
-                    </font>
-                </Label>
-            </children>
-        </AnchorPane>
+         <children>
+            <AnchorPane layoutX="43.0" layoutY="36.0" prefHeight="350.0" prefWidth="466.0" stylesheets="@style.css">
+               <styleClass>
+                  <String fx:value="box-borderRadius" />
+                  <String fx:value="personal_details" />
+                  <String fx:value="box-border" />
+               </styleClass>
+               <children>
+                  <ImageView fitHeight="255.0" fitWidth="232.0" layoutX="26.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" styleClass="box-borderRadius">
+                     <image>
+                        <Image url="@images/icons%20png/boy3.png" />
+                     </image>
+                  </ImageView>
+                  <Label contentDisplay="CENTER" layoutX="26.0" layoutY="250.0" prefHeight="42.0" prefWidth="281.0" styleClass="text_white1" stylesheets="@style.css" text="Dr. Nithyashri J" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="45.0" layoutY="292.0" prefHeight="15.0" prefWidth="262.0" text="Assistent Professor" textFill="#f2f2f2">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="356.0" layoutY="250.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="41.0" styleClass="btn-contact" stylesheets="@style.css">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="PHONE" selectionEnd="1" selectionStart="1" size="20" text="" textAlignment="CENTER" wrappingWidth="23.028547286987305" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="308.0" layoutY="250.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="41.0" styleClass="btn-contact" stylesheets="@style.css">
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="ENVELOPE" selectionEnd="1" selectionStart="1" size="20" textAlignment="CENTER" />
+                     </graphic>
+                  </Button>
+                  <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="250.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons%20png/icons8-id-32.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="250.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons%20png/icons8-id-verified-50.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="250.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons%20png/icons8-place-50.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="303.0" layoutY="56.0" prefHeight="20.0" prefWidth="84.0" text="nj1234" textFill="#fafafa">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="303.0" layoutY="117.0" prefHeight="20.0" prefWidth="144.0" text="FA2211003011198" textFill="#fafafa">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="303.0" layoutY="177.0" prefHeight="20.0" prefWidth="84.0" text="Chennai" textFill="#fafafa">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="537.0" layoutY="36.0" prefHeight="350.0" prefWidth="754.0" stylesheets="@style.css">
+               <styleClass>
+                  <String fx:value="box-border" />
+                  <String fx:value="box-borderRadius" />
+                  <String fx:value="personal_details" />
+               </styleClass>
+               <children>
+                  <Label layoutX="24.0" layoutY="14.0" prefHeight="43.0" prefWidth="102.0" stylesheets="@style.css" text="Courses" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="30.0" layoutY="69.0" prefHeight="24.0" prefWidth="326.0" text="Pattern Recognition Techniques" textFill="#efefef" AnchorPane.bottomAnchor="257.4">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="30.0" layoutY="114.0" prefHeight="24.0" prefWidth="326.0" text="Digital Image Processing" textFill="#efefef" AnchorPane.bottomAnchor="200.0">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="30.0" layoutY="163.0" prefHeight="24.0" prefWidth="326.0" text="Data Structures and Algorithms" textFill="#efefef" AnchorPane.bottomAnchor="145.0">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="30.0" layoutY="234.0" prefHeight="24.0" prefWidth="326.0" text="Theory of Computation" textFill="#efefef" AnchorPane.bottomAnchor="90.0">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="30.0" layoutY="291.0" prefHeight="24.0" prefWidth="326.0" text=" Object Oriented Programming" textFill="#efefef" AnchorPane.bottomAnchor="35.39999999999998">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="406.0" layoutY="66.0" prefHeight="24.0" prefWidth="326.0" text="Professional Ethics in Engineering" textFill="#efefef">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="406.0" layoutY="123.0" prefHeight="24.0" prefWidth="326.0" text="Philosophy of Engineering" textFill="#efefef">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="405.0" layoutY="178.0" prefHeight="24.0" prefWidth="326.0" text="Operating system" textFill="#efefef">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="405.0" layoutY="233.0" prefHeight="24.0" prefWidth="326.0" text="Resource Management Techniques" textFill="#efefef">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="405.0" layoutY="288.0" prefHeight="24.0" prefWidth="326.0" text="Compiler Design" textFill="#efefef">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Line endX="584.5999755859375" layoutX="131.0" layoutY="104.0" startX="-99.4000244140625" stroke="#8e88881c" strokeWidth="3.0" />
+                  <Line endX="584.5999755859375" layoutX="131.0" layoutY="161.0" startX="-99.4000244140625" stroke="#8e88881c" strokeWidth="3.0" />
+                  <Line endX="584.5999755859375" layoutX="131.0" layoutY="219.0" startX="-99.4000244140625" stroke="#8e88881c" strokeWidth="3.0" />
+                  <Line endX="584.5999755859375" layoutX="131.0" layoutY="274.0" startX="-99.4000244140625" stroke="#8e88881c" strokeWidth="3.0" />
+                  <Line endX="584.5999755859375" layoutX="130.0" layoutY="327.0" startX="-99.4000244140625" stroke="#8e88881c" strokeWidth="3.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="43.0" layoutY="419.0" prefHeight="320.0" prefWidth="805.0" stylesheets="@style.css">
+               <styleClass>
+                  <String fx:value="personal_details" />
+                  <String fx:value="box-borderRadius" />
+                  <String fx:value="box-border" />
+               </styleClass>
+               <children>
+                  <Label layoutX="27.0" layoutY="14.0" prefHeight="43.0" prefWidth="290.0" stylesheets="@style.css" text="Educational Background" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="21.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="74.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons%20png/icons8-phd-64.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="74.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons%20png/graduation.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="74.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons%20png/icons8-graduation-50.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="148.0" layoutY="72.0" text="Sathyabama Institute Of Science and Technology" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="148.0" layoutY="97.0" text="Ph.D in Computer Science and Technology" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold Italic" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="677.0" layoutY="68.0" prefHeight="32.0" prefWidth="69.0" text="2016" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="148.0" layoutY="153.0" text="Sathyabama Institute Of Science and Technology" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="148.0" layoutY="178.0" text="M.E in Computer Science and Technology" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold Italic" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="677.0" layoutY="149.0" prefHeight="32.0" prefWidth="69.0" text="2005" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="148.0" layoutY="229.0" text="VRS College of Engineering and Technology" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="148.0" layoutY="254.0" text="B.E in Computer Science and Technology" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold Italic" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="677.0" layoutY="225.0" prefHeight="32.0" prefWidth="69.0" text="2000" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets top="4.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="867.0" layoutY="419.0" prefHeight="320.0" prefWidth="434.0" stylesheets="@style.css">
+               <styleClass>
+                  <String fx:value="personal_details" />
+                  <String fx:value="box-border" />
+                  <String fx:value="box-borderRadius" />
+               </styleClass>
+               <children>
+                  <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="27.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons%20png/icons8-university-50.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="27.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons%20png/icons8-experience-50.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="27.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons%20png/icons8-research-50.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="27.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons%20png/icons8-membership-50.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="69.0" layoutY="42.0" text="Campus" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="69.0" layoutY="110.0" text="Experiance" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="69.0" layoutY="181.0" text="Reasearch Interest" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="69.0" layoutY="246.0" text="Member" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="42.0" prefHeight="20.0" prefWidth="194.0" text="Katthankhulathur" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="110.0" prefHeight="20.0" prefWidth="194.0" text="22 years of experience" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="159.0" prefHeight="63.0" prefWidth="194.0" text="Image Processing, Machine Learning and Data Science." textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="224.0" prefHeight="63.0" prefWidth="194.0" text="International Computer Science and Engineering Society(ICSES)" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
     </children>
 </AnchorPane>
