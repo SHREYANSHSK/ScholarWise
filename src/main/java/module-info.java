@@ -14,6 +14,7 @@ module com.scholarwise.scholarwise {
 
 
 
+
     opens com.scholarwise.scholarwise to javafx.fxml;
     exports com.scholarwise.scholarwise;
 }
