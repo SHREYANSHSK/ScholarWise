@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
+
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -114,12 +115,20 @@
                   </Label>
                   <Button layoutX="356.0" layoutY="250.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="41.0" styleClass="btn-contact" stylesheets="@style.css">
                      <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="PHONE" selectionEnd="1" selectionStart="1" size="20" text="" textAlignment="CENTER" wrappingWidth="23.028547286987305" />
+                        <ImageView fitHeight="32.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/icons%20png/icons8-phone-50.png" />
+                           </image>
+                        </ImageView>
                      </graphic>
                   </Button>
                   <Button layoutX="308.0" layoutY="250.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="41.0" styleClass="btn-contact" stylesheets="@style.css">
                      <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="ENVELOPE" selectionEnd="1" selectionStart="1" size="20" textAlignment="CENTER" />
+                        <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/icons%20png/icons8-letter-with-email-sign-50.png" />
+                           </image>
+                        </ImageView>
                      </graphic>
                   </Button>
                   <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="250.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
@@ -385,5 +394,6 @@
                </children>
             </AnchorPane>
          </children></AnchorPane>
+      <AnchorPane layoutX="181.0" prefHeight="1080.0" prefWidth="1734.0" />
     </children>
 </AnchorPane>
