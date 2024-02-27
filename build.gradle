@@ -46,7 +46,9 @@ dependencies {
     implementation('eu.hansolo:tilesfx:17.1.17') {
         exclude(group: 'org.openjfx')
     }
-    implementation ('org.webjars:font-awesome:6.5.1')
+
+    implementation('org.webjars:font-awesome:6.5.1')
+
     implementation ('mysql:mysql-connector-java:8.0.33')
     implementation('eu.hansolo:tilesfx:17.1.17')
 

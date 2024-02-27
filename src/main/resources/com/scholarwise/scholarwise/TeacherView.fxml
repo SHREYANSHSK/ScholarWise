@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="1080.0" minWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" styleClass="Main_page" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scholarwise.scholarwise.TeacherView">
     <children>
         <VBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1080.0" prefWidth="170.0" styleClass="NavBar" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1739.0" AnchorPane.topAnchor="0.0">
@@ -92,7 +87,7 @@
         </VBox>
         <AnchorPane layoutX="181.0" prefHeight="1080.0" prefWidth="1734.0">
          <children>
-            <AnchorPane layoutX="43.0" layoutY="36.0" prefHeight="350.0" prefWidth="466.0" stylesheets="@style.css">
+            <AnchorPane focusTraversable="true" layoutX="43.0" layoutY="36.0" prefHeight="350.0" prefWidth="466.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="box-borderRadius" />
                   <String fx:value="personal_details" />
@@ -159,7 +154,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="537.0" layoutY="36.0" prefHeight="350.0" prefWidth="754.0" stylesheets="@style.css">
+            <AnchorPane focusTraversable="true" layoutX="537.0" layoutY="36.0" prefHeight="350.0" prefWidth="754.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="box-border" />
                   <String fx:value="box-borderRadius" />
@@ -228,7 +223,7 @@
                   <Line endX="584.5999755859375" layoutX="130.0" layoutY="327.0" startX="-99.4000244140625" stroke="#8e88881c" strokeWidth="3.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="43.0" layoutY="419.0" prefHeight="320.0" prefWidth="805.0" stylesheets="@style.css">
+            <AnchorPane focusTraversable="true" layoutX="43.0" layoutY="419.0" prefHeight="320.0" prefWidth="805.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="personal_details" />
                   <String fx:value="box-borderRadius" />
@@ -320,7 +315,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="867.0" layoutY="419.0" prefHeight="320.0" prefWidth="434.0" stylesheets="@style.css">
+            <AnchorPane focusTraversable="true" layoutX="867.0" layoutY="419.0" prefHeight="320.0" prefWidth="434.0" stylesheets="@style.css">
                <styleClass>
                   <String fx:value="personal_details" />
                   <String fx:value="box-border" />
