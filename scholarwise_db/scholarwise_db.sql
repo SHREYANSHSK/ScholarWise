@@ -18,6 +18,66 @@ USE `scholarwise_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `attendance_student`
+--
+
+DROP TABLE IF EXISTS `attendance_student`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `attendance_student` (
+  `SUBJECT_CODE` varchar(45) NOT NULL,
+  `SUBJECT_NAME` varchar(45) NOT NULL,
+  `FACULTY_NAME` varchar(45) DEFAULT NULL,
+  `ROOM_NO` varchar(45) DEFAULT NULL,
+  `CLASS_CONDUCTED` int NOT NULL,
+  `CLASS_ATTENDED` int NOT NULL,
+  `CREDITS` int DEFAULT NULL,
+  `ATTENDANCE` int NOT NULL,
+  `GRADE` varchar(45) DEFAULT NULL,
+  `SEMESTER` varchar(45) NOT NULL,
+  `FACULTY_NO` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`SUBJECT_CODE`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `attendance_student`
+--
+
+LOCK TABLES `attendance_student` WRITE;
+/*!40000 ALTER TABLE `attendance_student` DISABLE KEYS */;
+INSERT INTO `attendance_student` VALUES ('21CSC201J','Data Analysis and Algorithms','Dr. Nithyashri J','TP703',5,4,4,80,'O','4th','98789878'),('21CSC204J','Artificial Intelligence','Dr Supriya A','TP704',9,6,3,67,'O','4th','67567654');
+/*!40000 ALTER TABLE `attendance_student` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `attendance_teacher`
+--
+
+DROP TABLE IF EXISTS `attendance_teacher`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `attendance_teacher` (
+  `STUDENT_NAME` varchar(45) NOT NULL,
+  `CLASS_CONDUCTED` int NOT NULL,
+  `CLASS_ATTENDED` int NOT NULL,
+  `PERCENTAGE` int NOT NULL,
+  `COURSE_NAME` varchar(45) DEFAULT NULL,
+  `SECTION` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `attendance_teacher`
+--
+
+LOCK TABLES `attendance_teacher` WRITE;
+/*!40000 ALTER TABLE `attendance_teacher` DISABLE KEYS */;
+INSERT INTO `attendance_teacher` VALUES ('Aryan Kumawat',6,6,100,'Data Analysis and Algorithms','AA2'),('Shreyansh Khandelwal',7,6,86,'Artificial Intelligence','F1');
+/*!40000 ALTER TABLE `attendance_teacher` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `course`
 --
 
@@ -58,7 +118,7 @@ DROP TABLE IF EXISTS `information`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `information` (
   `NOTIFICATIONS` varchar(70) DEFAULT NULL,
-  `CT_DATES` date DEFAULT NULL,
+  `DATES` date DEFAULT NULL,
   `SUBJECT_NAME` varchar(45) NOT NULL,
   `SUBJECT_CODE` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -203,7 +263,7 @@ CREATE TABLE `teacherdb` (
 
 LOCK TABLES `teacherdb` WRITE;
 /*!40000 ALTER TABLE `teacherdb` DISABLE KEYS */;
-INSERT INTO `teacherdb` VALUES ('kt2345','FA2211003010376','Dr. T. Karthick','karthict@srmist.edu.in',94444172,'DSMS','Data Science and Business Systems','Assiciate Professor','Ph.D in ICE','Chennai','kt2345'),('kb7676','FA2211003011143','Dr. Kanisha B','kanishab@srmist.edu.in',76543456,'CSC202J','Computing Technologies','Associate Professor','Ph.D in ICE','Chennai','kb7676'),('rs9981','FA2211003011165','Dr. Ramamoorthy S','ramamoos@srmist.edu.in',98786756,'q','Computing Technologies','Professor','Ph.D in CSE','Chennai','rs9981'),('nj4321','FA2211003011199','Dr. Nithyashri J','nj2358@srmist.edu.in',78967856,'CSC202J','Computing Technologies','Assistent Teacher','Ph D in CSE','Chennai','nj4321');
+INSERT INTO `teacherdb` VALUES ('kt2345','FA2211003010376','Dr. T. Karthick','karthict@srmist.edu.in',94444172,'DSMS','Data Science and Business Systems','Assiciate Professor','Ph.D in ICE','Chennai','kt2345'),('kb7676','FA2211003011143','Dr. Kanisha B','kanishab@srmist.edu.in',76543456,'CSC202J','Computing Technologies','Associate Professor','Ph.D in ICE','Chennai','kb7676'),('rs9981','FA2211003011165','Dr. Ramamoorthy S','ramamoos@srmist.edu.in',98786756,'q','Computing Technologies','Professor','Ph.D in CSE','Chennai','rs9981'),('nj4321','FA2211003011199','Dr. Nithyashri J','nj2358@srmist.edu.in',78967856,'CSC202J','Computing Technologies','Assistant Teacher','Ph D in CSE','Chennai','nj4321');
 /*!40000 ALTER TABLE `teacherdb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -279,14 +339,6 @@ LOCK TABLES `timetable` WRITE;
 INSERT INTO `timetable` VALUES ('sk1903','daa','maths',NULL,'app','','maths','','dsa lab','','','','maths','',NULL,'','coa',NULL,'','','',NULL,'','','maths',NULL,'','','','','','','',NULL,'',NULL,NULL,'','app','','','','','os','coa','','','','','',''),('sg2982','app','maths','','','','','','','','','','','','','','maths','','','','','','maths','','','','','','','','','','','','','','','','','','','','','','','','','','','','');
 /*!40000 ALTER TABLE `timetable` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'scholarwise_db'
---
-
---
--- Dumping routines for database 'scholarwise_db'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -297,4 +349,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-26 15:45:17
+-- Dump completed on 2024-02-27 21:17:14
