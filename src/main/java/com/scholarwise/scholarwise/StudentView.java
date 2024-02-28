@@ -17,16 +17,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 
@@ -38,6 +34,10 @@ public  class StudentView  {
     private AnchorPane MarksAnalyse;
     @FXML
     private AnchorPane Marks;
+
+
+    @FXML
+    private GridPane CT_DATES_UPDATES;
 
     @FXML
     private Button Course_Button;
@@ -61,6 +61,13 @@ public  class StudentView  {
 
     @FXML
     private Button TimeTable_Button;
+
+
+    @FXML
+    private ListView<String> Marks_CourseName_listview;
+
+    @FXML
+    private ListView<String> Marks_DATES_listview;
    
 
     @FXML
@@ -851,9 +858,12 @@ public  class StudentView  {
     
     
     static Connection con;
+    static Connection con2;
     static PreparedStatement pst;
+    static PreparedStatement pst2;
 
     static ResultSet rs;
+    static ResultSet rs2;
    static String net_id;
    static String Password;
    static String Designation;
@@ -864,11 +874,14 @@ public  class StudentView  {
    static String Subject_Code ,Subject_Name ,Faculty_Name,Grade;
    static int Room_Number,Credits,Class_Conducted,Class_Attended,Semester,Class_Held,FacultyNumber;
    static double roundOff;
-   
-   public void initialize() {
-	  
-	   
-	   
+
+
+
+    public void initialize() {
+
+
+
+
 	   
 	   user_name.setText(NAME.toUpperCase());
 	   CourseDetails.setVisible(false);
@@ -1038,7 +1051,8 @@ public  class StudentView  {
 			e.printStackTrace();
 		}
         con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
-		
+        con2 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
+
 		 List<String> Course_Name_data = new ArrayList<>();
 		 List<String> Course_Code_data = new ArrayList<>();
 		 List<String> Faculty_data = new ArrayList<>();
@@ -1051,15 +1065,22 @@ public  class StudentView  {
 		 List<String> CT_3_THEORY_data = new ArrayList<>();
 		 List<String> CT_3_P_data = new ArrayList<>();
 		 List<String> CT_3_I_data = new ArrayList<>();
-		 String[] CT1 = new String[8];
+        ObservableList<String> Information_SUBJECT_NAME = FXCollections.observableArrayList();
+        ObservableList<String> Information_DATES = FXCollections.observableArrayList();
+
+        
+        String[] CT1 = new String[8];
 		 String[] CT2 = new String[8];
 		 String[] CT3 = new String[8];
 		 String[] Overall = new String[8];
 
        
 pst=con.prepareStatement("select* from Marks where semester=?");
+pst2=con2.prepareStatement("select SUBJECT_NAME,DATES from information");
+
 pst.setString(1,SemesterButton_value);
 rs=pst.executeQuery();
+rs2=pst2.executeQuery();
 while(rs.next()) {
 	String Course_Name = rs.getString("Subject_Name");
 	String Course_Code=rs.getString("Subject_Code");
@@ -1073,7 +1094,10 @@ while(rs.next()) {
 	String CT_3_THEORY=rs.getString("CT_3_THEORY");
 	String CT_3_P=rs.getString("CT_3_P");
 	String CT_3_I=rs.getString("CT_3_I");
-	
+
+
+
+	//adding items to array
 	Course_Name_data.add(Course_Name);
 	Course_Code_data.add(Course_Code);
 	Faculty_data.add(Faculty);
@@ -1086,8 +1110,19 @@ while(rs.next()) {
 	  CT_3_THEORY_data.add(CT_3_THEORY);
 	  CT_3_P_data.add(CT_3_P);
 	  CT_3_I_data .add(CT_3_I);
-	  
+
+
             }
+
+
+
+while (rs2.next()){
+    String SUBJECT_NAME=rs2.getString("SUBJECT_NAME");
+    String DATES=rs2.getString("DATES");
+
+    Information_SUBJECT_NAME.add(SUBJECT_NAME);
+    Information_DATES.add(DATES);
+}
 
 
 try {
@@ -1102,7 +1137,19 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
 }catch(ArrayIndexOutOfBoundsException e) {
 	e.printStackTrace();
 }
+//CT_DATES PART
 
+
+       Marks_CourseName_listview.setItems(Information_SUBJECT_NAME);
+       Marks_DATES_listview.setItems(Information_DATES);
+        Marks_CourseName_listview.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #000000;");
+        Marks_DATES_listview.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #000000;");
+        Marks_CourseName_listview.setSelectionModel(null);
+        Marks_DATES_listview.setSelectionModel(null);
+
+
+
+//MARKS_PART
        Integer cArray[]= {1,2,3,4,5,6,7,8};
 
 
