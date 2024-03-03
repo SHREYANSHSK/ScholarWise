@@ -760,6 +760,10 @@ public  class StudentView  {
     @FXML
     private Label s8;
 
+    @FXML
+    private GridPane Course_attendance;
+
+
 
     @FXML
     private Label SrmMail;
@@ -874,6 +878,7 @@ public  class StudentView  {
    static String Subject_Code ,Subject_Name ,Faculty_Name,Grade;
    static int Room_Number,Credits,Class_Conducted,Class_Attended,Semester,Class_Held,FacultyNumber;
    static double roundOff;
+    static List classConductedList=new ArrayList<>();
 
 
 
@@ -937,22 +942,70 @@ public  class StudentView  {
 	  
    }
 
-   
-   
- 
 
-	   
-  
-   
-   
-   
- 
-   
-   
-   
-   
-   
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static ObservableList<TableView_Details> getDataUsers()  throws SQLException{
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
+        pst = con.prepareStatement("SELECT * FROM course where semester=?;");
+        ObservableList<TableView_Details> list = FXCollections.observableArrayList();
+
+        pst.setString(1,SemesterButton_value);
+        rs = pst.executeQuery();
+        while (rs.next()) {
+            list.add(new TableView_Details(
+                    rs.getString("Subject_Code"),
+                    rs.getString("Subject_Name"),
+                    rs.getString("Faculty_Name"),
+                    rs.getString("Grade"),
+                    Integer.parseInt(rs.getString("FacultyNumber")),
+                    Integer.parseInt(rs.getString("Room_Number")),
+                    Integer.parseInt(rs.getString("Credits")),
+                    Integer.parseInt(rs.getString("Class_Conducted")),
+                    Integer.parseInt(rs.getString("Class_Attended")),
+//                    Integer.parseInt(String.valueOf((Integer.parseInt(rs.getString("Class_Attended"))/Integer.parseInt(rs.getString("Class_Conducted")))*100))
+                    rs.getString("Attendence")
+
+
+
+            ) );
+//            System.out.println(Integer.parseInt(rs.getString("Attendence")));
+
+            classConductedList.add(Integer.parseInt(rs.getString("Class_Conducted")));
+//            System.out.println(classConductedList);
+
+        }
+
+
+        // Close resources in a finally block to ensure they are always closed
+        try {
+            if (rs != null) rs.close();
+            if (pst != null) pst.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
 
  
  
@@ -982,7 +1035,9 @@ public  class StudentView  {
 	    		TableView_Grade.setCellValueFactory(new PropertyValueFactory<>("Grade"));
 
 	        	SemesterButton_value=Integer.toString(CourseDetails_SemesterButton.getValue());
-	    	    try {
+
+
+                try {
 	    			listM=getDataUsers();	
 	    		} catch (SQLException e) {
 	    			// TODO Auto-generated catch block
@@ -1142,10 +1197,9 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
 
        Marks_CourseName_listview.setItems(Information_SUBJECT_NAME);
        Marks_DATES_listview.setItems(Information_DATES);
-        Marks_CourseName_listview.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #000000;");
+        Marks_CourseName_listview.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #121212;");
         Marks_DATES_listview.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #000000;");
-        Marks_CourseName_listview.setSelectionModel(null);
-        Marks_DATES_listview.setSelectionModel(null);
+
 
 
 
@@ -1472,48 +1526,7 @@ n5.setText(Overall[4]);
     
    
     
-    public static ObservableList<TableView_Details> getDataUsers()  throws SQLException{
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
-		pst = con.prepareStatement("SELECT * FROM course where semester=?;");
-		ObservableList<TableView_Details> list = FXCollections.observableArrayList();	
-	
-        	pst.setString(1,SemesterButton_value);
-        rs = pst.executeQuery();
-while (rs.next()) {
-            list.add(new TableView_Details(
-                    rs.getString("Subject_Code"),
-                    rs.getString("Subject_Name"),
-                    rs.getString("Faculty_Name"),
-                    rs.getString("Grade"),
-                    Integer.parseInt(rs.getString("FacultyNumber")),
-                    Integer.parseInt(rs.getString("Room_Number")),
-                    Integer.parseInt(rs.getString("Credits")),
-                    Integer.parseInt(rs.getString("Class_Conducted")),
-                    Integer.parseInt(rs.getString("Class_Attended")),
-                    rs.getString("Attendence")
-                    
-                ));
 
-            }
-
-
-    // Close resources in a finally block to ensure they are always closed
-    try {
-        if (rs != null) rs.close();
-        if (pst != null) pst.close();
-        if (con != null) con.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-   
-	return list;
-	}
 
     
 	
