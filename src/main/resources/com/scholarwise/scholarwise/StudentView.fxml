@@ -1748,7 +1748,7 @@
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="CourseDetails" prefHeight="1080.0" prefWidth="1734.0" visible="false">
+                        <AnchorPane fx:id="CourseDetails" prefHeight="1080.0" prefWidth="1734.0">
                             <children>
                                 <Label layoutX="85.0" layoutY="49.0" prefHeight="74.0" prefWidth="388.0" styleClass="text_white1" stylesheets="@style.css" text="COURSE DETAILS" textAlignment="CENTER">
                                     <font>
@@ -1783,7 +1783,7 @@
                                         </Label>
                                         <AnchorPane layoutX="29.0" layoutY="78.0" prefHeight="282.0" prefWidth="278.0" styleClass="content-border" stylesheets="@style.css">
                                             <children>
-                                                <GridPane layoutY="1.0" prefHeight="279.0" prefWidth="285.0" styleClass="box-borderRadius" stylesheets="@style.css">
+                                                <GridPane fx:id="Course_attendance" layoutY="1.0" prefHeight="279.0" prefWidth="285.0" styleClass="box-borderRadius" stylesheets="@style.css">
                                                     <columnConstraints>
                                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
@@ -2730,7 +2730,7 @@
                             </children>
                         </AnchorPane>
 
-                        <AnchorPane fx:id="Marks" prefHeight="1080.0" prefWidth="1734.0" style="-fx-background-color: #1d1d1d;">
+                        <AnchorPane fx:id="Marks" prefHeight="1080.0" prefWidth="1734.0" style="-fx-background-color: #1d1d1d;" visible="false">
                             <children>
                                 <Label alignment="CENTER" layoutX="58.0" layoutY="40.0" prefHeight="68.0" prefWidth="198.0" text="MARKS" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
