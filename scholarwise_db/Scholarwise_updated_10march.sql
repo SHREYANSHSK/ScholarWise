@@ -275,7 +275,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES ('21BTB102T','Biology','Akshat Saini',1003,2,'O',2,982932567),('21CSC202J','Operating Systems','Dr.A.Saranya',1005,4,'-',3,982932542),('21CSC203P','Advanced Programming Practice','Dr. Arunarani AR',1005,4,'-',3,982932542),('21CSS201T','Computer Organization and Architecture','Dr.Vijayalakshmi K',1005,4,'-',3,982932542),('21CYB101J','CHEMISTRY','Ashish Rastogi',1003,5,'O',2,982932567),('21DCS201P','Design Thinking and Methodology','Mrs. Panimalar K',1005,4,'-',3,982932542),('21GNM102L','Semiconductor Physics','Jai kumar',1002,5,'A',1,982932267),('21LEH104T','GERMAN','Praveen Acharya',1013,3,'O',2,982932567),('21LEM201T','EEE','Tanmay Shrivastav',1002,2,'B',1,982932267),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS','Rahul Iyenger',1003,4,'A',2,982932567),('21MAB201T','Transforms and Boundary Value Problems','Dr. H. Merlyn Margaret',1005,4,'-',3,982932542),('21PDM102L','Philosophy of Engineering','Shantanu Sharma',1003,3,'O',2,982932567);
+INSERT INTO `course` VALUES ('21BTB102T','INTRODUCTION TO COMPUTATIONAL BIOLOGY	','Dr. Arunkumar J',819,2,'A',1,998574224),('21CSC101T','OBJECT ORIENTED DESIGN AND PROGRAMMING	','Dr. Ida Seraphim B',604,3,'O',2,982613082),('21CSC201J','DATA STRUCTURES AND ALGORITHMS	','Dr. C N Subalalitha',303,4,'O',3,978613082),('21CSC202J','OPERATING SYSTEMS	','Dr. Sibi Amaran',303,4,'O',3,978613082),('21CSC203P','ADVANCED PROGRAMMING PRACTICE	','Dr. P. Rama',303,4,'O',3,967413082),('21CSS101J','PROGRAMMING FOR PROBLEM SOLVING	','Dr. Madhumitha K',819,4,'O',1,978613082),('21CSS201T','COMPUTER ORGANIZATION AND ARCHITECTURE	','Dr. R. Jebakumar',303,4,'A+',3,875522434),('21CYB101J','CHEMISTRY','Dr. Sundaravadivel E',819,5,'O',1,994015870),('21CYM101T','ENVIRONMENTAL SCIENCE	','Dr. Bhuvana M',604,0,'A+',2,978613082),('21DCS201P','DESIGN THINKING AND METHODOLOGY	','Dr K B Praveen',303,3,'O',3,978613082),('21EES101T','ELECTRICAL AND ELECTRONICS ENGINEERING	','Dr. Senthil Kumar',604,4,'O',2,978613082),('21GNH101J','PHILOSOPHY OF ENGINEERING	','Dr. Sathyapriya L',819,2,'A+',1,989242182),('21GNM104L','NSO','Dr. Muthukumaran V',819,0,'O',1,872224341),('21LEH101T','COMMUNICATIVE ENGLISH	','Dr. Ramya S',604,3,'A+',2,978613082),('21LEH104T','GERMAN','Dr. Chitra V',819,3,'A',1,994003600),('21LEM101T','CONSTITUTION OF INDIA	','Dr. A. V. Radhamani',604,0,'O',2,978413082),('21LEM201T','PROFESSIONAL ETHICS	','Dr. Kanmani G R',303,0,'A',3,872224341),('21MAB101T','CALCULUS AND LINEAR ALGEBRA	','Dr. Kalyanasundaram V',819,4,'A+',1,961428082),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS	','Dr. Archana K S',604,4,'O',2,872224341),('21MAB201T','TRANSFORMS AND BOUNDARY VALUE PROBLEMS	','Dr. Melita Vinoliah',303,4,'O',3,960089282),('21MES101L','BASIC CIVIL AND MECHANICAL WORKSHOP	','Dr. Muthu Kumaran A M J',819,2,'O',1,978613082),('21MES102L','ENGINEERING GRAPHICS AND DESIGN	','Dr. Kumaran D',604,2,'O',2,872224341),('21PDM101L','PROFESSIONAL SKILLS AND PRACTICES	','Dr. Balakumaran G',819,0,'A+',1,989242182),('21PDM102L','GENERAL APTITUDE	','Dr. Jayaraj R',604,0,'A+',2,873724349),('21PDM201L','VERBAL REASONING	','Dr. Krishnaveni G',303,0,'A+',3,978613082),('21PYB102J','SEMICONDUCTOR PHYSICS AND COMPUTATIONAL METHODS	','Dr. Alagiri Swamy A A',604,5,'O',2,941613082);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,7 +326,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES ('ar0354','ar0354','student'),('as8819','as8819','teacher'),('kj1130','kj1130','Student'),('sg2982','sg2982','Student'),('sk1903','sk1903','Student'),('sm5001','sm5001','Teacher');
+INSERT INTO `login` VALUES ('ac6729','ac6729','Student'),('ar0354','ar0354','student'),('as8819','as8819','teacher'),('sg2982','sg2982','Student'),('sk1903','sk1903','Student'),('sm5001','sm5001','Teacher');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -402,7 +402,7 @@ CREATE TABLE `studentdb` (
 
 LOCK TABLES `studentdb` WRITE;
 /*!40000 ALTER TABLE `studentdb` DISABLE KEYS */;
-INSERT INTO `studentdb` VALUES ('Shreyansh khandelwal','RA2211003010387','ctech','CSE CORE',3,'f1','dr sathyapriya l',983279239,'sl1203@srmist.edu.in','2004-06-09','jaipur','rajasthan',982953035,'khandelwal.happy.hk@gmail.com','sk1903','student','sk1903'),('Abhishek Soni','RA2211003011185','CTECH','CSE',3,'B2','DR. NITHYASHRI J',999999999,'nj2234@srmist.edu.in','2017-06-04','JAIPUR','RAJASTHAN',894983467,'abhisoni1764@gmail.com','as8819','Student','as8819'),('shantanu gahtori','RA2211033010112','cintel','cse swe',3,'aa-2','DR. ar arunirani',984023182,'arunaraa@srmist.edu.in','2003-09-09','chandigarh','chandigarh',964648254,'shantanugahtori4@gmail.com','sg2982','student','sg2982');
+INSERT INTO `studentdb` VALUES ('Aryavart Chandel','RA2211003010374','CTECH','CSE CORE',3,'F1','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in','2003-11-09','LUCKNOW','UP',780060055,'aryavartchandel2@gmail.com','ac6729','student','ac6729'),('Shreyansh khandelwal','RA2211003010387','ctech','CSE CORE',3,'F1','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in','2004-06-09','jaipur','rajasthan',982953035,'khandelwal.happy.hk@gmail.com','sk1903','student','sk1903'),('Abhishek Soni','RA2211003011185','CTECH','CSE',3,'B2','DR. NITHYASHRI J',999999999,'nj2234@srmist.edu.in','2017-06-04','JAIPUR','RAJASTHAN',894983467,'abhisoni1764@gmail.com','as8819','Student','as8819'),('shantanu gahtori','RA2211033010112','cintel','cse swe',3,'aa-2','DR. ar arunirani',984023182,'arunaraa@srmist.edu.in','2003-09-09','chandigarh','chandigarh',964648254,'shantanugahtori4@gmail.com','sg2982','student','sg2982');
 /*!40000 ALTER TABLE `studentdb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -449,6 +449,7 @@ CREATE TABLE `teacherabout` (
 
 LOCK TABLES `teacherabout` WRITE;
 /*!40000 ALTER TABLE `teacherabout` DISABLE KEYS */;
+INSERT INTO `teacherabout` VALUES ('Dr. Senthil Kumar R','kumarr1','SRM Institute of Science and Technology','Performance Evaluation of Induction motor using Sliding Mode, Fuzzy and Artificial Neural Network controllers',2020,'Bharath Engg College','	Instrumentation and control Engg',2005,'	Thiagarajar College of Engineering','	Electrical and Electronics Engineering',1999,'Electrical and Electronics Engineering','21.8 Years','Power Electronics and Drives: Drives Applications, Fuzzy Logic and Neural Network, DSP, FPGA, Modeling of Electrical Machines, Soft computing','Assistant Professor','Analysis of converter','Modeling of Electrical Machines','Fuzzy & neural network','Power quality management','Special Electrical Machines',NULL,NULL,NULL,NULL,NULL),('Dr. Rajmohan R','rajmohar','Anna University','Wireless Network',2022,'Pondicherry University','Network and Internet Engineering',2012,'Pondicherry University','Computer Science and Engineering',2010,'Computing Technologies','11.2 years','Wireless Network','Assistant Professor','Computer Networks','Soft Computing','Artificial Intelligence','Cryptography Techniques','Java Programming',NULL,NULL,NULL,NULL,NULL),('Dr. Sathyapriya L','sathyapl','SSN College Of Engineering, Anna University','Information and Communication Engineering',2021,'Aarupadai Veedu Institute Of Technology','Computer Science and Engineering',2014,'Anand Institute Of higher Technology','Computer Science and Engineering',2010,'Computing Technologies','2 years','Wireless Sensor Networks, Machine Learning','Assistant Professor','Foundation of Data Science','Computer Networks','Data Structures',NULL,NULL,NULL,NULL,NULL,NULL,NULL),('Dr. Sundaravadivel E','sundarae','University of Madras','Inorganic Chemistry',2014,'University of Madras','Inorganic Chemistry',2009,'University of Madras','	Chemistry',2006,'Chemistry','8.3 years','Nanomaterials, Biomass-derived Nano compounds','Assistant Professor','B.Sc – Inorganic Chemistry','B.Tech – Chemistry','B.Tech – Principles of Environmental Science','M.Sc – Qualitative analysis','B.Sc – Fuel Chemistry',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `teacherabout` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -558,14 +559,6 @@ LOCK TABLES `timetable` WRITE;
 INSERT INTO `timetable` VALUES ('sg2982','app','maths','','','','','','','','','','','','','','maths','','','','','','maths','','','','','','','','','','','','','','','','','','','','','','','','','','','',''),('sk1903','daa','maths',NULL,'app','','maths','','dsa lab','','','','maths','',NULL,'','coa',NULL,'','','',NULL,'','','maths',NULL,'','','','','','','',NULL,'',NULL,NULL,'','app','','','','','os','coa','','','','','','');
 /*!40000 ALTER TABLE `timetable` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'scholarwise_temp'
---
-
---
--- Dumping routines for database 'scholarwise_temp'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -576,4 +569,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-06  1:27:07
+-- Dump completed on 2024-03-10  2:32:27
