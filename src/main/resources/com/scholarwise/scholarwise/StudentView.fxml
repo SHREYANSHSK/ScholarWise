@@ -1748,7 +1748,7 @@
                                 </Label>
                             </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="CourseDetails" prefHeight="1080.0" prefWidth="1734.0">
+                        <AnchorPane fx:id="CourseDetails" prefHeight="1080.0" prefWidth="1734.0" visible="false">
                             <children>
                                 <Label layoutX="85.0" layoutY="49.0" prefHeight="74.0" prefWidth="388.0" styleClass="text_white1" stylesheets="@style.css" text="COURSE DETAILS" textAlignment="CENTER">
                                     <font>
@@ -1802,7 +1802,7 @@
                                                     <children>
                                                         <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="content-border" stylesheets="@style.css" GridPane.columnIndex="1">
                                                             <children>
-                                                                <Label alignment="CENTER" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="138.0" stylesheets="@style.css" text="Required" textFill="WHITE">
+                                                                <Label alignment="CENTER" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="142.0" stylesheets="@style.css" text="Required" textFill="WHITE">
                                                                     <font>
                                                                         <Font name="System Bold Italic" size="18.0" />
                                                                     </font>
@@ -1893,7 +1893,7 @@
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font></Button>
-                                        <TextField fx:id="TimeTable_SubName" layoutX="194.0" layoutY="67.0" prefHeight="26.0" prefWidth="141.0" styleClass="student-view-text-fields" stylesheets="@style.css" />
+                                        <TextField fx:id="TimeTable_SubName" layoutX="193.0" layoutY="65.0" prefHeight="26.0" prefWidth="141.0" styleClass="student-view-text-fields" stylesheets="@style.css" />
                                         <TextField fx:id="TimeTable_DayOrder" layoutX="193.0" layoutY="148.0" prefHeight="26.0" prefWidth="142.0" styleClass="student-view-text-fields" stylesheets="@style.css" />
                                         <TextField fx:id="TimeTable_Hour" layoutX="193.0" layoutY="222.0" prefHeight="26.0" prefWidth="142.0" styleClass="student-view-text-fields" stylesheets="@style.css" />
                                         <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="32.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
@@ -1918,7 +1918,7 @@
                                         <String fx:value="box-border" />
                                     </styleClass>
                                 </AnchorPane>
-                                <Label alignment="CENTER" layoutX="60.0" layoutY="54.0" prefHeight="83.0" prefWidth="334.0" stylesheets="@style.css" text="TIME TABLE" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                <Label alignment="CENTER" layoutX="60.0" layoutY="54.0" prefHeight="83.0" prefWidth="334.0" stylesheets="@style.css" text="TIME TABLE" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="54.0">
                                     <font>
                                         <Font name="System Bold" size="39.0" />
                                     </font>
@@ -2586,7 +2586,7 @@
                             </children>
                         </AnchorPane>
 
-                        <AnchorPane fx:id="Marks" prefHeight="1080.0" prefWidth="1734.0" style="-fx-background-color: #1d1d1d;" visible="false">
+                        <AnchorPane fx:id="Marks" prefHeight="1080.0" prefWidth="1734.0" style="-fx-background-color: #1d1d1d;">
                             <children>
                                 <Label alignment="CENTER" layoutX="58.0" layoutY="40.0" prefHeight="68.0" prefWidth="198.0" text="MARKS" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
@@ -3341,12 +3341,12 @@
                                                 <RowConstraints maxHeight="261.0000061035156" minHeight="10.0" prefHeight="246.60001220703126" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                  <children>
-                                    <Label alignment="CENTER" prefHeight="40.0" prefWidth="155.0" text="Course Name" textAlignment="CENTER" textFill="WHITE">
+                                    <Label alignment="CENTER" prefHeight="40.0" prefWidth="155.0" styleClass="text_white" stylesheets="@style.css" text="Message" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="23.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" prefHeight="37.0" prefWidth="113.0" text="DATES" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+                                    <Label alignment="CENTER" prefHeight="37.0" prefWidth="113.0" styleClass="text_white" stylesheets="@style.css" text="Date" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
@@ -3355,7 +3355,7 @@
                                     <ListView id="Marks_DATES_listview" fx:id="Marks_DATES_listview" disable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="88.0" style="-fx-background-color: #343434;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                  </children>
                                         </GridPane>
-                                        <Label alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="56.0" prefWidth="296.0" text="CT Dates" textAlignment="CENTER" textFill="WHITE">
+                                        <Label alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="56.0" prefWidth="296.0" text="Updates" textAlignment="CENTER" textFill="WHITE">
                                             <font>
                                                 <Font name="System Bold" size="38.0" />
                                             </font>
