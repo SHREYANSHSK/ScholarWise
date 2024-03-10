@@ -15,6 +15,7 @@
 	
 	import javafx.animation.PauseTransition;
 
+	import javafx.event.ActionEvent;
 	import javafx.fxml.FXML;
 	import javafx.fxml.FXMLLoader;
 	import javafx.fxml.Initializable;
@@ -148,7 +149,7 @@
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					
 	
-					con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB","root","0000");
+					con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp","root","0000");
 					pst=con.prepareStatement("select net_id,password,designation from login where net_id=? and " +
 							"password=? and designation=?;");
 					pst.setString(1, Netid.getText());
@@ -160,8 +161,11 @@
 						error_label.setText("Login Successful");
 						String netId = rs.getString("net_id");
 						String password =rs.getString("password");
-						String designation =rs.getString("designation");			
-						credential(netId,password,designation);
+						String designation =rs.getString("designation");
+
+
+						credential(netId, password, designation);
+
 	
 						ProgressBar.setVisible(true);
 						PauseTransition pt=new PauseTransition();     
@@ -244,7 +248,8 @@
 
             }
 			}
-			}
+
+	}
 		
 	
 		
