@@ -1203,7 +1203,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </MenuButton>
-            <MenuButton fx:id="Marks_regid_drop" alignment="CENTER" layoutX="597.0" layoutY="168.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" stylesheets="@style.css" text="Subject" textFill="WHITE">
+            <MenuButton fx:id="Marks_subject_drop" alignment="CENTER" layoutX="597.0" layoutY="168.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" stylesheets="@style.css" text="Subject" textFill="WHITE">
                <items>
                   <MenuItem mnemonicParsing="false" text="Action 1" />
                   <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -1225,7 +1225,7 @@
                   <String fx:value="box-borderRadius" />
                </styleClass>
                <children>
-                  <Label contentDisplay="CENTER" layoutX="27.0" layoutY="30.0" prefHeight="42.0" prefWidth="384.0" styleClass="text_white1" stylesheets="@style.css" text="Abhishek Soni" textAlignment="CENTER">
+                  <Label fx:id="std_name" contentDisplay="CENTER" layoutX="27.0" layoutY="30.0" prefHeight="42.0" prefWidth="384.0" styleClass="text_white1" stylesheets="@style.css" text="Abhishek Soni" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
@@ -1233,7 +1233,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Label>
-                  <Label layoutX="42.0" layoutY="73.0" prefHeight="20.0" prefWidth="166.0" text="B2 Section" textFill="#f2f2f2">
+                  <Label fx:id="std_section" layoutX="42.0" layoutY="73.0" prefHeight="20.0" prefWidth="166.0" text="B2 Section" textFill="#f2f2f2">
                      <font>
                         <Font name="Arial Black" size="13.0" />
                      </font>
@@ -1243,7 +1243,7 @@
                         <Image url="@images/icons%20png/icons8-id-32.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="77.0" layoutY="118.0" prefHeight="20.0" prefWidth="84.0" text="as8819" textFill="#fafafa">
+                  <Label fx:id="std_netid" layoutX="77.0" layoutY="118.0" prefHeight="20.0" prefWidth="84.0" text="as8819" textFill="#fafafa">
                      <font>
                         <Font name="Arial Black" size="13.0" />
                      </font>
@@ -1253,7 +1253,7 @@
                         <Image url="@images/icons%20png/icons8-id-verified-50.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="77.0" layoutY="161.0" prefHeight="20.0" prefWidth="144.0" text="RA2211003011185" textFill="#fafafa">
+                  <Label fx:id="std_regid" layoutX="77.0" layoutY="161.0" prefHeight="20.0" prefWidth="144.0" text="RA2211003011185" textFill="#fafafa">
                      <font>
                         <Font name="Arial Black" size="13.0" />
                      </font>
@@ -1263,7 +1263,7 @@
                         <Image url="@images/icons%20png/user-solid.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="235.0" layoutY="203.0" prefHeight="20.0" prefWidth="144.0" text="Dr. Nithyashri J" textFill="#fafafa">
+                  <Label fx:id="std_fa_name" alignment="CENTER" layoutX="235.0" layoutY="203.0" prefHeight="20.0" prefWidth="144.0" text="Dr. Nithyashri J" textFill="#fafafa">
                      <font>
                         <Font name="Arial Black" size="13.0" />
                      </font>
@@ -1273,7 +1273,7 @@
                         <Image url="@images/icons%20png/icons8-gmail-logo-64.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" layoutX="232.0" layoutY="244.0" prefHeight="20.0" prefWidth="126.0" text="9116839273" textFill="#fafafa">
+                  <Label fx:id="std_fa_ph" alignment="CENTER" layoutX="232.0" layoutY="244.0" prefHeight="20.0" prefWidth="126.0" text="9116839273" textFill="#fafafa">
                      <font>
                         <Font name="Arial Black" size="13.0" />
                      </font>
@@ -1288,7 +1288,7 @@
                         <Font name="Arial Black" size="13.0" />
                      </font>
                   </Label>
-                  <Button layoutX="337.0" layoutY="83.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="41.0" styleClass="btn-contact" stylesheets="@style.css">
+                  <Button fx:id="std_contact" layoutX="337.0" layoutY="83.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="41.0" styleClass="btn-contact" stylesheets="@style.css">
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -1302,7 +1302,7 @@
                         <Image url="@images/icons%20png/icons8-phone-50.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="280.0" layoutY="83.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="41.0" styleClass="btn-contact" stylesheets="@style.css">
+                  <Button fx:id="std_email_id" layoutX="280.0" layoutY="83.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="41.0" styleClass="btn-contact" stylesheets="@style.css">
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -1313,7 +1313,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <MenuButton fx:id="Marks_branch_drop1" alignment="CENTER" layoutX="273.0" layoutY="247.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="390.0" stylesheets="@style.css" text="Registration Number" textFill="WHITE">
+            <MenuButton fx:id="Marks_regid_drop" alignment="CENTER" layoutX="273.0" layoutY="247.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="390.0" stylesheets="@style.css" text="Registration Number" textFill="WHITE">
                <items>
                   <MenuItem mnemonicParsing="false" text="Action 1" />
                   <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -1362,12 +1362,12 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                            <children>
-                              <Label alignment="CENTER" layoutX="8.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <Label fx:id="ct_1_t" alignment="CENTER" layoutX="8.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
-                              <Label alignment="CENTER" layoutX="8.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <Label fx:id="ct_1_p" alignment="CENTER" layoutX="8.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
@@ -1382,12 +1382,12 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                            <children>
-                              <Label alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <Label fx:id="ct_2_i" alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <children>
-                              <Label alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <Label fx:id="ct_3_t" alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -1397,7 +1397,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
-                              <Label alignment="CENTER" layoutX="8.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <Label fx:id="ct_1_i" alignment="CENTER" layoutX="8.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
@@ -1407,7 +1407,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                            <children>
-                              <Label alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <Label fx:id="ct_3_p" alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
@@ -1417,7 +1417,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <children>
-                              <Label alignment="CENTER" layoutX="8.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <Label fx:id="ct_2_t" alignment="CENTER" layoutX="8.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
@@ -1427,7 +1427,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
                            <children>
-                              <Label alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <Label fx:id="ct_3_i" alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
@@ -1437,12 +1437,12 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <children>
-                              <Label alignment="CENTER" layoutX="8.0" layoutY="14.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <Label fx:id="ct_2_p" alignment="CENTER" layoutX="8.0" layoutY="14.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                            <children>
-                              <Button layoutX="131.0" layoutY="9.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="154.0" stylesheets="@style.css" text="Update ">
+                              <Button fx:id="Update_Marks" layoutX="131.0" layoutY="9.0" mnemonicParsing="false" onAction="#Update_MarksAct" prefHeight="45.0" prefWidth="154.0" stylesheets="@style.css" text="Update ">
                                  <styleClass>
                                     <String fx:value="btn" />
                                     <String fx:value="box-borderRadius" />
@@ -1470,7 +1470,7 @@
                         <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
-                  <Label layoutX="98.0" layoutY="53.0" prefHeight="27.0" prefWidth="14.0" text="3" textFill="WHITE">
+                  <Label fx:id="std_assign_given" layoutX="98.0" layoutY="53.0" prefHeight="27.0" prefWidth="14.0" text="3" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -1489,7 +1489,7 @@
                         <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
-                  <Label layoutX="98.0" layoutY="53.0" prefHeight="27.0" prefWidth="14.0" text="2" textFill="WHITE">
+                  <Label fx:id="std_assign_sub" layoutX="98.0" layoutY="53.0" prefHeight="27.0" prefWidth="14.0" text="2" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -1508,7 +1508,7 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="11.0" layoutY="59.0" prefHeight="92.0" prefWidth="210.0" text="9.77" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="std_cgpa" alignment="CENTER" layoutX="11.0" layoutY="59.0" prefHeight="92.0" prefWidth="210.0" text="9.77" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="63.0" />
                      </font>
