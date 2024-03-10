@@ -26,7 +26,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 
-public  class StudentView  {
+public  class StudentView extends TeacherView {
 
     @FXML
     private AnchorPane CourseDetails;
@@ -964,7 +964,7 @@ public  class StudentView  {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
+        con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
         pst = con.prepareStatement("SELECT * FROM course where semester=?;");
         ObservableList<TableView_Details> list = FXCollections.observableArrayList();
 
@@ -1105,8 +1105,8 @@ public  class StudentView  {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
-        con2 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
+        con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+        con2 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
 
 		 List<String> Course_Name_data = new ArrayList<>();
 		 List<String> Course_Code_data = new ArrayList<>();
@@ -1441,7 +1441,7 @@ n5.setText(Overall[4]);
     	
     	try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
 			pst = con.prepareStatement("SELECT * FROM timetable where net_id=?;");
 			pst.setString(1, Net_id);
 			rs=pst.executeQuery();
@@ -1469,57 +1469,63 @@ n5.setText(Overall[4]);
     	
     }
     public void credential(String netId, String password, String designation) {
-        net_id = netId;
-        Password = password;
-        Designation = designation;
+        if (designation.equals("Teacher")) {
+            credential1(netId, password, designation);
+        } else {
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
-            pst = con.prepareStatement("SELECT * FROM studentdb where Net_id  IN(SELECT password FROM login where " +
-                    "net_id=?)");
-      
-            pst.setString(1, net_id);
-            
-      
-            rs = pst.executeQuery();
+            net_id = netId;
+            Password = password;
+            Designation = designation;
 
-            if (rs.next()) {
-                NAME = rs.getString("NAME");
-                REG_ID = rs.getString("REG_ID");
-                DEPARTMENT= rs.getString("DEPARTMENT");
-                SECTION= rs.getString("SECTION");
-                DEPARTMENT= rs.getString("DEPARTMENT");
-                COURSE= rs.getString("COURSE");
-                SECTION= rs.getString("SECTION");
-                FACULTY_ADVISOR= rs.getString("FACULTY_ADVISOR");
-                FA_PHNO= rs.getString("FA_PHNO");
-                FA_EMAIL= rs.getString("FA_EMAIL");
-                DOB= rs.getString("DOB");
-                CITY= rs.getString("CITY");
-                STATE= rs.getString("STATE");
-                PHNO= rs.getString("PHNO");
-                PERSONAL_MAIL_ID= rs.getString("PERSONAL_MAIL_ID");
-                Net_id= rs.getString("Net_id");
-                Desingnation= rs.getString("Desingnation");
-                SEMESTER=rs.getString("SEMESTER");              
-               
-            } else {
-                // Handle the case where no matching record is found
-                System.out.println("No matching record found.");
-            }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close resources in a finally block to ensure they are always closed
+
             try {
-                if (rs != null) rs.close();
-                if (pst != null) pst.close();
-                if (con != null) con.close();
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+                pst = con.prepareStatement("SELECT * FROM studentdb where Net_id  IN(SELECT password FROM login where " +
+                        "net_id=?)");
+
+                pst.setString(1, net_id);
+
+
+                rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    NAME = rs.getString("NAME");
+                    REG_ID = rs.getString("REG_ID");
+                    DEPARTMENT = rs.getString("DEPARTMENT");
+                    SECTION = rs.getString("SECTION");
+                    DEPARTMENT = rs.getString("DEPARTMENT");
+                    COURSE = rs.getString("COURSE");
+                    SECTION = rs.getString("SECTION");
+                    FACULTY_ADVISOR = rs.getString("FACULTY_ADVISOR");
+                    FA_PHNO = rs.getString("FA_PHNO");
+                    FA_EMAIL = rs.getString("FA_EMAIL");
+                    DOB = rs.getString("DOB");
+                    CITY = rs.getString("CITY");
+                    STATE = rs.getString("STATE");
+                    PHNO = rs.getString("PHNO");
+                    PERSONAL_MAIL_ID = rs.getString("PERSONAL_MAIL_ID");
+                    Net_id = rs.getString("Net_id");
+                    Desingnation = rs.getString("Desingnation");
+                    SEMESTER = rs.getString("SEMESTER");
+
+                } else {
+                    // Handle the case where no matching record is found
+                    System.out.println("No matching record found.");
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             } catch (SQLException e) {
                 e.printStackTrace();
+            } finally {
+                // Close resources in a finally block to ensure they are always closed
+                try {
+                    if (rs != null) rs.close();
+                    if (pst != null) pst.close();
+                    if (con != null) con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -1537,7 +1543,7 @@ n5.setText(Overall[4]);
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
+        con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
 		
 		 List<String> grade_data = new ArrayList<>();
 		 List<String> credit_data = new ArrayList<>();
@@ -2120,7 +2126,7 @@ SGPA=data1/data2;
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-    con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
+    con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
     pst=con.prepareStatement("select* from timetable;");
     
    
@@ -2188,7 +2194,7 @@ SGPA=data1/data2;
     void TimeTable_dataDeletion() throws SQLException, ClassNotFoundException {
  
     			Class.forName("com.mysql.cj.jdbc.Driver");
-    			con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_DB", "root", "0000");
+    			con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
         
    	 
     	    		String columnName = "d" + TimeTable_DayOrder.getText() + "h" + TimeTable_Hour.getText();

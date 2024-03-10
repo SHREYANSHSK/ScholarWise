@@ -150,10 +150,10 @@
                <children>
                   <ImageView fitHeight="255.0" fitWidth="232.0" layoutX="26.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" styleClass="box-borderRadius">
                      <image>
-                        <Image url="@images/icons%20png/boy3.png" />
+                        <Image url="@images/icons png/boy3.png"/>
                      </image>
                   </ImageView>
-                  <Label contentDisplay="CENTER" layoutX="26.0" layoutY="250.0" prefHeight="42.0" prefWidth="281.0" styleClass="text_white1" stylesheets="@style.css" text="Dr. Nithyashri J" textAlignment="CENTER">
+                  <Label fx:id="name" contentDisplay="CENTER" layoutX="26.0" layoutY="250.0" prefHeight="42.0" prefWidth="281.0" styleClass="text_white1" stylesheets="@style.css" text="Dr. Nithyashri J" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="25.0" />
                      </font>
@@ -161,7 +161,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Label>
-                  <Label layoutX="45.0" layoutY="292.0" prefHeight="15.0" prefWidth="262.0" text="Assistent Professor" textFill="#f2f2f2">
+                  <Label fx:id="designation" layoutX="45.0" layoutY="292.0" prefHeight="15.0" prefWidth="262.0" text="Assistent Professor" textFill="#f2f2f2">
                      <font>
                         <Font name="Arial Black" size="13.0" />
                      </font>
@@ -170,7 +170,7 @@
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/icons%20png/icons8-phone-50.png" />
+                              <Image url="@images/icons png/icons8-phone-50.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -179,37 +179,37 @@
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/icons%20png/icons8-letter-with-email-sign-50.png" />
+                              <Image url="@images/icons png/icons8-letter-with-email-sign-50.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
                   <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="250.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons%20png/icons8-id-32.png" />
+                        <Image url="@images/icons png/icons8-id-32.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="250.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons%20png/icons8-id-verified-50.png" />
+                        <Image url="@images/icons png/icons8-id-verified-50.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="250.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons%20png/icons8-place-50.png" />
+                        <Image url="@images/icons png/icons8-place-50.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="303.0" layoutY="56.0" prefHeight="20.0" prefWidth="84.0" text="nj1234" textFill="#fafafa">
+                  <Label fx:id="net_id" layoutX="303.0" layoutY="56.0" prefHeight="20.0" prefWidth="84.0" text="nj1234" textFill="#fafafa">
                      <font>
                         <Font name="Arial Black" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="303.0" layoutY="117.0" prefHeight="20.0" prefWidth="144.0" text="FA2211003011198" textFill="#fafafa">
+                  <Label fx:id="faculty_id" layoutX="303.0" layoutY="117.0" prefHeight="20.0" prefWidth="144.0" text="FA2211003011198" textFill="#fafafa">
                      <font>
                         <Font name="Arial Black" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="303.0" layoutY="177.0" prefHeight="20.0" prefWidth="84.0" text="Chennai" textFill="#fafafa">
+                  <Label fx:id="city" layoutX="303.0" layoutY="177.0" prefHeight="20.0" prefWidth="84.0" text="Chennai" textFill="#fafafa">
                      <font>
                         <Font name="Arial Black" size="13.0" />
                      </font>
@@ -228,52 +228,52 @@
                         <Font name="Arial Black" size="21.0" />
                      </font>
                   </Label>
-                  <Label layoutX="30.0" layoutY="69.0" prefHeight="24.0" prefWidth="326.0" text="Pattern Recognition Techniques" textFill="#efefef" AnchorPane.bottomAnchor="257.4">
+                  <Label fx:id="course1" layoutX="30.0" layoutY="69.0" prefHeight="24.0" prefWidth="326.0" text="Pattern Recognition Techniques" textFill="#efefef" AnchorPane.bottomAnchor="257.4">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="30.0" layoutY="114.0" prefHeight="24.0" prefWidth="326.0" text="Digital Image Processing" textFill="#efefef" AnchorPane.bottomAnchor="200.0">
+                  <Label fx:id="course2" layoutX="30.0" layoutY="114.0" prefHeight="24.0" prefWidth="326.0" text="Digital Image Processing" textFill="#efefef" AnchorPane.bottomAnchor="200.0">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="30.0" layoutY="163.0" prefHeight="24.0" prefWidth="326.0" text="Data Structures and Algorithms" textFill="#efefef" AnchorPane.bottomAnchor="145.0">
+                  <Label fx:id="course3" layoutX="30.0" layoutY="163.0" prefHeight="24.0" prefWidth="326.0" text="Data Structures and Algorithms" textFill="#efefef" AnchorPane.bottomAnchor="145.0">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="30.0" layoutY="234.0" prefHeight="24.0" prefWidth="326.0" text="Theory of Computation" textFill="#efefef" AnchorPane.bottomAnchor="90.0">
+                  <Label fx:id="course4" layoutX="30.0" layoutY="234.0" prefHeight="24.0" prefWidth="326.0" text="Theory of Computation" textFill="#efefef" AnchorPane.bottomAnchor="90.0">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="30.0" layoutY="291.0" prefHeight="24.0" prefWidth="326.0" text=" Object Oriented Programming" textFill="#efefef" AnchorPane.bottomAnchor="35.39999999999998">
+                  <Label fx:id="course5" layoutX="30.0" layoutY="291.0" prefHeight="24.0" prefWidth="326.0" text=" Object Oriented Programming" textFill="#efefef" AnchorPane.bottomAnchor="35.39999999999998">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="406.0" layoutY="66.0" prefHeight="24.0" prefWidth="326.0" text="Professional Ethics in Engineering" textFill="#efefef">
+                  <Label fx:id="course6" layoutX="406.0" layoutY="66.0" prefHeight="24.0" prefWidth="326.0" text="Professional Ethics in Engineering" textFill="#efefef">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="406.0" layoutY="123.0" prefHeight="24.0" prefWidth="326.0" text="Philosophy of Engineering" textFill="#efefef">
+                  <Label fx:id="course7" layoutX="406.0" layoutY="123.0" prefHeight="24.0" prefWidth="326.0" text="Philosophy of Engineering" textFill="#efefef">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="405.0" layoutY="178.0" prefHeight="24.0" prefWidth="326.0" text="Operating system" textFill="#efefef">
+                  <Label fx:id="course8" layoutX="405.0" layoutY="178.0" prefHeight="24.0" prefWidth="326.0" text="Operating system" textFill="#efefef">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="405.0" layoutY="233.0" prefHeight="24.0" prefWidth="326.0" text="Resource Management Techniques" textFill="#efefef">
+                  <Label fx:id="course9" layoutX="405.0" layoutY="233.0" prefHeight="24.0" prefWidth="326.0" text="Resource Management Techniques" textFill="#efefef">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="405.0" layoutY="288.0" prefHeight="24.0" prefWidth="326.0" text="Compiler Design" textFill="#efefef">
+                  <Label fx:id="course10" layoutX="405.0" layoutY="288.0" prefHeight="24.0" prefWidth="326.0" text="Compiler Design" textFill="#efefef">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
@@ -299,25 +299,25 @@
                   </Label>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="74.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons%20png/icons8-phd-64.png" />
+                        <Image url="@images/icons png/icons8-phd-64.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="74.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons%20png/graduation.png" />
+                        <Image url="@images/icons png/graduation.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="74.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons%20png/icons8-graduation-50.png" />
+                        <Image url="@images/icons png/icons8-graduation-50.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="148.0" layoutY="72.0" text="Sathyabama Institute Of Science and Technology" textFill="WHITE">
+                  <Label fx:id="qualification1" layoutX="148.0" layoutY="72.0" text="Sathyabama Institute Of Science and Technology" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="148.0" layoutY="97.0" text="Ph.D in Computer Science and Technology" textFill="WHITE">
+                  <Label fx:id="subq1" layoutX="148.0" layoutY="97.0" text="Ph.D in Computer Science and Technology" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold Italic" size="13.0" />
                      </font>
@@ -325,7 +325,7 @@
                         <Insets top="2.0" />
                      </padding>
                   </Label>
-                  <Label alignment="CENTER" layoutX="677.0" layoutY="68.0" prefHeight="32.0" prefWidth="69.0" text="2016" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="year1" alignment="CENTER" layoutX="677.0" layoutY="68.0" prefHeight="32.0" prefWidth="69.0" text="2016" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="20.0" />
                      </font>
@@ -333,12 +333,12 @@
                         <Insets top="4.0" />
                      </padding>
                   </Label>
-                  <Label layoutX="148.0" layoutY="153.0" text="Sathyabama Institute Of Science and Technology" textFill="WHITE">
+                  <Label fx:id="qualification2" layoutX="148.0" layoutY="153.0" text="Sathyabama Institute Of Science and Technology" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="148.0" layoutY="178.0" text="M.E in Computer Science and Technology" textFill="WHITE">
+                  <Label fx:id="subq2" layoutX="148.0" layoutY="178.0" text="M.E in Computer Science and Technology" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold Italic" size="13.0" />
                      </font>
@@ -346,7 +346,7 @@
                         <Insets top="2.0" />
                      </padding>
                   </Label>
-                  <Label alignment="CENTER" layoutX="677.0" layoutY="149.0" prefHeight="32.0" prefWidth="69.0" text="2005" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="year2" alignment="CENTER" layoutX="677.0" layoutY="149.0" prefHeight="32.0" prefWidth="69.0" text="2005" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="20.0" />
                      </font>
@@ -354,12 +354,12 @@
                         <Insets top="4.0" />
                      </padding>
                   </Label>
-                  <Label layoutX="148.0" layoutY="229.0" text="VRS College of Engineering and Technology" textFill="WHITE">
+                  <Label fx:id="qualification3" layoutX="148.0" layoutY="229.0" text="VRS College of Engineering and Technology" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="148.0" layoutY="254.0" text="B.E in Computer Science and Technology" textFill="WHITE">
+                  <Label fx:id="subq3" layoutX="148.0" layoutY="254.0" text="B.E in Computer Science and Technology" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold Italic" size="13.0" />
                      </font>
@@ -367,7 +367,7 @@
                         <Insets top="2.0" />
                      </padding>
                   </Label>
-                  <Label alignment="CENTER" layoutX="677.0" layoutY="225.0" prefHeight="32.0" prefWidth="69.0" text="2000" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="year3" alignment="CENTER" layoutX="677.0" layoutY="225.0" prefHeight="32.0" prefWidth="69.0" text="2000" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="20.0" />
                      </font>
@@ -386,22 +386,22 @@
                <children>
                   <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="27.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons%20png/icons8-university-50.png" />
+                        <Image url="@images/icons png/icons8-university-50.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="27.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons%20png/icons8-experience-50.png" />
+                        <Image url="@images/icons png/icons8-experience-50.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="27.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons%20png/icons8-research-50.png" />
+                        <Image url="@images/icons png/icons8-research-50.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="27.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/icons%20png/icons8-membership-50.png" />
+                        <Image url="@images/icons png/icons8-membership-50.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="69.0" layoutY="42.0" text="Campus" textFill="WHITE">
@@ -424,22 +424,22 @@
                         <Font name="Arial Black" size="13.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="42.0" prefHeight="20.0" prefWidth="194.0" text="Katthankhulathur" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="campus" alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="42.0" prefHeight="20.0" prefWidth="194.0" text="Katthankhulathur" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="110.0" prefHeight="20.0" prefWidth="194.0" text="22 years of experience" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="research" alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="159.0" prefHeight="63.0" prefWidth="194.0" text="Image Processing, Machine Learning and Data Science." textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="159.0" prefHeight="63.0" prefWidth="194.0" text="Image Processing, Machine Learning and Data Science." textFill="WHITE" wrapText="true">
+                  <Label fx:id="experience" alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="110.0" prefHeight="20.0" prefWidth="194.0" text="22 years of experience" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="224.0" prefHeight="63.0" prefWidth="194.0" text="International Computer Science and Engineering Society(ICSES)" textFill="WHITE" wrapText="true">
+                  <Label fx:id="member" alignment="CENTER" contentDisplay="CENTER" layoutX="217.0" layoutY="224.0" prefHeight="63.0" prefWidth="194.0" text="International Computer Science and Engineering Society(ICSES)" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
