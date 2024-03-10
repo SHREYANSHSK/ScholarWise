@@ -12,11 +12,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class TeacherView {
 
-
+	@FXML
+	private AnchorPane MARKS_PAGE;
+	@FXML
+	private AnchorPane ATTENDANCE_PAGE;
+	@FXML
+	private AnchorPane PROFILE_PAGE;
+	@FXML
+	private AnchorPane TIME_TABLE_PAGE;
 	@FXML
 	private Button Course_Button;
 
@@ -190,9 +199,13 @@ public class TeacherView {
 		year1.setText(YEAR1);
 		year2.setText(YEAR2);
 		year3.setText(YEAR3);
-		System.out.println(course1);
 
 
+
+		PROFILE_PAGE.setVisible(true);
+		MARKS_PAGE.setVisible(false);
+		TIME_TABLE_PAGE.setVisible(false);
+		ATTENDANCE_PAGE.setVisible(false);
 	}
 
 	@FXML
@@ -226,6 +239,39 @@ public class TeacherView {
 		mainstage.show();
 
 	}
+
+	@FXML
+	void TeacherView_ATTENDANCEVIEW(ActionEvent event) {
+		PROFILE_PAGE.setVisible(false);
+		MARKS_PAGE.setVisible(false);
+		TIME_TABLE_PAGE.setVisible(false);
+		ATTENDANCE_PAGE.setVisible(true);
+	}
+
+	@FXML
+	void TeacherView_MARKSVIEW(ActionEvent event) {
+		PROFILE_PAGE.setVisible(false);
+		MARKS_PAGE.setVisible(true);
+		TIME_TABLE_PAGE.setVisible(false);
+		ATTENDANCE_PAGE.setVisible(false);
+	}
+
+	@FXML
+	void TeacherView_PROFILEVIEW(ActionEvent event) {
+		PROFILE_PAGE.setVisible(true);
+		MARKS_PAGE.setVisible(false);
+		TIME_TABLE_PAGE.setVisible(false);
+		ATTENDANCE_PAGE.setVisible(false);
+	}
+
+	@FXML
+	void TeacherView_TIMETABLEVIEW(ActionEvent event) {
+		PROFILE_PAGE.setVisible(false);
+		MARKS_PAGE.setVisible(false);
+		TIME_TABLE_PAGE.setVisible(true);
+		ATTENDANCE_PAGE.setVisible(false);
+	}
+
 
 
 	public void credential1(String netId, String password, String designation) {
@@ -279,7 +325,7 @@ public class TeacherView {
 				COURSE9 = rs.getString("course9");
 				COURSE10 = rs.getString("course10");
 
-				System.out.println(NAME + "" + FACULTY_ID);
+//				System.out.println(NAME + "" + FACULTY_ID);
 
 			}
 
@@ -297,6 +343,274 @@ public class TeacherView {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@FXML
+	void TEACHERVIEW_TimeTable_EnterButtonAct(ActionEvent event) {
+
+	}
+
+	@FXML
+	void TEACHERVIEW_TimeTable_RemoveButtonAct(ActionEvent event) {
+
+	}
+
+
+
+
+	@FXML
+	void Update_MarksAct(ActionEvent event) {
+
+	}
+
+	@FXML
+	void d1h10_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d1h1_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d1h2_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d1h3_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d1h4_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d1h5_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d1h6_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d1h7_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d1h8_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d1h9_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d2h10_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d2h1_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d2h2_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d2h3_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d2h4_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d2h5_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d2h6_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d2h7_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d2h8_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d2h9_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d3h10_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d3h1_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d3h2_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d3h3_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d3h4_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d3h5_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d3h6_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d3h7_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d3h8_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d3h9_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d4h10_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d4h1_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d4h2_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d4h3_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d4h4_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d4h5_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d4h6_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d4h7_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d4h8_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d4h9_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d5h10_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d5h1_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d5h2_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d5h3_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d5h4_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d5h5_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d5h6_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d5h7_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d5h8_clicked(MouseEvent event) {
+
+	}
+
+	@FXML
+	void d5h9_clicked(MouseEvent event) {
+
 	}
 
 

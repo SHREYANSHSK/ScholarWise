@@ -1412,12 +1412,12 @@ n5.setText(Overall[4]);
     	
 	
     }
-    
 
-    
-    
-    
-    
+
+
+
+
+
     @FXML
     void ProfileView(ActionEvent event) {
     	CourseDetails.setVisible(false);
@@ -1426,8 +1426,8 @@ n5.setText(Overall[4]);
     	Marks.setVisible(false);
     	MarksAnalyse.setVisible(false);
 
-    	
-    	
+
+
 
     }
 
@@ -1470,6 +1470,7 @@ n5.setText(Overall[4]);
     }
     public void credential(String netId, String password, String designation) {
         if (designation.equals("Teacher")) {
+
             credential1(netId, password, designation);
         } else {
 
@@ -1865,7 +1866,7 @@ SGPA=data1/data2;
     }
 
     @FXML
-    void TimeTable_RemoveButtonAct(ActionEvent event) {
+   void TimeTable_RemoveButtonAct(ActionEvent event) {
     	@SuppressWarnings("unused")
 		String SubName=TimeTable_SubName.getText();
     	int DayOrder=Integer.parseInt(TimeTable_DayOrder.getText());
