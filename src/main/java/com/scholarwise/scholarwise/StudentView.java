@@ -68,7 +68,6 @@ public  class StudentView extends TeacherView {
 
     @FXML
     private ListView<String> Marks_DATES_listview;
-   
 
     @FXML
     private TextField TimeTable_DayOrder;
@@ -1867,8 +1866,6 @@ SGPA=data1/data2;
 
     @FXML
    void TimeTable_RemoveButtonAct(ActionEvent event) {
-    	@SuppressWarnings("unused")
-		String SubName=TimeTable_SubName.getText();
     	int DayOrder=Integer.parseInt(TimeTable_DayOrder.getText());
     	int Hour=Integer.parseInt(TimeTable_Hour.getText());
     	try {
@@ -2104,89 +2101,54 @@ SGPA=data1/data2;
     	}
 
     }
-  
-    
-    
-    void TimeTable_dataRetrieval() throws SQLException {
-  
-    	
-    	String[] values = new String[] {Net_id,
-    			d1h1.getText(),d1h2.getText(),d1h3.getText(),d1h4.getText(),d1h5.getText(),d1h6.getText(),d1h7.getText(),d1h8.getText(),d1h9.getText(),d1h10.getText(),
-    			d2h1.getText(),d2h2.getText(),d2h3.getText(),d2h4.getText(),d2h5.getText(),d2h6.getText(),d2h7.getText(),d2h8.getText(),d2h9.getText(),d2h10.getText(),
-    			d3h1.getText(),d3h2.getText(),d3h3.getText(),d3h4.getText(),d3h5.getText(),d3h6.getText(),d3h7.getText(),d3h8.getText(),d3h9.getText(),d3h10.getText(),
-    			d4h1.getText(),d4h2.getText(),d4h3.getText(),d4h4.getText(),d4h5.getText(),d4h6.getText(),d4h7.getText(),d4h8.getText(),d4h9.getText(),d4h10.getText(),
-    			d5h1.getText(),d5h2.getText(),d5h3.getText(),d5h4.getText(),d5h5.getText(),d5h6.getText(),d5h7.getText(),d5h8.getText(),d5h9.getText(),d5h10.getText()
-    		};
-    	
-    	
-    	
+    private void TimeTable_dataRetrieval() throws SQLException {
+        ArrayList<String> netIdList= new ArrayList<>(){};
 
-    try {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-	} catch (ClassNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-    con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
-    pst=con.prepareStatement("select* from timetable;");
-    
-   
-    rs=pst.executeQuery();
-  
-   while(rs.next()!=false) {
-	   
-	
-    	if(!rs.next()) {
-    		
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+        pst=con.prepareStatement("select* from timetable;");
 
-    		pst=con.prepareStatement("INSERT INTO timetable (net_id,d1h1,d1h2,d1h3,d1h4,d1h5,d1h6,d1h7,d1h8,d1h9,d1h10,"
-    				+ "d2h1, d2h2,d2h3,d2h4,d2h5,d2h6,d2h7,d2h8,d2h9,d2h10,"
-    				+ "d3h1, d3h2,d3h3,d3h4,d3h5,d3h6,d3h7,d3h8,d3h9,d3h10,"
-    				+ "d4h1,d4h2,d4h3,d4h4,d4h5,d4h6,d4h7,d4h8,d4h9,d4h10,"
-    				+ "d5h1,d5h2,d5h3,d5h4,d5h5,d5h6,d5h7,d5h8,d5h9,d5h10)\r\n"
-    				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
-    		
-    		
-    		for (int i = 0; i <= 50; i++) { 
-    		
-    		       
-    		        pst.setString(i+1 , values[i]); 
-    		 
-    		}
-    		
-    		pst.executeUpdate();
-    		
+        rs=pst.executeQuery();
+        while (rs.next()){netIdList.add(rs.getString("net_id"));}
 
 
-    	}
-   
-    	else {
-    		 
-    		
-    		String columnName = "d" + TimeTable_DayOrder.getText() + "h" + TimeTable_Hour.getText();	
-    		pst=con.prepareStatement("update timetable set " + columnName+ "=? where net_id=?;");
-    		
+        if(!(netIdList.contains(Net_id)) ) {
 
-    		pst.setString(1, TimeTable_SubName.getText());
-    		pst.setString(2, Net_id);
-    		pst.executeUpdate();
-    	
-    		
-    	
-    	
-    }
-   }
 
-    	
-    	  
-    
-    try {
-        if (rs != null) rs.close();
-        if (pst != null) pst.close();
-        if (con != null) con.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
+            pst=con.prepareStatement("INSERT INTO timetable (net_id) VALUES (?);");
+            pst.setString(1 , Net_id);
+            pst.executeUpdate();
+            String columnName = "d" + TimeTable_DayOrder.getText() + "h" + TimeTable_Hour.getText();
+            pst=con.prepareStatement("update timetable set " + columnName+ "=? where net_id=?;");
+            pst.setString(1, TimeTable_SubName.getText());
+            pst.setString(2, Net_id);
+            pst.executeUpdate();
+
+        }
+
+        else if(netIdList.contains(Net_id)){
+
+
+            String columnName = "d" + TimeTable_DayOrder.getText() + "h" + TimeTable_Hour.getText();
+            pst=con.prepareStatement("update timetable set " + columnName+ "=? where net_id=?;");
+            pst.setString(1, TimeTable_SubName.getText());
+            pst.setString(2, Net_id);
+            pst.executeUpdate();
+
+        }
+
+        try {
+            if (rs != null) rs.close();
+            if (pst != null) pst.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
     
