@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `scholarwise_temp` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `scholarwise_temp`;
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: localhost    Database: scholarwise_temp
 -- ------------------------------------------------------
--- Server version	8.0.34
+-- Server version	8.0.36
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,270 +18,35 @@ USE `scholarwise_temp`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `attendance_db`
+-- Table structure for table `attendance`
 --
 
-DROP TABLE IF EXISTS `attendance_db`;
+DROP TABLE IF EXISTS `attendance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `attendance_db` (
-  `Net_id` varchar(45) NOT NULL,
-  `Reg_No` varchar(20) NOT NULL,
-  `Name` varchar(45) NOT NULL,
-  `Section` varchar(45) NOT NULL,
-  `DBMS` varchar(45) DEFAULT NULL,
-  `DAA` varchar(45) DEFAULT NULL,
-  `Social Engineering` varchar(45) DEFAULT NULL,
-  `DIP` varchar(45) DEFAULT NULL,
-  `CCTS (Online)` varchar(45) DEFAULT NULL,
-  `Artificial Intelligense` varchar(45) DEFAULT NULL,
-  `PQT (Maths)` varchar(45) DEFAULT NULL,
-  `UHV II` varchar(45) DEFAULT NULL,
-  `Branch` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`Net_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `attendance_db`
---
-
-LOCK TABLES `attendance_db` WRITE;
-/*!40000 ALTER TABLE `attendance_db` DISABLE KEYS */;
-INSERT INTO `attendance_db` VALUES ('as8819','RA2211003011185','Abhishek Soni','B2','8/32','2/20','4/16','7/25','2/16','7/23','8/34','5/26','CTech'),('sk1903','RA2211003010387','Shreyansh Khandelwal','F1','30/32','10/20','12/16','8/25','10/16','21/23','10/34','12/26','CTech');
-/*!40000 ALTER TABLE `attendance_db` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `attendancesem1`
---
-
-DROP TABLE IF EXISTS `attendancesem1`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `attendancesem1` (
+CREATE TABLE `attendance` (
+  `Net_Id` varchar(45) DEFAULT NULL,
+  `Semester` varchar(45) DEFAULT NULL,
   `Subject_Code` varchar(20) NOT NULL,
   `Subject_Name` varchar(50) NOT NULL,
+  `Faculty_name` varchar(45) DEFAULT NULL,
+  `Faculty_Number` bigint DEFAULT NULL,
   `Room_Number` int DEFAULT NULL,
-  `Class_Conducted` int DEFAULT NULL,
-  `Class_Attended` int DEFAULT NULL,
+  `Class_Ratio` varchar(45) DEFAULT NULL,
   `Attendence` float NOT NULL,
-  `Grade` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`Subject_Code`)
+  `Credits` varchar(45) DEFAULT NULL,
+  `Grade` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `attendancesem1`
+-- Dumping data for table `attendance`
 --
 
-LOCK TABLES `attendancesem1` WRITE;
-/*!40000 ALTER TABLE `attendancesem1` DISABLE KEYS */;
-INSERT INTO `attendancesem1` VALUES ('21BTB102T','Biology',1003,20,16,80,'O'),('21CSC202J','Operating Systems',1005,20,18,90,'-'),('21CSC203P','Advanced Programming Practice',1005,20,15,75,'-'),('21CSS201T','Computer Organization and Architecture',1005,20,18,90,'-'),('21CYB101J','CHEMISTRY',1003,20,20,100,'O'),('21DCS201P','Design Thinking and Methodology',1005,20,19,95,'-'),('21LEH104T','GERMAN',1013,20,20,100,'O'),('21LEM201T','EEE',1002,20,20,100,'B'),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',1003,20,15,75,'A'),('21MAB201T','Transforms and Boundary Value Problems',1005,20,10,50,'-'),('21PDM102L','Calculus and Algebra',1002,20,15,75,'O');
-/*!40000 ALTER TABLE `attendancesem1` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `attendancesem2`
---
-
-DROP TABLE IF EXISTS `attendancesem2`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `attendancesem2` (
-  `Subject_Code` varchar(20) NOT NULL,
-  `Subject_Name` varchar(50) NOT NULL,
-  `Room_Number` int DEFAULT NULL,
-  `Class_Conducted` int DEFAULT NULL,
-  `Class_Attended` int DEFAULT NULL,
-  `Attendence` float NOT NULL,
-  `Grade` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`Subject_Code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `attendancesem2`
---
-
-LOCK TABLES `attendancesem2` WRITE;
-/*!40000 ALTER TABLE `attendancesem2` DISABLE KEYS */;
-INSERT INTO `attendancesem2` VALUES ('21BTB102T','Biology',1003,20,16,80,'O'),('21CSC202J','Operating Systems',1005,20,18,90,'-'),('21CSC203P','Advanced Programming Practice',1005,20,15,75,'-'),('21CSS201T','Computer Organization and Architecture',1005,20,18,90,'-'),('21CYB101J','CHEMISTRY',1003,20,20,100,'O'),('21DCS201P','Design Thinking and Methodology',1005,20,19,95,'-'),('21LEH104T','GERMAN',1013,20,20,100,'O'),('21LEM201T','EEE',1002,20,20,100,'B'),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',1003,20,15,75,'A'),('21MAB201T','Transforms and Boundary Value Problems',1005,20,10,50,'-'),('21PDM102L','Calculus and Algebra',1002,20,15,75,'O');
-/*!40000 ALTER TABLE `attendancesem2` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `attendancesem3`
---
-
-DROP TABLE IF EXISTS `attendancesem3`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `attendancesem3` (
-  `Subject_Code` varchar(20) NOT NULL,
-  `Subject_Name` varchar(50) NOT NULL,
-  `Room_Number` int DEFAULT NULL,
-  `Class_Conducted` int DEFAULT NULL,
-  `Class_Attended` int DEFAULT NULL,
-  `Attendence` float NOT NULL,
-  `Grade` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`Subject_Code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `attendancesem3`
---
-
-LOCK TABLES `attendancesem3` WRITE;
-/*!40000 ALTER TABLE `attendancesem3` DISABLE KEYS */;
-INSERT INTO `attendancesem3` VALUES ('21BTB102T','Biology',1003,20,16,80,'O'),('21CSC202J','Operating Systems',1005,20,18,90,'-'),('21CSC203P','Advanced Programming Practice',1005,20,15,75,'-'),('21CSS201T','Computer Organization and Architecture',1005,20,18,90,'-'),('21CYB101J','CHEMISTRY',1003,20,20,100,'O'),('21DCS201P','Design Thinking and Methodology',1005,20,19,95,'-'),('21LEH104T','GERMAN',1013,20,20,100,'O'),('21LEM201T','EEE',1002,20,20,100,'B'),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',1003,20,15,75,'A'),('21MAB201T','Transforms and Boundary Value Problems',1005,20,10,50,'-'),('21PDM102L','Calculus and Algebra',1002,20,15,75,'O');
-/*!40000 ALTER TABLE `attendancesem3` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `attendancesem4`
---
-
-DROP TABLE IF EXISTS `attendancesem4`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `attendancesem4` (
-  `Subject_Code` varchar(20) NOT NULL,
-  `Subject_Name` varchar(50) NOT NULL,
-  `Room_Number` int DEFAULT NULL,
-  `Class_Conducted` int DEFAULT NULL,
-  `Class_Attended` int DEFAULT NULL,
-  `Attendence` float NOT NULL,
-  `Grade` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`Subject_Code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `attendancesem4`
---
-
-LOCK TABLES `attendancesem4` WRITE;
-/*!40000 ALTER TABLE `attendancesem4` DISABLE KEYS */;
-INSERT INTO `attendancesem4` VALUES ('21BTB102T','Biology',1003,20,16,80,'O'),('21CSC202J','Operating Systems',1005,20,18,90,'-'),('21CSC203P','Advanced Programming Practice',1005,20,15,75,'-'),('21CSS201T','Computer Organization and Architecture',1005,20,18,90,'-'),('21CYB101J','CHEMISTRY',1003,20,20,100,'O'),('21DCS201P','Design Thinking and Methodology',1005,20,19,95,'-'),('21LEH104T','GERMAN',1013,20,20,100,'O'),('21LEM201T','EEE',1002,20,20,100,'B'),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',1003,20,15,75,'A'),('21MAB201T','Transforms and Boundary Value Problems',1005,20,10,50,'-'),('21PDM102L','Calculus and Algebra',1002,20,15,75,'O');
-/*!40000 ALTER TABLE `attendancesem4` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `attendancesem5`
---
-
-DROP TABLE IF EXISTS `attendancesem5`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `attendancesem5` (
-  `Subject_Code` varchar(20) NOT NULL,
-  `Subject_Name` varchar(50) NOT NULL,
-  `Room_Number` int DEFAULT NULL,
-  `Class_Conducted` int DEFAULT NULL,
-  `Class_Attended` int DEFAULT NULL,
-  `Attendence` float NOT NULL,
-  `Grade` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`Subject_Code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `attendancesem5`
---
-
-LOCK TABLES `attendancesem5` WRITE;
-/*!40000 ALTER TABLE `attendancesem5` DISABLE KEYS */;
-INSERT INTO `attendancesem5` VALUES ('21BTB102T','Biology',1003,20,16,80,'O'),('21CSC202J','Operating Systems',1005,20,18,90,'-'),('21CSC203P','Advanced Programming Practice',1005,20,15,75,'-'),('21CSS201T','Computer Organization and Architecture',1005,20,18,90,'-'),('21CYB101J','CHEMISTRY',1003,20,20,100,'O'),('21DCS201P','Design Thinking and Methodology',1005,20,19,95,'-'),('21LEH104T','GERMAN',1013,20,20,100,'O'),('21LEM201T','EEE',1002,20,20,100,'B'),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',1003,20,15,75,'A'),('21MAB201T','Transforms and Boundary Value Problems',1005,20,10,50,'-'),('21PDM102L','Calculus and Algebra',1002,20,15,75,'O');
-/*!40000 ALTER TABLE `attendancesem5` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `attendancesem6`
---
-
-DROP TABLE IF EXISTS `attendancesem6`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `attendancesem6` (
-  `Subject_Code` varchar(20) NOT NULL,
-  `Subject_Name` varchar(50) NOT NULL,
-  `Room_Number` int DEFAULT NULL,
-  `Class_Conducted` int DEFAULT NULL,
-  `Class_Attended` int DEFAULT NULL,
-  `Attendence` float NOT NULL,
-  `Grade` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`Subject_Code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `attendancesem6`
---
-
-LOCK TABLES `attendancesem6` WRITE;
-/*!40000 ALTER TABLE `attendancesem6` DISABLE KEYS */;
-INSERT INTO `attendancesem6` VALUES ('21BTB102T','Biology',1003,20,16,80,'O'),('21CSC202J','Operating Systems',1005,20,18,90,'-'),('21CSC203P','Advanced Programming Practice',1005,20,15,75,'-'),('21CSS201T','Computer Organization and Architecture',1005,20,18,90,'-'),('21CYB101J','CHEMISTRY',1003,20,20,100,'O'),('21DCS201P','Design Thinking and Methodology',1005,20,19,95,'-'),('21LEH104T','GERMAN',1013,20,20,100,'O'),('21LEM201T','EEE',1002,20,20,100,'B'),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',1003,20,15,75,'A'),('21MAB201T','Transforms and Boundary Value Problems',1005,20,10,50,'-'),('21PDM102L','Calculus and Algebra',1002,20,15,75,'O');
-/*!40000 ALTER TABLE `attendancesem6` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `attendancesem7`
---
-
-DROP TABLE IF EXISTS `attendancesem7`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `attendancesem7` (
-  `Subject_Code` varchar(20) NOT NULL,
-  `Subject_Name` varchar(50) NOT NULL,
-  `Room_Number` int DEFAULT NULL,
-  `Class_Conducted` int DEFAULT NULL,
-  `Class_Attended` int DEFAULT NULL,
-  `Attendence` float NOT NULL,
-  `Grade` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`Subject_Code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `attendancesem7`
---
-
-LOCK TABLES `attendancesem7` WRITE;
-/*!40000 ALTER TABLE `attendancesem7` DISABLE KEYS */;
-INSERT INTO `attendancesem7` VALUES ('21BTB102T','Biology',1003,20,16,80,'O'),('21CSC202J','Operating Systems',1005,20,18,90,'-'),('21CSC203P','Advanced Programming Practice',1005,20,15,75,'-'),('21CSS201T','Computer Organization and Architecture',1005,20,18,90,'-'),('21CYB101J','CHEMISTRY',1003,20,20,100,'O'),('21DCS201P','Design Thinking and Methodology',1005,20,19,95,'-'),('21LEH104T','GERMAN',1013,20,20,100,'O'),('21LEM201T','EEE',1002,20,20,100,'B'),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',1003,20,15,75,'A'),('21MAB201T','Transforms and Boundary Value Problems',1005,20,10,50,'-'),('21PDM102L','Calculus and Algebra',1002,20,15,75,'O');
-/*!40000 ALTER TABLE `attendancesem7` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `attendancesem8`
---
-
-DROP TABLE IF EXISTS `attendancesem8`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `attendancesem8` (
-  `Subject_Code` varchar(20) NOT NULL,
-  `Subject_Name` varchar(50) NOT NULL,
-  `Room_Number` int DEFAULT NULL,
-  `Class_Conducted` int DEFAULT NULL,
-  `Class_Attended` int DEFAULT NULL,
-  `Attendence` float NOT NULL,
-  `Grade` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`Subject_Code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `attendancesem8`
---
-
-LOCK TABLES `attendancesem8` WRITE;
-/*!40000 ALTER TABLE `attendancesem8` DISABLE KEYS */;
-INSERT INTO `attendancesem8` VALUES ('21BTB102T','Biology',1003,20,16,80,'O'),('21CSC202J','Operating Systems',1005,20,18,90,'-'),('21CSC203P','Advanced Programming Practice',1005,20,15,75,'-'),('21CSS201T','Computer Organization and Architecture',1005,20,18,90,'-'),('21CYB101J','CHEMISTRY',1003,20,20,100,'O'),('21DCS201P','Design Thinking and Methodology',1005,20,19,95,'-'),('21LEH104T','GERMAN',1013,20,20,100,'O'),('21LEM201T','EEE',1002,20,20,100,'B'),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',1003,20,15,75,'A'),('21MAB201T','Transforms and Boundary Value Problems',1005,20,10,50,'-'),('21PDM102L','Calculus and Algebra',1002,20,15,75,'O');
-/*!40000 ALTER TABLE `attendancesem8` ENABLE KEYS */;
+LOCK TABLES `attendance` WRITE;
+/*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
+INSERT INTO `attendance` VALUES (NULL,NULL,'21BTB102T','Biology',NULL,NULL,1003,NULL,80,NULL,'O'),(NULL,NULL,'21CSC202J','Operating Systems',NULL,NULL,1005,NULL,90,NULL,'-'),(NULL,NULL,'21CSC203P','Advanced Programming Practice',NULL,NULL,1005,NULL,75,NULL,'-'),(NULL,NULL,'21CSS201T','Computer Organization and Architecture',NULL,NULL,1005,NULL,90,NULL,'-'),(NULL,NULL,'21CYB101J','CHEMISTRY',NULL,NULL,1003,NULL,100,NULL,'O'),(NULL,NULL,'21DCS201P','Design Thinking and Methodology',NULL,NULL,1005,NULL,95,NULL,'-'),(NULL,NULL,'21LEH104T','GERMAN',NULL,NULL,1013,NULL,100,NULL,'O'),(NULL,NULL,'21LEM201T','EEE',NULL,NULL,1002,NULL,100,NULL,'B'),(NULL,NULL,'21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',NULL,NULL,1003,NULL,75,NULL,'A'),(NULL,NULL,'21MAB201T','Transforms and Boundary Value Problems',NULL,NULL,1005,NULL,50,NULL,'-'),(NULL,NULL,'21PDM102L','Calculus and Algebra',NULL,NULL,1002,NULL,75,NULL,'O');
+/*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -292,6 +57,7 @@ DROP TABLE IF EXISTS `course`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `course` (
+  `Net_id` varchar(45) DEFAULT NULL,
   `Subject_Code` varchar(20) NOT NULL,
   `Subject_Name` varchar(50) NOT NULL,
   `Faculty_Name` varchar(50) DEFAULT NULL,
@@ -299,8 +65,7 @@ CREATE TABLE `course` (
   `Credits` int DEFAULT NULL,
   `Grade` varchar(10) DEFAULT NULL,
   `Semester` int NOT NULL,
-  `FacultyNumber` int DEFAULT NULL,
-  PRIMARY KEY (`Subject_Code`)
+  `FacultyNumber` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -310,7 +75,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES ('21BTB102T','INTRODUCTION TO COMPUTATIONAL BIOLOGY	','Dr. Arunkumar J',819,2,'A',1,998574224),('21CSC101T','OBJECT ORIENTED DESIGN AND PROGRAMMING	','Dr. Ida Seraphim B',604,3,'O',2,982613082),('21CSC201J','DATA STRUCTURES AND ALGORITHMS	','Dr. C N Subalalitha',303,4,'O',3,978613082),('21CSC202J','OPERATING SYSTEMS	','Dr. Sibi Amaran',303,4,'O',3,978613082),('21CSC203P','ADVANCED PROGRAMMING PRACTICE	','Dr. P. Rama',303,4,'O',3,967413082),('21CSS101J','PROGRAMMING FOR PROBLEM SOLVING	','Dr. Madhumitha K',819,4,'O',1,978613082),('21CSS201T','COMPUTER ORGANIZATION AND ARCHITECTURE	','Dr. R. Jebakumar',303,4,'A+',3,875522434),('21CYB101J','CHEMISTRY','Dr. Sundaravadivel E',819,5,'O',1,994015870),('21CYM101T','ENVIRONMENTAL SCIENCE	','Dr. Bhuvana M',604,0,'A+',2,978613082),('21DCS201P','DESIGN THINKING AND METHODOLOGY	','Dr K B Praveen',303,3,'O',3,978613082),('21EES101T','ELECTRICAL AND ELECTRONICS ENGINEERING	','Dr. Senthil Kumar',604,4,'O',2,978613082),('21GNH101J','PHILOSOPHY OF ENGINEERING	','Dr. Sathyapriya L',819,2,'A+',1,989242182),('21GNM104L','NSO','Dr. Muthukumaran V',819,0,'O',1,872224341),('21LEH101T','COMMUNICATIVE ENGLISH	','Dr. Ramya S',604,3,'A+',2,978613082),('21LEH104T','GERMAN','Dr. Chitra V',819,3,'A',1,994003600),('21LEM101T','CONSTITUTION OF INDIA	','Dr. A. V. Radhamani',604,0,'O',2,978413082),('21LEM201T','PROFESSIONAL ETHICS	','Dr. Kanmani G R',303,0,'A',3,872224341),('21MAB101T','CALCULUS AND LINEAR ALGEBRA	','Dr. Kalyanasundaram V',819,4,'A+',1,961428082),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS	','Dr. Archana K S',604,4,'O',2,872224341),('21MAB201T','TRANSFORMS AND BOUNDARY VALUE PROBLEMS	','Dr. Melita Vinoliah',303,4,'O',3,960089282),('21MES101L','BASIC CIVIL AND MECHANICAL WORKSHOP	','Dr. Muthu Kumaran A M J',819,2,'O',1,978613082),('21MES102L','ENGINEERING GRAPHICS AND DESIGN	','Dr. Kumaran D',604,2,'O',2,872224341),('21PDM101L','PROFESSIONAL SKILLS AND PRACTICES	','Dr. Balakumaran G',819,0,'A+',1,989242182),('21PDM102L','GENERAL APTITUDE	','Dr. Jayaraj R',604,0,'A+',2,873724349),('21PDM201L','VERBAL REASONING	','Dr. Krishnaveni G',303,0,'A+',3,978613082),('21PYB102J','SEMICONDUCTOR PHYSICS AND COMPUTATIONAL METHODS	','Dr. Alagiri Swamy A A',604,5,'O',2,941613082);
+INSERT INTO `course` VALUES (NULL,'21BTB102T','INTRODUCTION TO COMPUTATIONAL BIOLOGY	','Dr. Arunkumar J',819,2,'A',1,998574224),(NULL,'21CSC101T','OBJECT ORIENTED DESIGN AND PROGRAMMING	','Dr. Ida Seraphim B',604,3,'O',2,982613082),(NULL,'21CSC201J','DATA STRUCTURES AND ALGORITHMS	','Dr. C N Subalalitha',303,4,'O',3,978613082),(NULL,'21CSC202J','OPERATING SYSTEMS	','Dr. Sibi Amaran',303,4,'O',3,978613082),(NULL,'21CSC203P','ADVANCED PROGRAMMING PRACTICE	','Dr. P. Rama',303,4,'O',3,967413082),(NULL,'21CSS101J','PROGRAMMING FOR PROBLEM SOLVING	','Dr. Madhumitha K',819,4,'O',1,978613082),(NULL,'21CSS201T','COMPUTER ORGANIZATION AND ARCHITECTURE	','Dr. R. Jebakumar',303,4,'A+',3,875522434),(NULL,'21CYB101J','CHEMISTRY','Dr. Sundaravadivel E',819,5,'O',1,994015870),(NULL,'21CYM101T','ENVIRONMENTAL SCIENCE	','Dr. Bhuvana M',604,0,'A+',2,978613082),(NULL,'21DCS201P','DESIGN THINKING AND METHODOLOGY	','Dr K B Praveen',303,3,'O',3,978613082),(NULL,'21EES101T','ELECTRICAL AND ELECTRONICS ENGINEERING	','Dr. Senthil Kumar',604,4,'O',2,978613082),(NULL,'21GNH101J','PHILOSOPHY OF ENGINEERING	','Dr. Sathyapriya L',819,2,'A+',1,989242182),(NULL,'21GNM104L','NSO','Dr. Muthukumaran V',819,0,'O',1,872224341),(NULL,'21LEH101T','COMMUNICATIVE ENGLISH	','Dr. Ramya S',604,3,'A+',2,978613082),(NULL,'21LEH104T','GERMAN','Dr. Chitra V',819,3,'A',1,994003600),(NULL,'21LEM101T','CONSTITUTION OF INDIA	','Dr. A. V. Radhamani',604,0,'O',2,978413082),(NULL,'21LEM201T','PROFESSIONAL ETHICS	','Dr. Kanmani G R',303,0,'A',3,872224341),(NULL,'21MAB101T','CALCULUS AND LINEAR ALGEBRA	','Dr. Kalyanasundaram V',819,4,'A+',1,961428082),(NULL,'21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS	','Dr. Archana K S',604,4,'O',2,872224341),(NULL,'21MAB201T','TRANSFORMS AND BOUNDARY VALUE PROBLEMS	','Dr. Melita Vinoliah',303,4,'O',3,960089282),(NULL,'21MES101L','BASIC CIVIL AND MECHANICAL WORKSHOP	','Dr. Muthu Kumaran A M J',819,2,'O',1,978613082),(NULL,'21MES102L','ENGINEERING GRAPHICS AND DESIGN	','Dr. Kumaran D',604,2,'O',2,872224341),(NULL,'21PDM101L','PROFESSIONAL SKILLS AND PRACTICES	','Dr. Balakumaran G',819,0,'A+',1,989242182),(NULL,'21PDM102L','GENERAL APTITUDE	','Dr. Jayaraj R',604,0,'A+',2,873724349),(NULL,'21PDM201L','VERBAL REASONING	','Dr. Krishnaveni G',303,0,'A+',3,978613082),(NULL,'21PYB102J','SEMICONDUCTOR PHYSICS AND COMPUTATIONAL METHODS	','Dr. Alagiri Swamy A A',604,5,'O',2,941613082);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -373,6 +138,7 @@ DROP TABLE IF EXISTS `marks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `marks` (
+  `Net_Id` varchar(45) DEFAULT NULL,
   `Subject_Code` varchar(20) NOT NULL,
   `Subject_Name` varchar(50) NOT NULL,
   `Faculty` varchar(100) NOT NULL,
@@ -385,8 +151,7 @@ CREATE TABLE `marks` (
   `CT_2_I` int DEFAULT NULL,
   `CT_3_THEORY` int DEFAULT NULL,
   `CT_3_P` int DEFAULT NULL,
-  `CT_3_I` int DEFAULT NULL,
-  PRIMARY KEY (`Subject_Code`)
+  `CT_3_I` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -396,7 +161,7 @@ CREATE TABLE `marks` (
 
 LOCK TABLES `marks` WRITE;
 /*!40000 ALTER TABLE `marks` DISABLE KEYS */;
-INSERT INTO `marks` VALUES ('21BTB102T','Biology','Dr. Akshat Saini (9872196731)',2,4,0,3,6,0,3,15,0,4),('21CSC202J','Operating Systems','Dr.A.Saranya (9872536731)',3,1,10,10,9,2,6,1,2,10),('21CSC203P','Advanced Programming Practice','Dr. Arunarani AR (9872347831)',3,13,0,7,3,0,4,11,0,4),('21CSS201T','Computer Organization and Architecture','Dr.Vijayalakshmi K (9872346451)',3,14,0,4,5,0,6,8,0,2),('21CYB101J','CHEMISTRY','Dr. Ashish Rastogi (9861346731)',2,7,9,10,6,9,8,11,9,3),('21GNM102L','English','Dr. Aryan Gupta (9872776731)',1,3,0,7,1,0,8,3,0,4),('21LEH104T','GERMAN','Dr. Praveen Acharya (9872322731)',2,9,0,8,10,0,10,7,0,8),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS','Dr. Rahul Iyenger (9872346151)',2,6,0,5,1,0,10,8,0,4),('21MAB201T','Transforms and Boundary Value Problems','Dr. H. Merlyn Margaret (9872346731)',3,8,0,7,5,0,1,5,0,8),('21PDM102L','Calculus and Algebra','Dr. Abhishek Singh (9879846731)',1,14,0,8,4,0,8,9,0,3);
+INSERT INTO `marks` VALUES (NULL,'21BTB102T','Biology','Dr. Akshat Saini (9872196731)',2,4,0,3,6,0,3,15,0,4),(NULL,'21CSC202J','Operating Systems','Dr.A.Saranya (9872536731)',3,1,10,10,9,2,6,1,2,10),(NULL,'21CSC203P','Advanced Programming Practice','Dr. Arunarani AR (9872347831)',3,13,0,7,3,0,4,11,0,4),(NULL,'21CSS201T','Computer Organization and Architecture','Dr.Vijayalakshmi K (9872346451)',3,14,0,4,5,0,6,8,0,2),(NULL,'21CYB101J','CHEMISTRY','Dr. Ashish Rastogi (9861346731)',2,7,9,10,6,9,8,11,9,3),(NULL,'21GNM102L','English','Dr. Aryan Gupta (9872776731)',1,3,0,7,1,0,8,3,0,4),(NULL,'21LEH104T','GERMAN','Dr. Praveen Acharya (9872322731)',2,9,0,8,10,0,10,7,0,8),(NULL,'21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS','Dr. Rahul Iyenger (9872346151)',2,6,0,5,1,0,10,8,0,4),(NULL,'21MAB201T','Transforms and Boundary Value Problems','Dr. H. Merlyn Margaret (9872346731)',3,8,0,7,5,0,1,5,0,8),(NULL,'21PDM102L','Calculus and Algebra','Dr. Abhishek Singh (9879846731)',1,14,0,8,4,0,8,9,0,3);
 /*!40000 ALTER TABLE `marks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -594,6 +359,14 @@ LOCK TABLES `timetable` WRITE;
 INSERT INTO `timetable` VALUES ('as8819','daa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('kb7676','dbms','daa','maths','daa','AI','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''),('rs9981','daa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('sk1903','daa','maths',NULL,'app','','maths','','dsa lab','','','','maths','maths','dbms','',NULL,NULL,'','','',NULL,'','daa','maths',NULL,'','','','','','','',NULL,'daa',NULL,NULL,'','app','','','','','os','coa','','','','','','');
 /*!40000 ALTER TABLE `timetable` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'scholarwise_temp'
+--
+
+--
+-- Dumping routines for database 'scholarwise_temp'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -604,4 +377,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-16 18:59:16
+-- Dump completed on 2024-03-16 19:24:58
