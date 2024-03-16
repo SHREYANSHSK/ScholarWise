@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `scholarwise_temp` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `scholarwise_temp`;
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: localhost    Database: scholarwise_temp
 -- ------------------------------------------------------
--- Server version	8.0.36
+-- Server version	8.0.34
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -35,7 +35,8 @@ CREATE TABLE `attendance` (
   `Class_Ratio` varchar(45) DEFAULT NULL,
   `Attendence` float NOT NULL,
   `Credits` varchar(45) DEFAULT NULL,
-  `Grade` varchar(10) DEFAULT NULL
+  `Grade` varchar(10) DEFAULT NULL,
+  `Faculty_id` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -45,7 +46,7 @@ CREATE TABLE `attendance` (
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-INSERT INTO `attendance` VALUES (NULL,NULL,'21BTB102T','Biology',NULL,NULL,1003,NULL,80,NULL,'O'),(NULL,NULL,'21CSC202J','Operating Systems',NULL,NULL,1005,NULL,90,NULL,'-'),(NULL,NULL,'21CSC203P','Advanced Programming Practice',NULL,NULL,1005,NULL,75,NULL,'-'),(NULL,NULL,'21CSS201T','Computer Organization and Architecture',NULL,NULL,1005,NULL,90,NULL,'-'),(NULL,NULL,'21CYB101J','CHEMISTRY',NULL,NULL,1003,NULL,100,NULL,'O'),(NULL,NULL,'21DCS201P','Design Thinking and Methodology',NULL,NULL,1005,NULL,95,NULL,'-'),(NULL,NULL,'21LEH104T','GERMAN',NULL,NULL,1013,NULL,100,NULL,'O'),(NULL,NULL,'21LEM201T','EEE',NULL,NULL,1002,NULL,100,NULL,'B'),(NULL,NULL,'21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',NULL,NULL,1003,NULL,75,NULL,'A'),(NULL,NULL,'21MAB201T','Transforms and Boundary Value Problems',NULL,NULL,1005,NULL,50,NULL,'-'),(NULL,NULL,'21PDM102L','Calculus and Algebra',NULL,NULL,1002,NULL,75,NULL,'O');
+INSERT INTO `attendance` VALUES (NULL,NULL,'21BTB102T','Biology',NULL,NULL,1003,NULL,80,NULL,'O',''),(NULL,NULL,'21CSC202J','Operating Systems',NULL,NULL,1005,NULL,90,NULL,'-',''),(NULL,NULL,'21CSC203P','Advanced Programming Practice',NULL,NULL,1005,NULL,75,NULL,'-',''),(NULL,NULL,'21CSS201T','Computer Organization and Architecture',NULL,NULL,1005,NULL,90,NULL,'-',''),(NULL,NULL,'21CYB101J','CHEMISTRY',NULL,NULL,1003,NULL,100,NULL,'O',''),(NULL,NULL,'21DCS201P','Design Thinking and Methodology',NULL,NULL,1005,NULL,95,NULL,'-',''),(NULL,NULL,'21LEH104T','GERMAN',NULL,NULL,1013,NULL,100,NULL,'O',''),(NULL,NULL,'21LEM201T','EEE',NULL,NULL,1002,NULL,100,NULL,'B',''),(NULL,NULL,'21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',NULL,NULL,1003,NULL,75,NULL,'A',''),(NULL,NULL,'21MAB201T','Transforms and Boundary Value Problems',NULL,NULL,1005,NULL,50,NULL,'-',''),(NULL,NULL,'21PDM102L','Calculus and Algebra',NULL,NULL,1002,NULL,75,NULL,'O','');
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -359,14 +360,6 @@ LOCK TABLES `timetable` WRITE;
 INSERT INTO `timetable` VALUES ('as8819','daa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('kb7676','dbms','daa','maths','daa','AI','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''),('rs9981','daa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('sk1903','daa','maths',NULL,'app','','maths','','dsa lab','','','','maths','maths','dbms','',NULL,NULL,'','','',NULL,'','daa','maths',NULL,'','','','','','','',NULL,'daa',NULL,NULL,'','app','','','','','os','coa','','','','','','');
 /*!40000 ALTER TABLE `timetable` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'scholarwise_temp'
---
-
---
--- Dumping routines for database 'scholarwise_temp'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -377,4 +370,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-16 19:24:58
+-- Dump completed on 2024-03-16 19:37:51
