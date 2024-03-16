@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `scholarwise_temp` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `scholarwise_temp`;
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: localhost    Database: scholarwise_temp
 -- ------------------------------------------------------
--- Server version	8.0.36
+-- Server version	8.0.34
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS `attendance_db`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `attendance_db` (
+  `Net_id` varchar(45) NOT NULL,
   `Reg_No` varchar(20) NOT NULL,
   `Name` varchar(45) NOT NULL,
   `Section` varchar(45) NOT NULL,
@@ -37,7 +38,7 @@ CREATE TABLE `attendance_db` (
   `PQT (Maths)` varchar(45) DEFAULT NULL,
   `UHV II` varchar(45) DEFAULT NULL,
   `Branch` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`Reg_No`)
+  PRIMARY KEY (`Net_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -47,7 +48,7 @@ CREATE TABLE `attendance_db` (
 
 LOCK TABLES `attendance_db` WRITE;
 /*!40000 ALTER TABLE `attendance_db` DISABLE KEYS */;
-INSERT INTO `attendance_db` VALUES ('RA2211003011185','Abhishek Soni','B2','8/32','2/20','4/16','7/25','2/16','7/23','8/34','5/26','CTech');
+INSERT INTO `attendance_db` VALUES ('as8819','RA2211003011185','Abhishek Soni','B2','8/32','2/20','4/16','7/25','2/16','7/23','8/34','5/26','CTech'),('sk1903','RA2211003010387','Shreyansh Khandelwal','F1','30/32','10/20','12/16','8/25','10/16','21/23','10/34','12/26','CTech');
 /*!40000 ALTER TABLE `attendance_db` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +63,8 @@ CREATE TABLE `attendancesem1` (
   `Subject_Code` varchar(20) NOT NULL,
   `Subject_Name` varchar(50) NOT NULL,
   `Room_Number` int DEFAULT NULL,
-  `Class_Ratio` varchar(10) DEFAULT NULL,
+  `Class_Conducted` int DEFAULT NULL,
+  `Class_Attended` int DEFAULT NULL,
   `Attendence` float NOT NULL,
   `Grade` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`Subject_Code`)
@@ -75,7 +77,7 @@ CREATE TABLE `attendancesem1` (
 
 LOCK TABLES `attendancesem1` WRITE;
 /*!40000 ALTER TABLE `attendancesem1` DISABLE KEYS */;
-INSERT INTO `attendancesem1` VALUES ('21BTB102T','Biology',1003,'16/30',80,'O'),('21CSC202J','Operating Systems',1005,'18/30',90,'-'),('21CSC203P','Advanced Programming Practice',1005,'15/30',75,'-'),('21CSS201T','Computer Organization and Architecture',1005,'18/30',90,'-'),('21CYB101J','CHEMISTRY',1003,'20/30',100,'O'),('21DCS201P','Design Thinking and Methodology',1005,'19/30',95,'-'),('21LEH104T','GERMAN',1013,'20/30',100,'O'),('21LEM201T','EEE',1002,'20/30',100,'B'),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',1003,'15/30',75,'A'),('21MAB201T','Transforms and Boundary Value Problems',1005,'10/30',50,'-'),('21PDM102L','Calculus and Algebra',1002,'15/30',75,'O');
+INSERT INTO `attendancesem1` VALUES ('21BTB102T','Biology',1003,20,16,80,'O'),('21CSC202J','Operating Systems',1005,20,18,90,'-'),('21CSC203P','Advanced Programming Practice',1005,20,15,75,'-'),('21CSS201T','Computer Organization and Architecture',1005,20,18,90,'-'),('21CYB101J','CHEMISTRY',1003,20,20,100,'O'),('21DCS201P','Design Thinking and Methodology',1005,20,19,95,'-'),('21LEH104T','GERMAN',1013,20,20,100,'O'),('21LEM201T','EEE',1002,20,20,100,'B'),('21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS',1003,20,15,75,'A'),('21MAB201T','Transforms and Boundary Value Problems',1005,20,10,50,'-'),('21PDM102L','Calculus and Algebra',1002,20,15,75,'O');
 /*!40000 ALTER TABLE `attendancesem1` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -359,7 +361,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES ('ac6729','ac6729','Student'),('ar0354','ar0354','student'),('as8819','as8819','teacher'),('sg2982','sg2982','Student'),('sk1903','sk1903','Student'),('sm5001','sm5001','Teacher');
+INSERT INTO `login` VALUES ('ac6729','ac6729','Student'),('ar0354','ar0354','student'),('as8819','as8819','Student'),('kb7676','kb7676','Teacher'),('rs9981','rs9981','Teacher'),('sg2982','sg2982','Student'),('sk1903','sk1903','Student');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -482,7 +484,7 @@ CREATE TABLE `teacherabout` (
 
 LOCK TABLES `teacherabout` WRITE;
 /*!40000 ALTER TABLE `teacherabout` DISABLE KEYS */;
-INSERT INTO `teacherabout` VALUES ('Dr. Kanisha B','kb7676','Anna University','Wireless Network',2022,'Pondicherry University','Network and Internet Engineering',2012,'Pondicherry University','Computer Science and Engineering',2010,'Computing Technologies','11.2 years','Wireless Network','Fellow member of Institution of Engineers (IE)','Computer Networks','Soft Computing','Artificial Intelligence','Cryptography Techniques','Java Programming',NULL,NULL,NULL,NULL,NULL),('Dr. T. Karthick','kt2345','SRM Institute of Science and Technology','Performance Evaluation of Induction motor using Sliding Mode, Fuzzy and Artificial Neural Network controllers',2020,'Bharath Engg College','	Instrumentation and control Engg',2005,'	Thiagarajar College of Engineering','	Electrical and Electronics Engineering',1999,'Electrical and Electronics Engineering','21.8 Years','Power Electronics and Drives: Drives Applications, Fuzzy Logic and Neural Network, DSP, FPGA, Modeling of Electrical Machines, Soft computing','Life time member of Indian Society for Technical Education (ISTE)','Analysis of converter','Modeling of Electrical Machines','Fuzzy & neural network','Power quality management','Special Electrical Machines',NULL,NULL,NULL,NULL,NULL),('Dr. Nithyashri J','nj4321','University of Madras','Inorganic Chemistry',2014,'University of Madras','Inorganic Chemistry',2009,'University of Madras','	Chemistry',2006,'Chemistry','8.3 years','Nanomaterials, Biomass-derived Nano compounds','Member of International Computer Science and Engineering Society(ICSES)','B.Sc – Inorganic Chemistry','B.Tech – Chemistry','B.Tech – Principles of Environmental Science','M.Sc – Qualitative analysis','B.Sc – Fuel Chemistry',NULL,NULL,NULL,NULL,NULL),('Dr. Ramamoorthy S','rs9981','SSN College Of Engineering, Anna University','Information and Communication Engineering',2021,'Aarupadai Veedu Institute Of Technology','Computer Science and Engineering',2014,'Anand Institute Of higher Technology','Computer Science and Engineering',2010,'Computing Technologies','2 years','Wireless Sensor Networks, Machine Learning','Member of International Association of Engineers(IAENG)','Foundation of Data Science','Computer Networks','Data Structures',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `teacherabout` VALUES ('Dr. Kanisha B','kb7676','Anna University','Wireless Network',2022,'Pondicherry University','Network and Internet Engineering',2012,'Pondicherry University','Computer Science and Engineering',2010,'Computing Technologies','11.2 years','Wireless Network','Assistant Professor','Computer Networks','Soft Computing','Artificial Intelligence','Cryptography Techniques','Java Programming',NULL,NULL,NULL,NULL,NULL),('Dr. T. Karthick','kt2345','SRM Institute of Science and Technology','Performance Evaluation of Induction motor using Sliding Mode, Fuzzy and Artificial Neural Network controllers',2020,'Bharath Engg College','	Instrumentation and control Engg',2005,'	Thiagarajar College of Engineering','	Electrical and Electronics Engineering',1999,'Electrical and Electronics Engineering','21.8 Years','Power Electronics and Drives: Drives Applications, Fuzzy Logic and Neural Network, DSP, FPGA, Modeling of Electrical Machines, Soft computing','Assistant Professor','Analysis of converter','Modeling of Electrical Machines','Fuzzy & neural network','Power quality management','Special Electrical Machines',NULL,NULL,NULL,NULL,NULL),('Dr. Nithyashri J','nj4321','University of Madras','Inorganic Chemistry',2014,'University of Madras','Inorganic Chemistry',2009,'University of Madras','	Chemistry',2006,'Chemistry','8.3 years','Nanomaterials, Biomass-derived Nano compounds','Assistant Professor','B.Sc – Inorganic Chemistry','B.Tech – Chemistry','B.Tech – Principles of Environmental Science','M.Sc – Qualitative analysis','B.Sc – Fuel Chemistry',NULL,NULL,NULL,NULL,NULL),('Dr. Ramamoorthy S','rs9981','SSN College Of Engineering, Anna University','Information and Communication Engineering',2021,'Aarupadai Veedu Institute Of Technology','Computer Science and Engineering',2014,'Anand Institute Of higher Technology','Computer Science and Engineering',2010,'Computing Technologies','2 years','Wireless Sensor Networks, Machine Learning','Assistant Professor','Foundation of Data Science','Computer Networks','Data Structures',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `teacherabout` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -589,17 +591,9 @@ CREATE TABLE `timetable` (
 
 LOCK TABLES `timetable` WRITE;
 /*!40000 ALTER TABLE `timetable` DISABLE KEYS */;
-INSERT INTO `timetable` VALUES ('sg2982','app','maths','','','','','','','','','','','','','','maths','','','','','','maths','','','','','','','','','','','','','','','','','','','','','','','','','','','',''),('sk1903','daa','maths',NULL,'app','','maths','','dsa lab','','','','maths','',NULL,'','coa',NULL,'','','',NULL,'','','maths',NULL,'','','','','','','',NULL,'',NULL,NULL,'','app','','','','','os','coa','','','','','','');
+INSERT INTO `timetable` VALUES ('as8819','daa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('kb7676','dbms','daa','maths','daa','AI','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''),('rs9981','daa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('sk1903','daa','maths',NULL,'app','','maths','','dsa lab','','','','maths','maths','dbms','',NULL,NULL,'','','',NULL,'','daa','maths',NULL,'','','','','','','',NULL,'daa',NULL,NULL,'','app','','','','','os','coa','','','','','','');
 /*!40000 ALTER TABLE `timetable` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'scholarwise_temp'
---
-
---
--- Dumping routines for database 'scholarwise_temp'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -610,4 +604,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-16 17:23:10
+-- Dump completed on 2024-03-16 18:59:16
