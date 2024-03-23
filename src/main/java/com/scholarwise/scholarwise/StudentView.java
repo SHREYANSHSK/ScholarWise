@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javafx.collections.FXCollections;
@@ -15,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -23,6 +25,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 
@@ -38,6 +41,11 @@ public  class StudentView extends TeacherView {
 
     @FXML
     private GridPane CT_DATES_UPDATES;
+    @FXML
+    private GridPane Marks_Grid;
+    @FXML
+    private GridPane Marks_Analyse_grid;
+
 
     @FXML
     private Button Course_Button;
@@ -824,25 +832,25 @@ public  class StudentView extends TeacherView {
     protected TableColumn<TableView_Details, String> TableView_Attendance;
 
     @FXML
-    protected TableColumn<TableView_Details, Integer> TableView_ClassAttended;
+    protected TableColumn<TableView_Details, String> TableView_ClassAttended;
 
     @FXML
-    protected TableColumn<TableView_Details, Integer> TableView_ClassConducted;
+    protected TableColumn<TableView_Details, String> TableView_ClassConducted;
 
    @FXML
-   protected TableColumn<TableView_Details, Integer> TableView_Credits;
+   protected TableColumn<TableView_Details, String> TableView_Credits;
 
     @FXML
     protected TableColumn<TableView_Details, String> TableView_FacultyName;
 
     @FXML
-    protected TableColumn<TableView_Details, Integer> TableView_FacultyNumber;
+    protected TableColumn<TableView_Details, String> TableView_FacultyNumber;
 
     @FXML
     protected TableColumn<TableView_Details, String> TableView_Grade;
 
     @FXML
-    protected TableColumn<TableView_Details, Integer> TableView_RoomNo;
+    protected TableColumn<TableView_Details, String> TableView_RoomNo;
 
     @FXML
 	protected TableColumn<TableView_Details, String> TableView_SubjectCode;
@@ -873,9 +881,9 @@ public  class StudentView extends TeacherView {
    static String NAME;
    static String REG_ID ;
    static String DEPARTMENT;
-   static String COURSE,SEMESTER,Attendence, SECTION, FACULTY_ADVISOR, FA_PHNO, FA_EMAIL, DOB, CITY, STATE, PHNO, PERSONAL_MAIL_ID, Net_id, Desingnation;
-   static String Subject_Code ,Subject_Name ,Faculty_Name,Grade;
-   static int Room_Number,Credits,Class_Conducted,Class_Attended,Semester,Class_Held,FacultyNumber;
+    static String COURSE,SEMESTER, SECTION, FACULTY_ADVISOR, FA_PHNO, FA_EMAIL, DOB, CITY, STATE, PHNO, PERSONAL_MAIL_ID, Net_id, Desingnation;
+    String Subject_Code ,Subject_Name ,Faculty_Name,Grade,Room_Number,Credits,Class_Conducted,Class_Attended,Semester,Class_Held,FacultyNumber;
+
    static double roundOff;
     static List classConductedList=new ArrayList<>();
 
@@ -916,17 +924,17 @@ public  class StudentView extends TeacherView {
 	   
 	   //CourseDetails components
        CourseDetails_SemesterButton.getItems().addAll(CourseDetails_SemesterButton_list);
-       
-       TableView_SubjectCode.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Subject_Code"));
-		TableView_SubjectName.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Subject_Name"));
-		TableView_FacultyName.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Faculty_Name"));
-		TableView_FacultyNumber.setCellValueFactory(new PropertyValueFactory<TableView_Details,Integer>("FacultyNumber"));
-		TableView_RoomNo.setCellValueFactory(new PropertyValueFactory<TableView_Details,Integer>("Room_Number"));
-		TableView_Credits.setCellValueFactory(new PropertyValueFactory<TableView_Details,Integer>("Credits"));
-		TableView_ClassConducted.setCellValueFactory(new PropertyValueFactory<TableView_Details,Integer>("Class_Conducted"));
-		TableView_ClassAttended.setCellValueFactory(new PropertyValueFactory<TableView_Details,Integer>("Class_Attended"));
-		TableView_Attendance.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Attendence"));
-		TableView_Grade.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Grade"));
+        System.out.println(Subject_Code);
+       TableView_SubjectCode.setCellValueFactory(new PropertyValueFactory<>("Subject_Code"));
+		TableView_SubjectName.setCellValueFactory(new PropertyValueFactory<>("Subject_Name"));
+		TableView_FacultyName.setCellValueFactory(new PropertyValueFactory<>("Faculty_Name"));
+		TableView_RoomNo.setCellValueFactory(new PropertyValueFactory<TableView_Details, String>("Room_Number"));
+        TableView_FacultyNumber.setCellValueFactory(new PropertyValueFactory<>("FacultyNumber"));
+		TableView_Credits.setCellValueFactory(new PropertyValueFactory<>("Credits"));
+		TableView_ClassConducted.setCellValueFactory(new PropertyValueFactory<>("Class_Conducted"));
+		TableView_ClassAttended.setCellValueFactory(new PropertyValueFactory<>("Class_Attended"));
+		TableView_Attendance.setCellValueFactory(new PropertyValueFactory<>("Attendance"));
+		TableView_Grade.setCellValueFactory(new PropertyValueFactory<>("Grade"));
 
    	SemesterButton_value=SEMESTER;
 	    try {
@@ -936,6 +944,8 @@ public  class StudentView extends TeacherView {
 			e.printStackTrace();
 		}
 	    CourseDetails_TableView.setItems(listM);
+
+
 	    
 	
 	  
@@ -964,32 +974,39 @@ public  class StudentView extends TeacherView {
             e.printStackTrace();
         }
         con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
-        pst = con.prepareStatement("SELECT * FROM course where semester=?;");
+        pst = con.prepareStatement("SELECT * FROM attendance where semester=? and Net_Id=?;");
         ObservableList<TableView_Details> list = FXCollections.observableArrayList();
 
         pst.setString(1,SemesterButton_value);
+        pst.setString(2,Net_id);
         rs = pst.executeQuery();
         while (rs.next()) {
+           String roomNo = String.valueOf(rs.getInt("Room_Number"));
+            String attendance= String.valueOf(rs.getFloat("Attendance"));
             list.add(new TableView_Details(
                     rs.getString("Subject_Code"),
                     rs.getString("Subject_Name"),
                     rs.getString("Faculty_Name"),
                     rs.getString("Grade"),
-                    Integer.parseInt(rs.getString("FacultyNumber")),
-                    Integer.parseInt(rs.getString("Room_Number")),
-                    Integer.parseInt(rs.getString("Credits")),
-                    Integer.parseInt(rs.getString("Class_Conducted")),
-                    Integer.parseInt(rs.getString("Class_Attended")),
+                    roomNo,
+                    rs.getString("Faculty_Number"),
+                    rs.getString("Credits"),
+//                    Integer.parseInt(rs.getString("Class_Ratio")),
+                    rs.getString("Class_Attended"),
+                    rs.getString("Class_Conducted"),
 //                    Integer.parseInt(String.valueOf((Integer.parseInt(rs.getString("Class_Attended"))/Integer.parseInt(rs.getString("Class_Conducted")))*100))
-                    rs.getString("Attendence")
+                    attendance
+
 
 
 
             ) );
-//            System.out.println(Integer.parseInt(rs.getString("Attendence")));
+            System.out.println(rs.getString("Attendance"));
 
             classConductedList.add(Integer.parseInt(rs.getString("Class_Conducted")));
-//            System.out.println(classConductedList);
+            for (TableView_Details element : list) {
+                System.out.println(element);
+            }
 
         }
 
@@ -1015,45 +1032,43 @@ public  class StudentView extends TeacherView {
     	TimeTable.setVisible(false);
     	Marks.setVisible(false);
     	MarksAnalyse.setVisible(false);
-    	
-
-    	
-
-	    CourseDetails_SemesterButton.setOnAction(new EventHandler<ActionEvent>() {
-	        @Override
-	        public void handle(ActionEvent event) {
-	        	TableView_SubjectCode.setCellValueFactory(new PropertyValueFactory<>("Subject_Code"));
-	    		TableView_SubjectName.setCellValueFactory(new PropertyValueFactory<>("Subject_Name"));
-	    		TableView_FacultyName.setCellValueFactory(new PropertyValueFactory<>("Faculty_Name"));
-	    		TableView_FacultyNumber.setCellValueFactory(new PropertyValueFactory<>("FacultyNumber"));
-	    		TableView_RoomNo.setCellValueFactory(new PropertyValueFactory<>("Room_Number"));
-	    		TableView_Credits.setCellValueFactory(new PropertyValueFactory<>("Credits"));
-	    		TableView_ClassConducted.setCellValueFactory(new PropertyValueFactory<>("Class_Conducted"));
-	    		TableView_ClassAttended.setCellValueFactory(new PropertyValueFactory<>("Class_Attended"));
-	    		TableView_Attendance.setCellValueFactory(new PropertyValueFactory<>("Attendence"));
-	    		TableView_Grade.setCellValueFactory(new PropertyValueFactory<>("Grade"));
-
-	        	SemesterButton_value=Integer.toString(CourseDetails_SemesterButton.getValue());
 
 
+
+
+        CourseDetails_SemesterButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                TableView_SubjectCode.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Subject_Code"));
+                TableView_SubjectName.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Subject_Name"));
+                TableView_FacultyName.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Faculty_Name"));
+                TableView_FacultyNumber.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("FacultyNumber"));
+                TableView_RoomNo.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Room_Number"));
+                TableView_Credits.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Credits"));
+                TableView_ClassConducted.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Class_Conducted"));
+                TableView_ClassAttended.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Class_Attended"));
+                TableView_Attendance.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Attendance"));
+                TableView_Grade.setCellValueFactory(new PropertyValueFactory<TableView_Details,String>("Grade"));
+
+                SemesterButton_value=Integer.toString(CourseDetails_SemesterButton.getValue());
                 try {
-	    			listM=getDataUsers();	
-	    		} catch (SQLException e) {
-	    			// TODO Auto-generated catch block
-	    			e.printStackTrace();
-	    		}
-	    	    CourseDetails_TableView.setItems(listM);
-	    	    try {
-					SGPA_calculator();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+                    listM=getDataUsers();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                CourseDetails_TableView.setItems(listM);
+                try {
+                    SGPA_calculator();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
 
-	           
-	            
-	        }
-	    });
+
+
+            }
+        });
 	    
 	    
 	  
@@ -1123,16 +1138,13 @@ public  class StudentView extends TeacherView {
         ObservableList<String> Information_DATES = FXCollections.observableArrayList();
 
         
-        String[] CT1 = new String[8];
-		 String[] CT2 = new String[8];
-		 String[] CT3 = new String[8];
-		 String[] Overall = new String[8];
+
 
        
 pst=con.prepareStatement("select* from Marks where semester=?");
 pst2=con2.prepareStatement("select SUBJECT_NAME,DATES from information");
 
-pst.setString(1,SemesterButton_value);
+pst.setString(1,SEMESTER);
 rs=pst.executeQuery();
 rs2=pst2.executeQuery();
 while(rs.next()) {
@@ -1148,9 +1160,6 @@ while(rs.next()) {
 	String CT_3_THEORY=rs.getString("CT_3_THEORY");
 	String CT_3_P=rs.getString("CT_3_P");
 	String CT_3_I=rs.getString("CT_3_I");
-
-
-
 	//adding items to array
 	Course_Name_data.add(Course_Name);
 	Course_Code_data.add(Course_Code);
@@ -1165,9 +1174,11 @@ while(rs.next()) {
 	  CT_3_P_data.add(CT_3_P);
 	  CT_3_I_data .add(CT_3_I);
 
-
             }
-
+        String[] CT1 = new String[CT_1_THEORY_data.size()];
+        String[] CT2 = new String[CT_2_THEORY_data.size()];
+        String[] CT3 = new String[CT_3_THEORY_data.size()];
+        String[] Overall = new String[CT_3_THEORY_data.size()];
 
 
 while (rs2.next()){
@@ -1203,203 +1214,384 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
 
 
 //MARKS_PART
-       Integer cArray[]= {1,2,3,4,5,6,7,8};
+
+            for (int row = 1; row < Course_Name_data.size(); row++) {
+                Label label = new Label();
+                label.setText(Course_Name_data.get(row));
+                label.setTextFill(Paint.valueOf("white"));
+                label.setPadding(new Insets(0,0,0,10));
+                label.setWrapText(true);
+                Marks_Grid.add(label,0,row);
+
+            }
+
+            for (int row = 1; row < Course_Code_data.size(); row++) {
+                Label label = new Label();
+                label.setText(Course_Code_data.get(row));
+                label.setTextFill(Paint.valueOf("white"));
+                label.setPadding(new Insets(0,0,0,10));
+                label.setWrapText(true);
+                Marks_Grid.add(label,1,row);
+
+            }
+            for (int row = 1; row < Faculty_data.size(); row++) {
+                Label label = new Label();
+                label.setText(Faculty_data.get(row));
+                label.setTextFill(Paint.valueOf("white"));
+                label.setPadding(new Insets(0,0,0,10));
+                label.setWrapText(true);
+                Marks_Grid.add(label,2,row);
+
+            }
+            for (int row = 1; row < CT1.length; row++) {
+                Label label = new Label();
+                label.setText(Arrays.stream(CT1).toList().get(row));
+                label.setTextFill(Paint.valueOf("white"));
+                label.setPadding(new Insets(0,0,0,10));
+                label.setWrapText(true);
+                Marks_Grid.add(label,3,row);
+
+            }
+        for (int row = 1; row < CT2.length; row++) {
+            Label label = new Label();
+            label.setText(Arrays.stream(CT2).toList().get(row));
+            label.setTextFill(Paint.valueOf("white"));
+            label.setPadding(new Insets(0,0,0,10));
+            label.setWrapText(true);
+            Marks_Grid.add(label,4,row);
+
+        }
+        for (int row = 1; row < CT3.length; row++) {
+            Label label = new Label();
+            label.setText(Arrays.stream(CT3).toList().get(row));
+            label.setTextFill(Paint.valueOf("white"));
+            label.setPadding(new Insets(0,0,0,10));
+            label.setWrapText(true);
+            Marks_Grid.add(label,5,row);
+        }
+        for (int row = 1; row < Overall.length; row++) {
+            Label label = new Label();
+            label.setText(Arrays.stream(Overall).toList().get(row));
+            label.setTextFill(Paint.valueOf("white"));
+            label.setPadding(new Insets(0,0,0,10));
+            label.setWrapText(true);
+            Marks_Grid.add(label,6,row);
+        }
 
 
-    cn1.setText(Course_Name_data.get(0));
-    cn2.setText(Course_Name_data.get(1));
-    cn3.setText(Course_Name_data.get(2));
-    cn4.setText(Course_Name_data.get(3));
-    cn5.setText(Course_Name_data.get(4));
-   //cn6.setText(Course_Name_data.get(5));
-//cn7.setText(Course_Name_data.get(6));
-//n8.setText(Course_Name_data.get(7));
+        //Marks Analyse part
+        for (int row = 1; row < Course_Name_data.size(); row++) {
+                Label label = new Label();
+                label.setText(Course_Name_data.get(row));
+                label.setTextFill(Paint.valueOf("white"));
+                label.setPadding(new Insets(0,0,0,10));
+            label.setWrapText(true);
+            Marks_Analyse_grid.add(label,0,row);
+
+            }
+
+            for (int row = 1; row < Course_Code_data.size(); row++) {
+                Label label = new Label();
+                label.setText(Course_Code_data.get(row));
+                label.setTextFill(Paint.valueOf("white"));
+                label.setPadding(new Insets(0,0,0,10));
+                label.setWrapText(true);
+                Marks_Analyse_grid.add(label,1,row);
+
+            }
+            for (int row = 1; row < Faculty_data.size(); row++) {
+                Label label = new Label();
+                label.setText(Faculty_data.get(row));
+                label.setTextFill(Paint.valueOf("white"));
+                label.setPadding(new Insets(0,0,0,10));
+                label.setWrapText(true);
+                Marks_Analyse_grid.add(label,2,row);
+
+            }
+            for (int row = 1; row < CT_1_THEORY_data.size(); row++) {
+                Label label = new Label();
+                label.setText(CT_1_THEORY_data.get(row));
+                label.setTextFill(Paint.valueOf("white"));
+                label.setPadding(new Insets(0,0,0,10));
+                label.setWrapText(true);
+                Marks_Analyse_grid.add(label,3,row);
+
+            }
+        for (int row = 1; row < CT_1_P_data.size(); row++) {
+            Label label = new Label();
+            label.setText(CT_1_P_data.get(row));
+            label.setTextFill(Paint.valueOf("white"));
+            label.setPadding(new Insets(0,0,0,10));
+            label.setWrapText(true);
+            Marks_Analyse_grid.add(label,4,row);
+
+        }
+        for (int row = 1; row < CT_1_I_data.size(); row++) {
+            Label label = new Label();
+            label.setText(CT_1_I_data.get(row));
+            label.setTextFill(Paint.valueOf("white"));
+            label.setPadding(new Insets(0,0,0,10));
+            label.setWrapText(true);
+            Marks_Analyse_grid.add(label,5,row);
+        }
+
+     for (int row = 1; row < CT_2_THEORY_data.size(); row++) {
+                Label label = new Label();
+                label.setText(CT_2_THEORY_data.get(row));
+                label.setTextFill(Paint.valueOf("white"));
+                label.setPadding(new Insets(0,0,0,10));
+         label.setWrapText(true);
+                Marks_Analyse_grid.add(label,6,row);
+
+            }
+        for (int row = 1; row < CT_2_P_data.size(); row++) {
+            Label label = new Label();
+            label.setText(CT_2_P_data.get(row));
+            label.setTextFill(Paint.valueOf("white"));
+            label.setPadding(new Insets(0,0,0,10));
+            label.setWrapText(true);
+            Marks_Analyse_grid.add(label,7,row);
+
+        }
+        for (int row = 1; row < CT_2_I_data.size(); row++) {
+            Label label = new Label();
+            label.setText(CT_2_I_data.get(row));
+            label.setTextFill(Paint.valueOf("white"));
+            label.setPadding(new Insets(0,0,0,10));
+            label.setWrapText(true);
+            Marks_Analyse_grid.add(label,8,row);
+        }
+
+     for (int row = 1; row < CT_3_THEORY_data.size(); row++) {
+                Label label = new Label();
+                label.setText(CT_3_THEORY_data.get(row));
+                label.setTextFill(Paint.valueOf("white"));
+                label.setPadding(new Insets(0,0,0,10));
+         label.setWrapText(true);
+                Marks_Analyse_grid.add(label,9,row);
+
+            }
+        for (int row = 1; row < CT_3_P_data.size(); row++) {
+            Label label = new Label();
+            label.setText(CT_3_P_data.get(row));
+            label.setTextFill(Paint.valueOf("white"));
+            label.setPadding(new Insets(0,0,0,10));
+            label.setWrapText(true);
+            Marks_Analyse_grid.add(label,10,row);
+
+        }
+        for (int row = 1; row < CT_3_I_data.size(); row++) {
+            Label label = new Label();
+            label.setText(CT_3_I_data.get(row));
+            label.setTextFill(Paint.valueOf("white"));
+            label.setPadding(new Insets(0,0,0,10));
+            label.setWrapText(true);
+            Marks_Analyse_grid.add(label,11,row);
+        }
+        for (int row = 1; row < Overall.length; row++) {
+            Label label = new Label();
+            label.setText(Arrays.stream(Overall).toList().get(row));
+            label.setTextFill(Paint.valueOf("white"));
+            label.setPadding(new Insets(0,0,0,10));
+            label.setWrapText(true);
+            Marks_Analyse_grid.add(label,12,row);
+        }
 
 
+//    cn1.setText(Course_Name_data.get(0));
+//    cn2.setText(Course_Name_data.get(1));
+//    cn3.setText(Course_Name_data.get(2));
+//    cn4.setText(Course_Name_data.get(3));
+//    cn5.setText(Course_Name_data.get(4));
+//   //cn6.setText(Course_Name_data.get(5));
+////cn7.setText(Course_Name_data.get(6));
+////n8.setText(Course_Name_data.get(7));
+//
+//
+//
+//
+//a1.setText(Course_Name_data.get(0));
+//a2.setText(Course_Name_data.get(1));
+//a3.setText(Course_Name_data.get(2));
+//a4.setText(Course_Name_data.get(3));
+//a5.setText(Course_Name_data.get(4));
+////a6.setText(Course_Name_data.get(5));
+////a7.setText(Course_Name_data.get(6));
+////a8.setText(Course_Name_data.get(7));
+//
+//
+//cc1.setText(Course_Code_data.get(0));
+//cc2.setText(Course_Code_data.get(1));
+//cc3.setText(Course_Code_data.get(2));
+//cc4.setText(Course_Code_data.get(3));
+//cc5.setText(Course_Code_data.get(4));
+////cc6.setText(Course_Code_data.get(5));
+////cc7.setText(Course_Code_data.get(6));
+////cc8.setText(Course_Code_data.get(7));
+//
+//b1.setText(Course_Code_data.get(0));
+//b2.setText(Course_Code_data.get(1));
+//b3.setText(Course_Code_data.get(2));
+//b4.setText(Course_Code_data.get(3));
+//b5.setText(Course_Code_data.get(4));
+////b6.setText(Course_Code_data.get(5));
+////b7.setText(Course_Code_data.get(6));
+////b8.setText(Course_Code_data.get(7));
+//
+//
+//ct1.setText(Faculty_data.get(0));
+//ct2.setText(Faculty_data.get(1));
+//ct3.setText(Faculty_data.get(2));
+//ct4.setText(Faculty_data.get(3));
+//ct5.setText(Faculty_data.get(4));
+////ct6.setText(Faculty_data.get(5));
+////ct7.setText(Faculty_data.get(6));
+////ct8.setText(Faculty_data.get(7));
+//
+//c1.setText(Faculty_data.get(0));
+//c2.setText(Faculty_data.get(1));
+//c3.setText(Faculty_data.get(2));
+//c4.setText(Faculty_data.get(3));
+//c5.setText(Faculty_data.get(4));
+////c6.setText(Faculty_data.get(5));
+////c7.setText(Faculty_data.get(6));
+////c8.setText(Faculty_data.get(7));
+//
+//
+//d1.setText(CT_1_THEORY_data.get(0));
+//d2.setText(CT_1_THEORY_data.get(1));
+//d3.setText(CT_1_THEORY_data.get(2));
+//d4.setText(CT_1_THEORY_data.get(3));
+//d5.setText(CT_1_THEORY_data.get(4));
+////d6.setText(CT_1_THEORY_data.get(5));
+////d7.setText(CT_1_THEORY_data.get(6));
+////d8.setText(CT_1_THEORY_data.get(7));
 
-
-a1.setText(Course_Name_data.get(0));
-a2.setText(Course_Name_data.get(1));
-a3.setText(Course_Name_data.get(2));
-a4.setText(Course_Name_data.get(3));
-a5.setText(Course_Name_data.get(4));
-//a6.setText(Course_Name_data.get(5));
-//a7.setText(Course_Name_data.get(6));
-//a8.setText(Course_Name_data.get(7));
-
-
-cc1.setText(Course_Code_data.get(0));
-cc2.setText(Course_Code_data.get(1));
-cc3.setText(Course_Code_data.get(2));
-cc4.setText(Course_Code_data.get(3));
-cc5.setText(Course_Code_data.get(4));
-//cc6.setText(Course_Code_data.get(5));
-//cc7.setText(Course_Code_data.get(6));
-//cc8.setText(Course_Code_data.get(7));
-
-b1.setText(Course_Code_data.get(0));
-b2.setText(Course_Code_data.get(1));
-b3.setText(Course_Code_data.get(2));
-b4.setText(Course_Code_data.get(3));
-b5.setText(Course_Code_data.get(4));
-//b6.setText(Course_Code_data.get(5));
-//b7.setText(Course_Code_data.get(6));
-//b8.setText(Course_Code_data.get(7));
-
-
-ct1.setText(Faculty_data.get(0));
-ct2.setText(Faculty_data.get(1));
-ct3.setText(Faculty_data.get(2));
-ct4.setText(Faculty_data.get(3));
-ct5.setText(Faculty_data.get(4));
-//ct6.setText(Faculty_data.get(5));
-//ct7.setText(Faculty_data.get(6));
-//ct8.setText(Faculty_data.get(7));
-
-c1.setText(Faculty_data.get(0));
-c2.setText(Faculty_data.get(1));
-c3.setText(Faculty_data.get(2));
-c4.setText(Faculty_data.get(3));
-c5.setText(Faculty_data.get(4));
-//c6.setText(Faculty_data.get(5));
-//c7.setText(Faculty_data.get(6));
-//c8.setText(Faculty_data.get(7));
-
-
-d1.setText(CT_1_THEORY_data.get(0));
-d2.setText(CT_1_THEORY_data.get(1));
-d3.setText(CT_1_THEORY_data.get(2));
-d4.setText(CT_1_THEORY_data.get(3));
-d5.setText(CT_1_THEORY_data.get(4));
-//d6.setText(CT_1_THEORY_data.get(5));
-//d7.setText(CT_1_THEORY_data.get(6));
-//d8.setText(CT_1_THEORY_data.get(7));
-
-
-e1.setText(CT_1_P_data.get(0));
-e2.setText(CT_1_P_data.get(1));
-e3.setText(CT_1_P_data.get(2));
-e4.setText(CT_1_P_data.get(3));
-e5.setText(CT_1_P_data.get(4));
-//e6.setText(CT_1_P_data.get(5));
-//e7.setText(CT_1_P_data.get(6));
-//e8.setText(CT_1_P_data.get(7));
-
-
-f1.setText(CT_1_I_data.get(0));
-f2.setText(CT_1_I_data.get(1));
-f3.setText(CT_1_I_data.get(2));
-f4.setText(CT_1_I_data.get(3));
-f5.setText(CT_1_I_data.get(4));
-//f6.setText(CT_1_I_data.get(5));
-//f7.setText(CT_1_I_data.get(6));
-//f8.setText(CT_1_I_data.get(7));
-
-h1.setText(CT_2_THEORY_data.get(0));
-h2.setText(CT_2_THEORY_data.get(1));
-h3.setText(CT_2_THEORY_data.get(2));
-h4.setText(CT_2_THEORY_data.get(3));
-h5.setText(CT_2_THEORY_data.get(4));
-//h6.setText(CT_2_THEORY_data.get(5));
-//h7.setText(CT_2_THEORY_data.get(6));	
-//h8.setText(CT_2_THEORY_data.get(7));
-
-i1.setText(CT_2_P_data.get(0));
-i2.setText(CT_2_P_data.get(1));
-i3.setText(CT_2_P_data.get(2));
-i4.setText(CT_2_P_data.get(3));
-i5.setText(CT_2_P_data.get(4));
-//i6.setText(CT_2_P_data.get(5));
-//i7.setText(CT_2_P_data.get(6));	
-//i8.setText(CT_2_P_data.get(7));
-
-j1.setText(CT_2_I_data.get(0));
-j2.setText(CT_2_I_data.get(1));
-j3.setText(CT_2_I_data.get(2));
-j4.setText(CT_2_I_data.get(3));
-j5.setText(CT_2_I_data.get(4));
-//j6.setText(CT_2_I_data.get(5));
-//j7.setText(CT_2_I_data.get(6));	
-//j8.setText(CT_2_I_data.get(7));
-
-k1.setText(CT_3_THEORY_data.get(0));
-k2.setText(CT_3_THEORY_data.get(1));
-k3.setText(CT_3_THEORY_data.get(2));
-k4.setText(CT_3_THEORY_data.get(3));
-k5.setText(CT_3_THEORY_data.get(4));
-//k6.setText(CT_3_THEORY_data.get(5));
-//k7.setText(CT_3_THEORY_data.get(6));	
-//k8.setText(CT_3_THEORY_data.get(7));
-
-l1.setText(CT_3_P_data.get(0));
-l2.setText(CT_3_P_data.get(1));
-l3.setText(CT_3_P_data.get(2));
-l4.setText(CT_3_P_data.get(3));
-l5.setText(CT_3_P_data.get(4));
-//l6.setText(CT_3_P_data.get(5));
-//l7.setText(CT_3_P_data.get(6));	
-//l8.setText(CT_3_P_data.get(7));
-
-
-m1.setText(CT_3_I_data.get(0));
-m2.setText(CT_3_I_data.get(1));
-m3.setText(CT_3_I_data.get(2));
-m4.setText(CT_3_I_data.get(3));
-m5.setText(CT_3_I_data.get(4));
-//m6.setText(CT_3_I_data.get(5));
-//m7.setText(CT_3_I_data.get(6));	
-//m8.setText(CT_3_I_data.get(7));
-
-
-
-
-cta1.setText(CT1[0]);
-cta2.setText(CT1[1]);
-cta3.setText(CT1[2]);
-cta4.setText(CT1[3]);
-cta5.setText(CT1[4]);
-//cta6.setText(CT1[5]);
-//cta7.setText(CT1[6]);
-//cta8.setText(CT1[7]);
-
-
-ctb1.setText(CT2[0]);
-ctb2.setText(CT2[1]);
-ctb3.setText(CT2[2]);
-ctb4.setText(CT2[3]);
-ctb5.setText(CT2[4]);
-//ctb6.setText(CT2[5]);
-//ctb7.setText(CT2[6]);
-//ctb8.setText(CT2[7]);
-
-ctc1.setText(CT3[0]);
-ctc2.setText(CT3[1]);
-ctc3.setText(CT3[2]);
-ctc4.setText(CT3[3]);
-ctc5.setText(CT3[4]);
-//ctc6.setText(CT3[5]);
-//ctc7.setText(CT3[6]);
-//ctc8.setText(CT3[7]);
-
-o1.setText(Overall[0]);
-o2.setText(Overall[1]);
-o3.setText(Overall[2]);
-o4.setText(Overall[3]);
-o5.setText(Overall[4]);
-//o6.setText(Overall[5]);
-//o7.setText(Overall[6]);
-//o8.setText(Overall[7]);
-
-n1.setText(Overall[0]);
-n2.setText(Overall[1]);
-n3.setText(Overall[2]);
-n4.setText(Overall[3]);
-n5.setText(Overall[4]);
-//n6.setText(Overall[5]);
-//n7.setText(Overall[6]);
-//n8.setText(Overall[7]);
-
-    // Close resources in a finally block to ensure they are always closed
+//
+//e1.setText(CT_1_P_data.get(0));
+//e2.setText(CT_1_P_data.get(1));
+//e3.setText(CT_1_P_data.get(2));
+//e4.setText(CT_1_P_data.get(3));
+//e5.setText(CT_1_P_data.get(4));
+////e6.setText(CT_1_P_data.get(5));
+////e7.setText(CT_1_P_data.get(6));
+////e8.setText(CT_1_P_data.get(7));
+//
+//
+//f1.setText(CT_1_I_data.get(0));
+//f2.setText(CT_1_I_data.get(1));
+//f3.setText(CT_1_I_data.get(2));
+//f4.setText(CT_1_I_data.get(3));
+//f5.setText(CT_1_I_data.get(4));
+////f6.setText(CT_1_I_data.get(5));
+////f7.setText(CT_1_I_data.get(6));
+////f8.setText(CT_1_I_data.get(7));
+//
+//h1.setText(CT_2_THEORY_data.get(0));
+//h2.setText(CT_2_THEORY_data.get(1));
+//h3.setText(CT_2_THEORY_data.get(2));
+//h4.setText(CT_2_THEORY_data.get(3));
+//h5.setText(CT_2_THEORY_data.get(4));
+////h6.setText(CT_2_THEORY_data.get(5));
+////h7.setText(CT_2_THEORY_data.get(6));
+////h8.setText(CT_2_THEORY_data.get(7));
+//
+//i1.setText(CT_2_P_data.get(0));
+//i2.setText(CT_2_P_data.get(1));
+//i3.setText(CT_2_P_data.get(2));
+//i4.setText(CT_2_P_data.get(3));
+//i5.setText(CT_2_P_data.get(4));
+////i6.setText(CT_2_P_data.get(5));
+////i7.setText(CT_2_P_data.get(6));
+////i8.setText(CT_2_P_data.get(7));
+//
+//j1.setText(CT_2_I_data.get(0));
+//j2.setText(CT_2_I_data.get(1));
+//j3.setText(CT_2_I_data.get(2));
+//j4.setText(CT_2_I_data.get(3));
+//j5.setText(CT_2_I_data.get(4));
+////j6.setText(CT_2_I_data.get(5));
+////j7.setText(CT_2_I_data.get(6));
+////j8.setText(CT_2_I_data.get(7));
+//
+//k1.setText(CT_3_THEORY_data.get(0));
+//k2.setText(CT_3_THEORY_data.get(1));
+//k3.setText(CT_3_THEORY_data.get(2));
+//k4.setText(CT_3_THEORY_data.get(3));
+//k5.setText(CT_3_THEORY_data.get(4));
+////k6.setText(CT_3_THEORY_data.get(5));
+////k7.setText(CT_3_THEORY_data.get(6));
+////k8.setText(CT_3_THEORY_data.get(7));
+//
+//l1.setText(CT_3_P_data.get(0));
+//l2.setText(CT_3_P_data.get(1));
+//l3.setText(CT_3_P_data.get(2));
+//l4.setText(CT_3_P_data.get(3));
+//l5.setText(CT_3_P_data.get(4));
+////l6.setText(CT_3_P_data.get(5));
+////l7.setText(CT_3_P_data.get(6));
+////l8.setText(CT_3_P_data.get(7));
+//
+//
+//m1.setText(CT_3_I_data.get(0));
+//m2.setText(CT_3_I_data.get(1));
+//m3.setText(CT_3_I_data.get(2));
+//m4.setText(CT_3_I_data.get(3));
+//m5.setText(CT_3_I_data.get(4));
+////m6.setText(CT_3_I_data.get(5));
+////m7.setText(CT_3_I_data.get(6));
+////m8.setText(CT_3_I_data.get(7));
+//
+//
+//
+//
+//cta1.setText(CT1[0]);
+//cta2.setText(CT1[1]);
+//cta3.setText(CT1[2]);
+//cta4.setText(CT1[3]);
+//cta5.setText(CT1[4]);
+////cta6.setText(CT1[5]);
+////cta7.setText(CT1[6]);
+////cta8.setText(CT1[7]);
+//
+//
+//ctb1.setText(CT2[0]);
+//ctb2.setText(CT2[1]);
+//ctb3.setText(CT2[2]);
+//ctb4.setText(CT2[3]);
+//ctb5.setText(CT2[4]);
+////ctb6.setText(CT2[5]);
+////ctb7.setText(CT2[6]);
+////ctb8.setText(CT2[7]);
+//
+//ctc1.setText(CT3[0]);
+//ctc2.setText(CT3[1]);
+//ctc3.setText(CT3[2]);
+//ctc4.setText(CT3[3]);
+//ctc5.setText(CT3[4]);
+////ctc6.setText(CT3[5]);
+////ctc7.setText(CT3[6]);
+////ctc8.setText(CT3[7]);
+//
+//o1.setText(Overall[0]);
+//o2.setText(Overall[1]);
+//o3.setText(Overall[2]);
+//o4.setText(Overall[3]);
+//o5.setText(Overall[4]);
+////o6.setText(Overall[5]);
+////o7.setText(Overall[6]);
+////o8.setText(Overall[7]);
+//
+//n1.setText(Overall[0]);
+//n2.setText(Overall[1]);
+//n3.setText(Overall[2]);
+//n4.setText(Overall[3]);
+//n5.setText(Overall[4]);
+////n6.setText(Overall[5]);
+////n7.setText(Overall[6]);
+////n8.setText(Overall[7]);
+//
+//    // Close resources in a finally block to ensure they are always closed
     try {
         if (rs != null) rs.close();
         if (pst != null) pst.close();
@@ -1547,21 +1739,24 @@ n5.setText(Overall[4]);
 		
 		 List<String> grade_data = new ArrayList<>();
 		 List<String> credit_data = new ArrayList<>();
-       
-pst=con.prepareStatement("select Credits,Grade from course where semester=?");
+
+        float data1=0;
+        float data2=0;
+        float SGPA=0;
+        int Grade_point=0;
+pst=con.prepareStatement("select Credits,Grade from attendance where semester=? and Net_id=?");
 pst.setString(1,SemesterButton_value);
+pst.setString(2,Net_id);
 rs=pst.executeQuery();
+
 while(rs.next()) {
 	String Grade_value = rs.getString("Grade");
-	String Credit_valuea=rs.getString("Credits");
+	String Credit_values=rs.getString("Credits");
 	grade_data.add(Grade_value);
-	credit_data.add(Credit_valuea);
+	credit_data.add(Credit_values);
 	
 }
-float data1=0;
-float data2=0;
-float SGPA=0;
-int Grade_point=0;
+
 for(int i=0;i<grade_data.size();i++) {
 	if(grade_data.get(i).equals("O")) {
 		Grade_point=10;
@@ -1586,14 +1781,14 @@ for(int i=0;i<grade_data.size();i++) {
 	else if(grade_data.get(i).equals("F")) {
 		Grade_point=0;
 	}
-	
+
 	else if(grade_data.get(i).equals("AB")) {
 		Grade_point=0;
 	}
 	else if(grade_data.get(i).equals("I")){
 		Grade_point=0;
 	}
-	
+
 	data1+=Grade_point*Integer.parseInt(credit_data.get(i));
 	data2+=Integer.parseInt(credit_data.get(i));
 
@@ -1617,13 +1812,13 @@ SGPA=data1/data2;
     	sgpa.setText("-");
     }
     else {
-
+        System.out.println(grade_data);
+        System.out.println(credit_data);
       sgpa.setText(Double.toString(roundOff));
     }
-
     }
-    
-    
+
+
     @FXML
     void TimeTable_EnterButtonAct(ActionEvent event) {
     	String SubName=TimeTable_SubName.getText();

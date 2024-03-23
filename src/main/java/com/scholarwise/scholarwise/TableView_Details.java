@@ -1,8 +1,7 @@
 package com.scholarwise.scholarwise;
 
 public class TableView_Details {
-    String Subject_Code, Subject_Name, Faculty_Name, Grade, Attendence;
-    int Room_Number, Credits, Class_Conducted, Class_Attended,  FacultyNumber;
+    String Subject_Code, Subject_Name, Faculty_Name, Grade, Credits, Class_Conducted, Class_Attended,  FacultyNumber,Room_Number,Attendance;
 
     public void setSubject_Code(String Subject_Code) {
         this.Subject_Code = Subject_Code;
@@ -20,29 +19,28 @@ public class TableView_Details {
         this.Grade = Grade;
     }
 
-    public void setRoom_Number(int Room_Number) {
+    public void setRoom_Number(String Room_Number) {
         this.Room_Number = Room_Number;
     }
 
-    public void setCredits(int Credits) {
+    public void setCredits(String Credits) {
         this.Credits = Credits;
     }
 
-    public void setClass_Conducted(int Class_Conducted) {
+    public void setClass_Conducted(String Class_Conducted) {
         this.Class_Conducted = Class_Conducted;
     }
 
-    public void setClass_Attended(int Class_Attended) {
+    public void setClass_Attended(String Class_Attended) {
         this.Class_Attended = Class_Attended;
     }
 
-    
 
-    public void setAttendence(String Attendence) {
-        this.Attendence = Attendence;
+    public void setAttendance(String Attendance) {
+        this.Attendance = Attendance;
     }
 
-    public void setFacultyNumber(int FacultyNumber) {
+    public void setFacultyNumber(String FacultyNumber) {
         this.FacultyNumber = FacultyNumber;
     }
 
@@ -62,33 +60,33 @@ public class TableView_Details {
         return Grade;
     }
 
-    public int getRoom_Number() {
+    public String getRoom_Number() {
         return Room_Number;
     }
 
-    public int getCredits() {
+    public String getCredits() {
         return Credits;
     }
 
-    public int getClass_Conducted() {
+    public String getClass_Conducted() {
         return Class_Conducted;
     }
 
-    public int getClass_Attended() {
+    public String getClass_Attended() {
         return Class_Attended;
     }
 
-    
 
-    public String getAttendence() {
-        return Attendence;
+
+    public String getAttendance() {
+        return Attendance;
     }
 
-    public int getFacultyNumber() {
+    public String getFacultyNumber() {
         return FacultyNumber;
     }
 
-    public TableView_Details(String Subject_Code, String Subject_Name, String Faculty_Name, String Grade, int FacultyNumber, int Room_Number, int Credits, int Class_Conducted, int Class_Attended, String Attendence) {
+    public TableView_Details(String Subject_Code, String Subject_Name, String Faculty_Name, String Grade, String FacultyNumber, String Room_Number, String Credits, String Class_Conducted, String Class_Attended,String Attendance) {
         this.Subject_Code = Subject_Code;
         this.Subject_Name = Subject_Name;
         this.Faculty_Name = Faculty_Name;
@@ -96,8 +94,7 @@ public class TableView_Details {
         this.Room_Number = Room_Number;
         this.Credits = Credits;
         this.Class_Conducted = Class_Conducted;
-        
-        this.Attendence = Attendence;
+        this.Attendance = Attendance;
         this.Class_Attended = Class_Attended;
         this.FacultyNumber = FacultyNumber;
     }

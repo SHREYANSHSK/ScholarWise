@@ -1523,4 +1523,6 @@ while (rs.next()){netIdList.add(rs.getString("net_id"));}
 	}
 
 
+	public void TeacherView_update_attendanceAct(ActionEvent event) {
+	}
 }
