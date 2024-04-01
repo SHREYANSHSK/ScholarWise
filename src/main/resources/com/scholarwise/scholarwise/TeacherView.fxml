@@ -1534,10 +1534,6 @@
                </font>
             </Label>
             <MenuButton fx:id="Marks_section_drop1" alignment="CENTER" layoutX="187.0" layoutY="145.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="134.0" stylesheets="@style.css" text="Section" textFill="WHITE">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
                <styleClass>
                   <String fx:value="box-border" />
                   <String fx:value="box-borderRadius" />
@@ -1549,10 +1545,6 @@
                </font>
             </MenuButton>
             <MenuButton fx:id="Marks_subject_drop1" alignment="CENTER" layoutX="42.0" layoutY="145.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="134.0" stylesheets="@style.css" text="Subject" textFill="WHITE">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
                <styleClass>
                   <String fx:value="box-border" />
                   <String fx:value="box-borderRadius" />
@@ -1645,13 +1637,13 @@
                         <Label alignment="CENTER" layoutX="76.0" layoutY="9.0" styleClass="text_white" stylesheets="@style.css" text="Registration ID" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
+                  <ListView fx:id="attendanceRegIdList" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-radius: 3px; -fx-border-width: 2px;" styleClass="contact_details" stylesheets="@style.css" GridPane.rowIndex="1" />
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-radius: 3px; -fx-border-width: 2px;" styleClass="contact_details" stylesheets="@style.css" GridPane.columnIndex="1">
                      <children>
                         <Label alignment="CENTER" layoutX="80.0" layoutY="9.0" prefHeight="27.0" prefWidth="126.0" styleClass="text_white" stylesheets="@style.css" text="Name" textAlignment="CENTER" />
                      </children>
                   </AnchorPane>
-                  <ListView prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-radius: 3px; -fx-border-width: 2px;" styleClass="contact_details" stylesheets="@style.css" GridPane.rowIndex="1" />
-                  <ListView prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-radius: 3px; -fx-border-width: 2px;" styleClass="contact_details" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ListView fx:id="attendanceNameList" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-radius: 3px; -fx-border-width: 2px;" styleClass="contact_details" stylesheets="@style.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Button fx:id="TeacherView_update_attendance" alignment="CENTER" layoutX="255.0" layoutY="471.0" mnemonicParsing="false" onAction="#TeacherView_update_attendanceAct" prefHeight="46.0" prefWidth="173.0" stylesheets="@style.css" text="Update" textAlignment="CENTER">
