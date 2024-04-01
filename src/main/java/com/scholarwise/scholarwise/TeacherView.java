@@ -3,9 +3,10 @@ package com.scholarwise.scholarwise;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.jar.Attributes;
 
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,8 @@ public class TeacherView {
 
 	@FXML
 	private MenuButton Marks_subject_drop1;
+	@FXML
+	private MenuButton Marks_section_drop1;
 
 	@FXML
 	private Label d1h1;
@@ -189,6 +192,9 @@ public class TeacherView {
 	@FXML
 	private Button Course_Button;
 
+	private String selectedSubject;
+	private String selectedSection;
+
 	@FXML
 	private Label faculty_id ;
 
@@ -279,6 +285,12 @@ public class TeacherView {
 
 	@FXML
 	private Label year3;
+	@FXML
+	private ListView<String> attendanceNameList;
+
+	@FXML
+	private ListView<String> attendanceRegIdList;
+
 
 
 
@@ -322,10 +334,14 @@ public class TeacherView {
 	static String Password;
 	static String Designation;
 
+
 	static Connection con;
+	static Connection con2;
 	static PreparedStatement pst;
 	static ResultSet rs;
+	static PreparedStatement pst2;
 
+	static ResultSet rs2;
 
 
 	public void initialize() {
@@ -407,32 +423,92 @@ public class TeacherView {
 		TIME_TABLE_PAGE.setVisible(false);
 		ATTENDANCE_PAGE.setVisible(true);
 
-
+		Marks_subject_drop1.getItems().clear();
+		Marks_section_drop1.getItems().clear();
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
-		pst=con.prepareStatement("SELECT distinct(Subject_Name) FROM attendance where Faculty_name=?;");
-		pst.setString(1,NAME);
-		rs= pst.executeQuery();
-		while (rs.next())
-		{
-			String subjectName= rs.getString("Subject_Name");
-			MenuItem menuItem = new MenuItem(subjectName);
-			Marks_subject_drop1.getItems().add(menuItem);
+
+		con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+		pst = con.prepareStatement("SELECT DISTINCT Subject_Name FROM attendance WHERE Faculty_name=?");
+		pst.setString(1, NAME);
+		rs = pst.executeQuery();
+
+		while (rs.next()) {
+			String subjectName = rs.getString("Subject_Name");
+			MenuItem subjectMenuItem = new MenuItem(subjectName);
+			subjectMenuItem.setOnAction(e -> {
+				Marks_subject_drop1.setText(subjectMenuItem.getText());
+				selectedSubject = subjectMenuItem.getText();
+				if (selectedSection != null && !selectedSection.isBlank()) {
+					attendanceRetrieval();
+				}
+			});
+			Marks_subject_drop1.getItems().add(subjectMenuItem);
 		}
 
+		con2 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+		pst2 = con2.prepareStatement("SELECT DISTINCT section FROM attendance WHERE Faculty_name=?");
+		pst2.setString(1, NAME);
+		rs2 = pst2.executeQuery();
 
+		while (rs2.next()) {
+			String sectionName = rs2.getString("section");
+			MenuItem sectionMenuItem = new MenuItem(sectionName);
+			sectionMenuItem.setOnAction(e -> {
+				Marks_section_drop1.setText(sectionMenuItem.getText());
+				selectedSection = sectionMenuItem.getText();
 
-
-
-
-
+				if (selectedSubject != null && !selectedSubject.isBlank()) {
+					attendanceRetrieval();
+				}
+			});
+			Marks_section_drop1.getItems().add(sectionMenuItem);
+		}
 	}
+
+	void attendanceRetrieval() {
+		ObservableList<String> nameList = FXCollections.observableArrayList();
+		ObservableList<String> regIdList = FXCollections.observableArrayList();
+
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+
+			pst = con.prepareStatement("SELECT studentdb.NAME, studentdb.REG_ID " +
+					"FROM studentdb, attendance " +
+					"WHERE attendance.Faculty_name=? AND " +
+					"attendance.section=? AND " +
+					"attendance.Subject_Name=? AND " +
+					"studentdb.Net_id=attendance.Net_id");
+
+			pst.setString(1, NAME);
+			pst.setString(2, selectedSection);
+			pst.setString(3, selectedSubject);
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				nameList.add(rs.getString("NAME"));
+				regIdList.add(rs.getString("REG_ID"));
+			}
+
+			Platform.runLater(() -> {
+				attendanceNameList.setItems(nameList);
+				attendanceRegIdList.setItems(regIdList);
+				attendanceNameList.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #121212;");
+				attendanceRegIdList.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #121212;");
+			});
+
+		} catch (SQLException q) {
+			q.printStackTrace();
+		}
+	}
+
+
+
+
 
 	@FXML
 	private void TeacherView_MARKSVIEW(ActionEvent event) {
