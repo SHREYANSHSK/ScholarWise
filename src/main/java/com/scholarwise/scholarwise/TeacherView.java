@@ -11,9 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +25,10 @@ public class TeacherView {
 	private TextField TimeTable_SubName;
 	@FXML
 	private TextField TimeTable_DayOrder;
+
+	@FXML
+	private MenuButton Marks_subject_drop1;
+
 	@FXML
 	private Label d1h1;
 
@@ -399,11 +401,37 @@ public class TeacherView {
 	}
 
 	@FXML
-	private void TeacherView_ATTENDANCEVIEW(ActionEvent event) {
+	private void TeacherView_ATTENDANCEVIEW(ActionEvent event) throws SQLException {
 		PROFILE_PAGE.setVisible(false);
 		MARKS_PAGE.setVisible(false);
 		TIME_TABLE_PAGE.setVisible(false);
 		ATTENDANCE_PAGE.setVisible(true);
+
+
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+		pst=con.prepareStatement("SELECT distinct(Subject_Name) FROM attendance where Faculty_name=?;");
+		pst.setString(1,NAME);
+		rs= pst.executeQuery();
+		while (rs.next())
+		{
+			String subjectName= rs.getString("Subject_Name");
+			MenuItem menuItem = new MenuItem(subjectName);
+			Marks_subject_drop1.getItems().add(menuItem);
+		}
+
+
+
+
+
+
+
 	}
 
 	@FXML

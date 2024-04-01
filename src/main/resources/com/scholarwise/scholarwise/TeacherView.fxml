@@ -1534,10 +1534,6 @@
                </font>
             </Label>
             <MenuButton fx:id="Marks_section_drop1" alignment="CENTER" layoutX="187.0" layoutY="145.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="134.0" stylesheets="@style.css" text="Section" textFill="WHITE">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
                <styleClass>
                   <String fx:value="box-border" />
                   <String fx:value="box-borderRadius" />
@@ -1549,10 +1545,6 @@
                </font>
             </MenuButton>
             <MenuButton fx:id="Marks_subject_drop1" alignment="CENTER" layoutX="42.0" layoutY="145.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="134.0" stylesheets="@style.css" text="Subject" textFill="WHITE">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
                <styleClass>
                   <String fx:value="box-border" />
                   <String fx:value="box-borderRadius" />
