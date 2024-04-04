@@ -1141,11 +1141,10 @@ public  class StudentView extends TeacherView {
 
 
        
-pst=con.prepareStatement("select* from Marks where semester=? and Net_id=?");
+pst=con.prepareStatement("select* from Marks where semester=?");
 pst2=con2.prepareStatement("select SUBJECT_NAME,DATES from information");
 
 pst.setString(1,SEMESTER);
-pst.setString(2,Net_id);
 rs=pst.executeQuery();
 rs2=pst2.executeQuery();
 while(rs.next()) {
@@ -1191,18 +1190,18 @@ while (rs2.next()){
 }
 
 
-//try {
-//for(int i=0;i<CT_1_THEORY_data.size();i++) {
-//
-//	CT1[i]=Integer.toString(Integer.parseInt(CT_1_THEORY_data.get(i))+Integer.parseInt(CT_1_P_data.get(i)) + Integer.parseInt(CT_1_I_data.get(i)));
-//	CT2[i]=Integer.toString(Integer.parseInt(CT_2_THEORY_data.get(i))+Integer.parseInt(CT_2_P_data.get(i)) + Integer.parseInt(CT_2_I_data.get(i)));
-//	CT3[i]=Integer.toString(Integer.parseInt(CT_3_THEORY_data.get(i))+Integer.parseInt(CT_3_P_data.get(i)) + Integer.parseInt(CT_3_I_data.get(i)));
-//	Overall[i]=Integer.toString(Integer.parseInt(CT1[i])+Integer.parseInt(CT2[i]) + Integer.parseInt(CT3[i]));
-//
-//}
-//}catch(ArrayIndexOutOfBoundsException e) {
-//	e.printStackTrace();
-//}
+try {
+for(int i=0;i<CT_1_THEORY_data.size();i++) {
+	
+	CT1[i]=Integer.toString(Integer.parseInt(CT_1_THEORY_data.get(i))+Integer.parseInt(CT_1_P_data.get(i)) + Integer.parseInt(CT_1_I_data.get(i)));
+	CT2[i]=Integer.toString(Integer.parseInt(CT_2_THEORY_data.get(i))+Integer.parseInt(CT_2_P_data.get(i)) + Integer.parseInt(CT_2_I_data.get(i)));
+	CT3[i]=Integer.toString(Integer.parseInt(CT_3_THEORY_data.get(i))+Integer.parseInt(CT_3_P_data.get(i)) + Integer.parseInt(CT_3_I_data.get(i)));
+	Overall[i]=Integer.toString(Integer.parseInt(CT1[i])+Integer.parseInt(CT2[i]) + Integer.parseInt(CT3[i]));
+
+}
+}catch(ArrayIndexOutOfBoundsException e) {
+	e.printStackTrace();
+}
 //CT_DATES PART
 
 
