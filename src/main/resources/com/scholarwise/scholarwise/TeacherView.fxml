@@ -1579,9 +1579,9 @@
                   <Label layoutX="24.0" layoutY="56.0" styleClass="text_white" stylesheets="@style.css" text="Total Students" />
                   <Label layoutX="24.0" layoutY="107.0" styleClass="text_white" stylesheets="@style.css" text="Total Students Absent" />
                   <Label layoutX="24.0" layoutY="158.0" styleClass="text_white" stylesheets="@style.css" text="Total Students Present" />
-                  <Label layoutX="246.0" layoutY="56.0" styleClass="text_white" stylesheets="@style.css" text="72" />
-                  <Label layoutX="245.0" layoutY="108.0" styleClass="text_white" stylesheets="@style.css" text="10" />
-                  <Label layoutX="245.0" layoutY="158.0" styleClass="text_white" stylesheets="@style.css" text="62" />
+                  <Label fx:id="totalStudents_attendance" layoutX="246.0" layoutY="56.0" styleClass="text_white" stylesheets="@style.css" text="72" />
+                  <Label fx:id="totalStudentsAbsent_attendance" layoutX="245.0" layoutY="108.0" styleClass="text_white" stylesheets="@style.css" text="10" />
+                  <Label fx:id="totalStudentsPresent_attendance" layoutX="245.0" layoutY="158.0" styleClass="text_white" stylesheets="@style.css" text="62" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="351.0" layoutY="216.0" prefHeight="242.0" prefWidth="274.0" stylesheets="@style.css">
