@@ -1180,6 +1180,10 @@ while(rs.next()) {
         String[] CT2 = new String[CT_2_THEORY_data.size()];
         String[] CT3 = new String[CT_3_THEORY_data.size()];
         String[] Overall = new String[CT_3_THEORY_data.size()];
+        String[] CT1_Total = new String[CT_1_THEORY_data.size()];
+        String[] CT2_Total = new String[CT_2_THEORY_data.size()];
+        String[] CT3_Total = new String[CT_3_THEORY_data.size()];
+        String[] Overall_Total = new String[CT_3_THEORY_data.size()];
 
 
 while (rs2.next()){
@@ -1191,17 +1195,20 @@ while (rs2.next()){
 }
 
         //System.out.println(Float.parseFloat((CT_3_I_data.get(2).substring(0,CT_3_I_data.get(2).indexOf("/"))))
-        // +Float.parseFloat((CT_3_THEORY_data.get(2).substring(0,CT_3_THEORY_data.get(2).indexOf("/"))))+Float.parseFloat((CT_3_P_data.get(2).substring(0,CT_3_P_data.get(2).indexOf("/")))));
-
+        // +Float.parseFloat((CT_3_THEORY_data.get(2).substring(0,CT_3_THEORY_data.get(2).indexOf("/"))))+Float.parseFloat((CT_3_P_data.get(2).substring(0,CT_3_P_data.get(2).indexOf("/")))))
 
 try {
 for(int i=0;i<CT_1_THEORY_data.size();i++) {
 
-	CT1[i]= Float.toString(Float.parseFloat((CT_1_THEORY_data.get(i).substring(0,CT_1_THEORY_data.get(i).indexOf("/"))))+Float.parseFloat((CT_1_I_data.get(i).substring(0,CT_1_I_data.get(i).indexOf("/"))))+Float.parseFloat((CT_1_P_data.get(i).substring(0,CT_1_P_data.get(i).indexOf("/")))));
-	CT2[i]= Float.toString(Float.parseFloat((CT_2_THEORY_data.get(i).substring(0,CT_2_THEORY_data.get(i).indexOf("/"))))+Float.parseFloat((CT_2_I_data.get(i).substring(0,CT_2_I_data.get(i).indexOf("/"))))+Float.parseFloat((CT_2_P_data.get(i).substring(0,CT_2_P_data.get(i).indexOf("/")))));
-	CT3[i]= Float.toString(Float.parseFloat((CT_3_THEORY_data.get(i).substring(0,CT_3_THEORY_data.get(i).indexOf("/"))))+Float.parseFloat((CT_3_I_data.get(i).substring(0,CT_3_I_data.get(i).indexOf("/"))))+Float.parseFloat((CT_3_P_data.get(i).substring(0,CT_3_P_data.get(i).indexOf("/")))));
+    CT1[i]= Float.toString((Float.parseFloat((CT_1_THEORY_data.get(i).substring(0,CT_1_THEORY_data.get(i).indexOf("/"))))+Float.parseFloat((CT_1_I_data.get(i).substring(0,CT_1_I_data.get(i).indexOf("/"))))+Float.parseFloat((CT_1_P_data.get(i).substring(0,CT_1_P_data.get(i).indexOf("/"))))));
+	CT2[i]= Float.toString((Float.parseFloat((CT_2_THEORY_data.get(i).substring(0,CT_2_THEORY_data.get(i).indexOf("/"))))+Float.parseFloat((CT_2_I_data.get(i).substring(0,CT_2_I_data.get(i).indexOf("/"))))+Float.parseFloat((CT_2_P_data.get(i).substring(0,CT_2_P_data.get(i).indexOf("/"))))));
+	CT3[i]= Float.toString((Float.parseFloat((CT_3_THEORY_data.get(i).substring(0,CT_3_THEORY_data.get(i).indexOf("/"))))+Float.parseFloat((CT_3_I_data.get(i).substring(0,CT_3_I_data.get(i).indexOf("/"))))+Float.parseFloat((CT_3_P_data.get(i).substring(0,CT_3_P_data.get(i).indexOf("/"))))));
 	Overall[i]=Float.toString(Float.parseFloat(CT1[i])+Float.parseFloat(CT2[i])+Float.parseFloat(CT3[i]));
 
+    CT1_Total[i] = Float.toString((Float.parseFloat((CT_1_THEORY_data.get(i).substring(CT_1_THEORY_data.get(i).indexOf("/")+1)))+Float.parseFloat((CT_1_I_data.get(i).substring(CT_1_I_data.get(i).indexOf("/")+1)))+Float.parseFloat((CT_1_P_data.get(i).substring(CT_1_P_data.get(i).indexOf("/")+1)))));
+    CT2_Total[i] = Float.toString((Float.parseFloat((CT_2_THEORY_data.get(i).substring(CT_2_THEORY_data.get(i).indexOf("/")+1)))+Float.parseFloat((CT_2_I_data.get(i).substring(CT_2_I_data.get(i).indexOf("/")+1)))+Float.parseFloat((CT_2_P_data.get(i).substring(CT_2_P_data.get(i).indexOf("/")+1)))));
+    CT3_Total[i] = Float.toString((Float.parseFloat((CT_3_THEORY_data.get(i).substring(CT_3_THEORY_data.get(i).indexOf("/")+1)))+Float.parseFloat((CT_3_I_data.get(i).substring(CT_3_I_data.get(i).indexOf("/")+1)))+Float.parseFloat((CT_3_P_data.get(i).substring(CT_3_P_data.get(i).indexOf("/")+1)))));
+    Overall_Total[i]= Float.toString(Float.parseFloat(CT1_Total[i])+Float.parseFloat(CT2_Total[i])+Float.parseFloat(CT3_Total[i]));
 }
 }catch(ArrayIndexOutOfBoundsException e) {
 	e.printStackTrace();
@@ -1249,7 +1256,7 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
             }
             for (int row = 1; row < CT1.length; row++) {
                 Label label = new Label();
-                label.setText(Arrays.stream(CT1).toList().get(row));
+                label.setText(CT1[row] + "/" + CT1_Total[row]);
                 label.setTextFill(Paint.valueOf("white"));
                 label.setPadding(new Insets(0,0,0,10));
                 label.setWrapText(true);
@@ -1258,7 +1265,7 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
             }
         for (int row = 1; row < CT2.length; row++) {
             Label label = new Label();
-            label.setText(Arrays.stream(CT2).toList().get(row));
+            label.setText(CT2[row] + "/" + CT2_Total[row]);
             label.setTextFill(Paint.valueOf("white"));
             label.setPadding(new Insets(0,0,0,10));
             label.setWrapText(true);
@@ -1267,7 +1274,7 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
         }
         for (int row = 1; row < CT3.length; row++) {
             Label label = new Label();
-            label.setText(Arrays.stream(CT3).toList().get(row));
+            label.setText(CT3[row] + "/" + CT3_Total[row]);
             label.setTextFill(Paint.valueOf("white"));
             label.setPadding(new Insets(0,0,0,10));
             label.setWrapText(true);
@@ -1275,7 +1282,7 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
         }
         for (int row = 1; row < Overall.length; row++) {
             Label label = new Label();
-            label.setText(Arrays.stream(Overall).toList().get(row));
+            label.setText(Overall[row] + "/" + Overall_Total[row]);
             label.setTextFill(Paint.valueOf("white"));
             label.setPadding(new Insets(0,0,0,10));
             label.setWrapText(true);
@@ -1394,7 +1401,7 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
         }
         for (int row = 1; row < Overall.length; row++) {
             Label label = new Label();
-            label.setText(Arrays.stream(Overall).toList().get(row));
+            label.setText(Overall[row] + "/" + Overall_Total[row]);
             label.setTextFill(Paint.valueOf("white"));
             label.setPadding(new Insets(0,0,0,10));
             label.setWrapText(true);
