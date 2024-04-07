@@ -138,7 +138,7 @@
                 </AnchorPane>
                 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1734.0">
                     <children>
-                        <AnchorPane fx:id="MarksAnalyse" prefHeight="1080.0" prefWidth="1734.0">
+                        <AnchorPane fx:id="MarksAnalyse" prefHeight="1080.0" prefWidth="1734.0" visible="false">
                             <children>
                                 <Label layoutX="54.0" layoutY="35.0" text="MARKS VERIFICATION" textFill="WHITE">
                                     <font>
@@ -2586,7 +2586,7 @@
                             </children>
                         </AnchorPane>
 
-                        <AnchorPane fx:id="Marks" prefHeight="1080.0" prefWidth="1734.0" style="-fx-background-color: #1d1d1d;" visible="false">
+                        <AnchorPane fx:id="Marks" prefHeight="1080.0" prefWidth="1734.0" style="-fx-background-color: #1d1d1d;">
                             <children>
                                 <Label alignment="CENTER" layoutX="58.0" layoutY="40.0" prefHeight="68.0" prefWidth="198.0" text="MARKS" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                     <font>
@@ -2794,8 +2794,8 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <ListView fx:id="Marks_CourseName_listview" disable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="153.0" style="-fx-background-color: #343434;" stylesheets="@style.css" GridPane.rowIndex="1" />
-                                    <ListView id="Marks_DATES_listview" fx:id="Marks_DATES_listview" disable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="88.0" style="-fx-background-color: #343434;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <ListView fx:id="Marks_CourseName_listview" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="153.0" style="-fx-background-color: #343434;" stylesheets="@style.css" GridPane.rowIndex="1" />
+                                    <ListView id="Marks_DATES_listview" fx:id="Marks_DATES_listview" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="88.0" style="-fx-background-color: #343434;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                  </children>
                                         </GridPane>
                                         <Label alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="56.0" prefWidth="296.0" text="Updates" textAlignment="CENTER" textFill="WHITE">
