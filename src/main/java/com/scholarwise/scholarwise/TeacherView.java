@@ -23,6 +23,12 @@ public class TeacherView {
 	private TextField TimeTable_Hour;
 
 	@FXML
+	private ListView<String> Attendance_absentStudent_listView;
+
+	@FXML
+	private ListView<String> Attendance_absentStudentRegNo_listView;
+
+	@FXML
 	private TextField TimeTable_SubName;
 	@FXML
 	private TextField TimeTable_DayOrder;
@@ -205,6 +211,15 @@ public class TeacherView {
 	private Label name ;
 
 	@FXML
+	private Label totalStudentsAbsent_attendance;
+
+	@FXML
+	private Label totalStudentsPresent_attendance;
+
+	@FXML
+	private Label totalStudents_attendance;
+
+	@FXML
 	private Button Profile_Button ;
 
 	@FXML
@@ -343,8 +358,61 @@ public class TeacherView {
 
 	static ResultSet rs2;
 
+	ObservableList<String> selectedNames = FXCollections.observableArrayList();
+	ObservableList<String> selectedRegNo = FXCollections.observableArrayList();
+	ObservableList<String> nameList = FXCollections.observableArrayList();
+	ObservableList<String> regIdList = FXCollections.observableArrayList();
+
 
 	public void initialize() {
+
+//		running trigger
+
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+			Statement stmt = con.createStatement();
+
+			// Check if the trigger already exists
+			ResultSet resultSet = stmt.executeQuery("SHOW TRIGGERS WHERE `Trigger`like 'calculate_attendance_percentage';");
+			if (!resultSet.next()) { // If trigger does not exist
+				// Create the trigger
+				stmt.executeUpdate("SET SQL_SAFE_UPDATES = 0");
+				stmt.executeUpdate("USE scholarwise_temp");
+				stmt.executeUpdate("CREATE TRIGGER calculate_attendance_percentage " +
+						"BEFORE UPDATE ON attendance " +
+						"FOR EACH ROW " +
+						"BEGIN " +
+						"  IF NEW.Class_attended IS NOT NULL AND NEW.Class_conducted IS NOT NULL THEN " +
+						"    SET NEW.Attendance = (NEW.Class_attended / NEW.Class_conducted) * 100; " +
+						"  END IF; " +
+						"END");
+				stmt.executeUpdate("CREATE TRIGGER calculate_attendance_percentage " +
+						"BEFORE INSERT ON attendance " +
+						"FOR EACH ROW " +
+						"BEGIN " +
+						"  IF NEW.Class_attended IS NOT NULL AND NEW.Class_conducted IS NOT NULL THEN " +
+						"    SET NEW.Attendance = (NEW.Class_attended / NEW.Class_conducted) * 100; " +
+						"  END IF; " +
+						"END");
+			}
+
+
+			resultSet.close(); // Close the result set
+			stmt.close(); // Close the statement
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+
+
+
+
+
+
+
+
+
+
 		name.setText(NAME);
 		campus.setText(CAMPUS);
 		research.setText(RESEARCH);
@@ -382,6 +450,7 @@ public class TeacherView {
 		MARKS_PAGE.setVisible(false);
 		TIME_TABLE_PAGE.setVisible(false);
 		ATTENDANCE_PAGE.setVisible(false);
+		attendanceRegIdList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 	}
 
 	@FXML
@@ -422,6 +491,8 @@ public class TeacherView {
 		MARKS_PAGE.setVisible(false);
 		TIME_TABLE_PAGE.setVisible(false);
 		ATTENDANCE_PAGE.setVisible(true);
+		attendanceNameList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		attendanceRegIdList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
 		Marks_subject_drop1.getItems().clear();
 		Marks_section_drop1.getItems().clear();
@@ -471,13 +542,22 @@ public class TeacherView {
 	}
 
 	void attendanceRetrieval() {
-		ObservableList<String> nameList = FXCollections.observableArrayList();
-		ObservableList<String> regIdList = FXCollections.observableArrayList();
+
+		String totalStudents_attendance_var="";
+
 
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+			con2 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
 
 			pst = con.prepareStatement("SELECT studentdb.NAME, studentdb.REG_ID " +
+					"FROM studentdb, attendance " +
+					"WHERE attendance.Faculty_name=? AND " +
+					"attendance.section=? AND " +
+					"attendance.Subject_Name=? AND " +
+					"studentdb.Net_id=attendance.Net_id");
+
+			pst2 = con2.prepareStatement("SELECT count(studentdb.REG_ID) " +
 					"FROM studentdb, attendance " +
 					"WHERE attendance.Faculty_name=? AND " +
 					"attendance.section=? AND " +
@@ -487,7 +567,14 @@ public class TeacherView {
 			pst.setString(1, NAME);
 			pst.setString(2, selectedSection);
 			pst.setString(3, selectedSubject);
+
+			pst2.setString(1, NAME);
+			pst2.setString(2, selectedSection);
+			pst2.setString(3, selectedSubject);
 			rs = pst.executeQuery();
+			rs2 = pst2.executeQuery();
+			nameList.clear();
+			regIdList.clear();
 
 			while (rs.next()) {
 				nameList.add(rs.getString("NAME"));
@@ -499,13 +586,107 @@ public class TeacherView {
 				attendanceRegIdList.setItems(regIdList);
 				attendanceNameList.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #121212;");
 				attendanceRegIdList.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #121212;");
+				Attendance_absentStudent_listView.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #121212;");
+				Attendance_absentStudentRegNo_listView.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #121212;");
 			});
+
+			while (rs2.next()) {
+				 totalStudents_attendance_var = (rs2.getString(1));
+				totalStudents_attendance.setText(rs2.getString(1));
+				System.out.println(rs2.getString(1));
+			}
 
 		} catch (SQLException q) {
 			q.printStackTrace();
 		}
+
+
+
+
+		attendanceNameList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		attendanceRegIdList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		attendanceNameList.setMouseTransparent( true );
+
+
+
+		// Add a listener to the ListView to handle selection changes
+
+		 final int TotalStudents_attendance_var = Integer.parseInt(totalStudents_attendance_var);
+
+		attendanceRegIdList.setOnMouseClicked(event -> {
+			if (event.getClickCount() == 1) {
+				if(!selectedRegNo.containsAll(attendanceRegIdList.getSelectionModel().getSelectedItems())) {
+//					selectedNames.addAll(attendanceNameList.getSelectionModel().getSelectedItems());
+					selectedRegNo.addAll(attendanceRegIdList.getSelectionModel().getSelectedItems());
+//					Attendance_absentStudent_listView.setItems(selectedNames);
+					Attendance_absentStudentRegNo_listView.setItems(selectedRegNo);
+					totalStudentsAbsent_attendance.setText(String.valueOf(selectedRegNo.size()));
+					var temp= TotalStudents_attendance_var - selectedRegNo.size();
+					totalStudentsPresent_attendance.setText(String.valueOf(temp));
+					System.out.println(selectedRegNo);
+				}
+			}
+			if (event.getClickCount() > 1) {
+				if(selectedRegNo.containsAll(attendanceRegIdList.getSelectionModel().getSelectedItems())) {
+					selectedNames.removeAll(attendanceNameList.getSelectionModel().getSelectedItems());
+					selectedRegNo.removeAll(attendanceRegIdList.getSelectionModel().getSelectedItems());
+//					Attendance_absentStudent_listView.setItems(selectedNames);
+					Attendance_absentStudentRegNo_listView.setItems(selectedRegNo);
+					totalStudentsAbsent_attendance.setText(String.valueOf(selectedRegNo.size()));
+					var temp= TotalStudents_attendance_var - selectedRegNo.size();
+					totalStudentsPresent_attendance.setText(String.valueOf(temp));
+
+					System.out.println(selectedRegNo);
+				}
+			}
+
+		});
+
 	}
 
+
+	public void TeacherView_update_attendanceAct(ActionEvent event) {
+
+			try {
+				// Update the class_attended and class_conducted sections in the database
+				// Iterate through all students in the attendance list
+				for (String regNo : regIdList) {
+					// Check if the student's regNo is not in the selectedRegNo list
+					if (!selectedRegNo.contains(regNo)) {
+						// Update class_attended for students not in the selectedRegNo list
+						updateAttendanceStatus(regNo,NAME,selectedSection,selectedSubject, "Class_Attended");
+					}
+					// Update class_conducted for all students
+					updateAttendanceStatus(regNo,NAME,selectedSection,selectedSubject, "Class_Conducted");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		private void updateAttendanceStatus(String regNo,String Faculty_name,String section,String Subject_Name, String statusColumn) throws SQLException {
+
+			String query = "UPDATE attendance AS a JOIN studentdb AS s ON a.Net_id = s.Net_id SET a." + statusColumn + " = a." + statusColumn + " + 1 WHERE a.Faculty_name = ? AND a.section = ? AND a.Subject_Name = ? AND s.REG_ID = ?";
+
+			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+
+			pst = con.prepareStatement(query);
+			pst.setString(1, Faculty_name);
+			pst.setString(2, section);
+			pst.setString(3, Subject_Name);
+			pst.setString(4, regNo);
+			pst.executeUpdate();
+
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Attendance Updated");
+			alert.setHeaderText(null);
+			alert.setContentText("Attendance has been updated successfully!");
+			alert.showAndWait();
+
+
+
+
+	}
 
 
 
@@ -1627,6 +1808,5 @@ while (rs.next()){netIdList.add(rs.getString("net_id"));}
 	}
 
 
-	public void TeacherView_update_attendanceAct(ActionEvent event) {
-	}
+
 }

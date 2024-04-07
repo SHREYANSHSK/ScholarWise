@@ -1218,6 +1218,8 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
 
        Marks_CourseName_listview.setItems(Information_SUBJECT_NAME);
        Marks_DATES_listview.setItems(Information_DATES);
+        Marks_CourseName_listview.setMouseTransparent( true );
+        Marks_DATES_listview.setMouseTransparent( true );
         Marks_CourseName_listview.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #121212;");
         Marks_DATES_listview.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #000000;");
 
