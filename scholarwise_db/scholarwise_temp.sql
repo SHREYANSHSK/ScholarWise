@@ -83,6 +83,54 @@ INSERT INTO `course` VALUES ('sk1903','21BTB102T','INTRODUCTION TO COMPUTATIONAL
 UNLOCK TABLES;
 
 --
+-- Table structure for table `dept`
+--
+
+DROP TABLE IF EXISTS `dept`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `dept` (
+  `dept_ID` varchar(45) NOT NULL,
+  `department` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dept`
+--
+
+LOCK TABLES `dept` WRITE;
+/*!40000 ALTER TABLE `dept` DISABLE KEYS */;
+INSERT INTO `dept` VALUES ('CSC203J','Data Science and Business Systems'),('CSC202J','Computing Technologies'),('CSC204J','CINTEL'),('CSC202J','Computing Technologies');
+/*!40000 ALTER TABLE `dept` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `faculty_info`
+--
+
+DROP TABLE IF EXISTS `faculty_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `faculty_info` (
+  `reg_id` varchar(45) NOT NULL,
+  `faculty_advisor` varchar(45) DEFAULT NULL,
+  `fa_phno` int DEFAULT NULL,
+  `FA_EMAIL` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `faculty_info`
+--
+
+LOCK TABLES `faculty_info` WRITE;
+/*!40000 ALTER TABLE `faculty_info` DISABLE KEYS */;
+INSERT INTO `faculty_info` VALUES ('RA2211003010374','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in'),('RA2211003010382','Dr Sathyapriya l',983279239,'yn1028@srmist.edu.in'),('RA2211003010387','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in'),('RA2211003011185','DR. NITHYASHRI J',999999999,'nj2234@srmist.edu.in'),('RA2211033010112','DR. ar arunirani',984023182,'arunaraa@srmist.edu.in');
+/*!40000 ALTER TABLE `faculty_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `information`
 --
 
@@ -90,8 +138,6 @@ DROP TABLE IF EXISTS `information`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `information` (
-  `NOTIFICATIONS` varchar(70) DEFAULT NULL,
-  `DATES` date DEFAULT NULL,
   `SUBJECT_NAME` varchar(45) NOT NULL,
   `SUBJECT_CODE` varchar(45) NOT NULL,
   PRIMARY KEY (`SUBJECT_CODE`)
@@ -104,7 +150,7 @@ CREATE TABLE `information` (
 
 LOCK TABLES `information` WRITE;
 /*!40000 ALTER TABLE `information` DISABLE KEYS */;
-INSERT INTO `information` VALUES ('NPTEL course needs to be updated in GCR','2024-03-12','DAA','21CSC204J'),('DBMS CLA 2 Exam','2024-02-27','DBMS','21CSC205P'),('MATHS CT2','2024-03-17','MATHS','21MAB204T');
+INSERT INTO `information` VALUES ('DAA','21CSC204J'),('DBMS','21CSC205P'),('MATHS','21MAB204T');
 /*!40000 ALTER TABLE `information` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,6 +215,81 @@ INSERT INTO `marks` VALUES ('sk1903','21BTB102T','INTRODUCTION TO COMPUTATIONAL 
 UNLOCK TABLES;
 
 --
+-- Table structure for table `notify`
+--
+
+DROP TABLE IF EXISTS `notify`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `notify` (
+  `NOTIFICATIONS` varchar(70) DEFAULT NULL,
+  `DATES` date DEFAULT NULL,
+  `SUBJECT_CODE` varchar(45) NOT NULL,
+  PRIMARY KEY (`SUBJECT_CODE`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `notify`
+--
+
+LOCK TABLES `notify` WRITE;
+/*!40000 ALTER TABLE `notify` DISABLE KEYS */;
+INSERT INTO `notify` VALUES ('NPTEL course needs to be updated in GCR','2024-03-12','21CSC204J'),('DBMS CLA 2 Exam','2024-02-27','21CSC205P'),('MATHS CT2','2024-03-17','21MAB204T');
+/*!40000 ALTER TABLE `notify` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `student_contact`
+--
+
+DROP TABLE IF EXISTS `student_contact`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `student_contact` (
+  `reg_id` varchar(45) NOT NULL,
+  `city` varchar(10) DEFAULT NULL,
+  `state` varchar(10) DEFAULT NULL,
+  `phno` int DEFAULT NULL,
+  `personal_mail_id` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `student_contact`
+--
+
+LOCK TABLES `student_contact` WRITE;
+/*!40000 ALTER TABLE `student_contact` DISABLE KEYS */;
+INSERT INTO `student_contact` VALUES ('RA2211003010374','LUCKNOW','UP',780060055,'aryavartchandel2@gmail.com'),('RA2211003010382','BANGALORE','KARNATAKA',978919400,'yashwanthvn04@gmail.com'),('RA2211003010387','jaipur','rajasthan',982953035,'khandelwal.happy.hk@gmail.com'),('RA2211003011185','JAIPUR','RAJASTHAN',894983467,'abhisoni1764@gmail.com'),('RA2211033010112','chandigarh','chandigarh',964648254,'shantanugahtori4@gmail.com');
+/*!40000 ALTER TABLE `student_contact` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `student_credentials`
+--
+
+DROP TABLE IF EXISTS `student_credentials`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `student_credentials` (
+  `reg_id` varchar(45) NOT NULL,
+  `net_id` varchar(20) NOT NULL,
+  `password` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `student_credentials`
+--
+
+LOCK TABLES `student_credentials` WRITE;
+/*!40000 ALTER TABLE `student_credentials` DISABLE KEYS */;
+INSERT INTO `student_credentials` VALUES ('RA2211003010374','ac6729','ac6729'),('RA2211003010382','yn1028','yn1028'),('RA2211003010387','sk1903','sk1903'),('RA2211003011185','as8819','as8819'),('RA2211033010112','sg2982','sg2982');
+/*!40000 ALTER TABLE `student_credentials` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `studentdb`
 --
 
@@ -207,6 +328,141 @@ LOCK TABLES `studentdb` WRITE;
 /*!40000 ALTER TABLE `studentdb` DISABLE KEYS */;
 INSERT INTO `studentdb` VALUES ('Aryavart Chandel','RA2211003010374','CTECH','CSE CORE',4,'F1','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in','2003-11-09','LUCKNOW','UP',780060055,'aryavartchandel2@gmail.com','ac6729','student','ac6729'),('Yashwanth NV','RA2211003010382','CTECH','CSE CORE',4,'F1','Dr Sathyapriya l',983279239,'yn1028@srmist.edu.in','2004-11-15','BANGALORE','KARNATAKA',978919400,'yashwanthvn04@gmail.com','yn1028','student','yn1028'),('Shreyansh khandelwal','RA2211003010387','ctech','CSE CORE',4,'F1','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in','2004-06-09','jaipur','rajasthan',982953035,'khandelwal.happy.hk@gmail.com','sk1903','student','sk1903'),('Abhishek Soni','RA2211003011185','CTECH','CSE',4,'B2','DR. NITHYASHRI J',999999999,'nj2234@srmist.edu.in','2017-06-04','JAIPUR','RAJASTHAN',894983467,'abhisoni1764@gmail.com','as8819','Student','as8819'),('shantanu gahtori','RA2211033010112','cintel','cse swe',4,'aa-2','DR. ar arunirani',984023182,'arunaraa@srmist.edu.in','2003-09-09','chandigarh','chandigarh',964648254,'shantanugahtori4@gmail.com','sg2982','student','sg2982');
 /*!40000 ALTER TABLE `studentdb` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `teacher`
+--
+
+DROP TABLE IF EXISTS `teacher`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `teacher` (
+  `NET_ID` varchar(45) NOT NULL,
+  `NAME` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `teacher`
+--
+
+LOCK TABLES `teacher` WRITE;
+/*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
+INSERT INTO `teacher` VALUES ('kb7676','Dr. Kanisha B'),('kt2345','Dr. T. Karthick'),('nj4321','Dr. Nithyashri J'),('rs9981','Dr. Ramamoorthy S');
+/*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `teacher_course`
+--
+
+DROP TABLE IF EXISTS `teacher_course`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `teacher_course` (
+  `NET_ID` varchar(45) NOT NULL,
+  `course1` varchar(200) NOT NULL,
+  `course2` varchar(200) DEFAULT NULL,
+  `course3` varchar(200) DEFAULT NULL,
+  `course4` varchar(200) DEFAULT NULL,
+  `course5` varchar(200) DEFAULT NULL,
+  `course6` varchar(200) DEFAULT NULL,
+  `course7` varchar(200) DEFAULT NULL,
+  `course8` varchar(200) DEFAULT NULL,
+  `course9` varchar(200) DEFAULT NULL,
+  `course10` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `teacher_course`
+--
+
+LOCK TABLES `teacher_course` WRITE;
+/*!40000 ALTER TABLE `teacher_course` DISABLE KEYS */;
+INSERT INTO `teacher_course` VALUES ('kb7676','Computer Networks','Soft Computing','Artificial Intelligence','Cryptography Techniques','Java Programming',NULL,NULL,NULL,NULL,NULL),('kt2345','Analysis of converter','Modeling of Electrical Machines','Fuzzy & neural network','Power quality management','Special Electrical Machines',NULL,NULL,NULL,NULL,NULL),('nj4321','B.Sc – Inorganic Chemistry','B.Tech – Chemistry','B.Tech – Principles of Environmental Science','M.Sc – Qualitative analysis','B.Sc – Fuel Chemistry',NULL,NULL,NULL,NULL,NULL),('rs9981','Foundation of Data Science','Computer Networks','Data Structures',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `teacher_course` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `teacher_exp`
+--
+
+DROP TABLE IF EXISTS `teacher_exp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `teacher_exp` (
+  `NET_ID` varchar(45) NOT NULL,
+  `campus` varchar(45) NOT NULL,
+  `member` varchar(100) DEFAULT NULL,
+  `experience` varchar(100) NOT NULL,
+  `research` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `teacher_exp`
+--
+
+LOCK TABLES `teacher_exp` WRITE;
+/*!40000 ALTER TABLE `teacher_exp` DISABLE KEYS */;
+INSERT INTO `teacher_exp` VALUES ('kb7676','Computing Technologies','Assistant Professor','11.2 years','Wireless Network'),('kt2345','Electrical and Electronics Engineering','Assistant Professor','21.8 Years','Power Electronics and Drives: Drives Applications, Fuzzy Logic and Neural Network, DSP, FPGA, Modeling of Electrical Machines, Soft computing'),('nj4321','Chemistry','Assistant Professor','8.3 years','Nanomaterials, Biomass-derived Nano compounds'),('rs9981','Computing Technologies','Assistant Professor','2 years','Wireless Sensor Networks, Machine Learning');
+/*!40000 ALTER TABLE `teacher_exp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `teacher_id`
+--
+
+DROP TABLE IF EXISTS `teacher_id`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `teacher_id` (
+  `NET_ID` varchar(45) NOT NULL,
+  `FACULTY_ID` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `teacher_id`
+--
+
+LOCK TABLES `teacher_id` WRITE;
+/*!40000 ALTER TABLE `teacher_id` DISABLE KEYS */;
+INSERT INTO `teacher_id` VALUES ('kt2345','FA2211003010376'),('kb7676','FA2211003011143'),('rs9981','FA2211003011165'),('nj4321','FA2211003011199');
+/*!40000 ALTER TABLE `teacher_id` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `teacher_qual`
+--
+
+DROP TABLE IF EXISTS `teacher_qual`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `teacher_qual` (
+  `NET_ID` varchar(45) NOT NULL,
+  `qualification1` varchar(200) NOT NULL,
+  `subq1` varchar(200) DEFAULT NULL,
+  `year1` int DEFAULT NULL,
+  `qualification2` varchar(200) DEFAULT NULL,
+  `subq2` varchar(200) DEFAULT NULL,
+  `year2` int DEFAULT NULL,
+  `qualification3` varchar(200) DEFAULT NULL,
+  `subq3` varchar(200) DEFAULT NULL,
+  `year3` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `teacher_qual`
+--
+
+LOCK TABLES `teacher_qual` WRITE;
+/*!40000 ALTER TABLE `teacher_qual` DISABLE KEYS */;
+INSERT INTO `teacher_qual` VALUES ('kb7676','Anna University','Wireless Network',2022,'Pondicherry University','Network and Internet Engineering',2012,'Pondicherry University','Computer Science and Engineering',2010),('kt2345','SRM Institute of Science and Technology','Performance Evaluation of Induction motor using Sliding Mode, Fuzzy and Artificial Neural Network controllers',2020,'Bharath Engg College','	Instrumentation and control Engg',2005,'	Thiagarajar College of Engineering','	Electrical and Electronics Engineering',1999),('nj4321','University of Madras','Inorganic Chemistry',2014,'University of Madras','Inorganic Chemistry',2009,'University of Madras','	Chemistry',2006),('rs9981','SSN College Of Engineering, Anna University','Information and Communication Engineering',2021,'Aarupadai Veedu Institute Of Technology','Computer Science and Engineering',2014,'Anand Institute Of higher Technology','Computer Science and Engineering',2010);
+/*!40000 ALTER TABLE `teacher_qual` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -285,7 +541,7 @@ CREATE TABLE `teacherdb` (
 
 LOCK TABLES `teacherdb` WRITE;
 /*!40000 ALTER TABLE `teacherdb` DISABLE KEYS */;
-INSERT INTO `teacherdb` VALUES ('kt2345','FA2211003010376','Dr. T. Karthick','karthict@srmist.edu.in',94444172,'DSMS','Data Science and Business Systems','Assiciate Professor','Ph.D in ICE','Chennai','kt2345'),('kb7676','FA2211003011143','Dr. Kanisha B','kanishab@srmist.edu.in',76543456,'CSC202J','Computing Technologies','Associate Professor','Ph.D in ICE','Chennai','kb7676'),('rs9981','FA2211003011165','Dr. Ramamoorthy S','ramamoos@srmist.edu.in',98786756,'q','Computing Technologies','Professor','Ph.D in CSE','Chennai','rs9981'),('nj4321','FA2211003011199','Dr. Nithyashri J','nj2358@srmist.edu.in',78967856,'CSC202J','Computing Technologies','Assistant Teacher','Ph D in CSE','Chennai','nj4321');
+INSERT INTO `teacherdb` VALUES ('kt2345','FA2211003010376','Dr. T. Karthick','karthict@srmist.edu.in',94444172,'CSC203J','Data Science and Business Systems','Assiciate Professor','Ph.D in ICE','Chennai','kt2345'),('kb7676','FA2211003011143','Dr. Kanisha B','kanishab@srmist.edu.in',76543456,'CSC202J','Computing Technologies','Associate Professor','Ph.D in ICE','Chennai','kb7676'),('rs9981','FA2211003011165','Dr. Ramamoorthy S','ramamoos@srmist.edu.in',98786756,'CSC204J','CINTEL','Professor','Ph.D in CSE','Chennai','rs9981'),('nj4321','FA2211003011199','Dr. Nithyashri J','nj2358@srmist.edu.in',78967856,'CSC202J','Computing Technologies','Assistant Teacher','Ph D in CSE','Chennai','nj4321');
 /*!40000 ALTER TABLE `teacherdb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -362,6 +618,14 @@ LOCK TABLES `timetable` WRITE;
 INSERT INTO `timetable` VALUES ('ac6729','maths',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('as8819','daa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('kb7676','dbms','daa','maths','daa','AI','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''),('rs9981','daa',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('sk1903','daa','maths',NULL,'app','','maths','','dsa lab','','','','maths','maths','dbms','',NULL,NULL,'','','',NULL,'','daa','maths',NULL,'','','','','','','',NULL,'daa',NULL,NULL,'','app','','','','','os','coa','','','','','','');
 /*!40000 ALTER TABLE `timetable` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'scholarwise_temp'
+--
+
+--
+-- Dumping routines for database 'scholarwise_temp'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -372,4 +636,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-04 22:26:11
+-- Dump completed on 2024-04-16  4:40:03
