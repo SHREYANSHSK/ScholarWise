@@ -51,6 +51,21 @@ LOCK TABLES `attendance` WRITE;
 INSERT INTO `attendance` VALUES ('sk1903',1,'21BTB201T','INTRODUCTION TO COMPUTATIONAL BIOLOGY','Dr. Kanisha B',999999999,1003,16,20,80,2,'O','FA2211003011143','f1'),('sk1903',3,'21CSC202J','OPERATING SYSTEMS','Dr. T. Karthick',999999999,1005,40,50,80,4,'-','FA2211003011376','f1'),('sk1903',3,'21CSC203P','ADVANCED PROGRAMMING PRACTICE','Dr. Nithyashri J',999999999,1005,51,58,87.931,4,'-','FA2211003011199','f1'),('sk1903',3,'21CSS201T','COMPUTER ORGANIZATION AND ARCHITECTURE','Dr. Ramamoorthy S',999999999,1005,46,50,92,4,'-','FA2211003011165','f1'),('sk1903',1,'21CYB101J','CHEMISTRY','Dr. T. Karthick',999999999,1003,58,60,96.6667,5,'O','FA22110030110376','f1'),('sk1903',2,'21LEH101T','COMMUNICATIVE ENGLISH','Dr. T. Karthick',999999999,1003,25,30,83.3333,3,'-','FA22110030110376','f1'),('sk1903',3,'21DCS201P','DESIGN THINKING AND METHODOLOGY','Dr. Nithyashri J',999999999,1005,29,32,90.625,3,'-','FA2211003011199','f1'),('sk1903',1,'21LEH104T','GERMAN','Dr. Ramamoorthy S',999999999,1013,28,34,82.3529,3,'O','FA2211003011165','f1'),('sk1903',2,'21LEM201T','ELECTRICAL AND ELECTRONICS ENGINEERING','Dr. Ramamoorthy S',999999999,1002,38,45,84.4444,4,'B','FA2211003011165','f1'),('sk1903',2,'21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS','Dr. T. Karthick',999999999,1003,41,46,89.1304,4,'A','FA2211003011376','f1'),('sk1903',3,'21MAB201T','TRANSFORMS AND BOUNDARY VALUE PROBLEMS','Dr. Nithyashri J',999999999,1005,42,48,87.5,4,'-','FA2211003011199','f1'),('sk1903',1,'21PDM102L','CALCULUS AND LINEAR ALGEBRA','Dr. Kanisha B',999999999,1002,40,48,83.3333,4,'O','FA2211003011143','f1'),('sk1903',4,'21MAB204T','PROBABILITY AND QUEUEING THEORY','Dr. Nithyashri J',999999999,706,32,36,88.8889,4,'-','FA2211003011199','f1'),('sk1903',4,'21CSC204J','DESIGN AND ANALYSIS OF ALGORITHMS','Dr. T. Karthick',999999999,706,39,44,88.6364,4,'-','FA2211003011376','f1'),('sk1903',4,'21CSE251T','DIGITAL IMAGE PROCESSING','Dr. Kanisha B',999999999,806,24,26,92.3077,3,'-','FA2211003011143','f1'),('sk1903',4,'21CSC205P','DATABASE MANAGEMENT SYSTEMS','Dr. Ramamoorthy S',999999999,706,27,33,81.8182,4,'-','FA2211003011165','f1'),('sk1903',4,'21PDH201T','SOCIAL ENGINEERING','Dr. Nithyashri J',999999999,706,13,16,81.25,2,'-','FA2211003011199','f1'),('sk1903',4,'21CSC206T','ARTIFICIAL INTELLIGENCE','Dr. T. Karthick',999999999,706,22,26,84.6154,3,'-','FA2211003011376','f1'),('sk1903',4,'21LEM202T','UHV-II','Dr. Kanisha B',999999999,706,24,27,88.8889,3,'-','FA2211003011143','f1'),('sk1903',2,'21CSC101T','OBJECT ORIENTED DESIGN AND PROGRAMMING','Dr. Ramamoorthy S',999999999,1003,40,47,85.1064,3,'-','FA2211003011165','f1'),('sk1903',2,'21PYB102J','SEMICONDUCTOR PHYSICS AND COMPUTATIONAL METHODS','Dr. Kanisha B',999999999,1003,50,60,83.3333,5,'-','FA2211003011143','f1'),('as8819',1,'21BTB201T','INTRODUCTION TO COMPUTATIONAL BIOLOGY','Dr. Kanisha B',999999999,1003,16,20,80,2,'O','FA2211003011143','b2'),('as8819',3,'21CSC202J','OPERATING SYSTEMS','Dr. T. Karthick',999999999,1005,40,50,80,4,'-','FA2211003011376','b2'),('as8819',3,'21CSC203P','ADVANCED PROGRAMMING PRACTICE','Dr. Nithyashri J',999999999,1005,51,58,87.931,4,'-','FA2211003011199','b2'),('as8819',3,'21CSS201T','COMPUTER ORGANIZATION AND ARCHITECTURE','Dr. Ramamoorthy S',999999999,1005,46,50,92,4,'-','FA2211003011165','b2'),('as8819',1,'21CYB101J','CHEMISTRY','Dr. T. Karthick',999999999,1003,58,60,96.6667,5,'O','FA22110030110376','b2'),('as8819',2,'21LEH101T','COMMUNICATIVE ENGLISH','Dr. T. Karthick',999999999,1003,25,30,83.3333,3,'-','FA22110030110376','b2'),('as8819',3,'21DCS201P','DESIGN THINKING AND METHODOLOGY','Dr. Nithyashri J',999999999,1005,29,32,90.625,3,'-','FA2211003011199','b2'),('as8819',1,'21LEH104T','GERMAN','Dr. Ramamoorthy S',999999999,1013,28,34,82.3529,3,'O','FA2211003011165','b2'),('as8819',2,'21LEM201T','ELECTRICAL AND ELECTRONICS ENGINEERING','Dr. Ramamoorthy S',999999999,1002,38,45,84.4444,4,'B','FA2211003011165','b2'),('as8819',2,'21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS','Dr. T. Karthick',999999999,1003,41,46,89.1304,4,'A','FA2211003011376','b2'),('as8819',3,'21MAB201T','TRANSFORMS AND BOUNDARY VALUE PROBLEMS','Dr. Nithyashri J',999999999,1005,42,48,87.5,4,'-','FA2211003011199','b2'),('as8819',1,'21PDM102L','CALCULUS AND LINEAR ALGEBRA','Dr. Kanisha B',999999999,1002,40,48,83.3333,4,'O','FA2211003011143','b2'),('as8819',4,'21MAB204T','PROBABILITY AND QUEUEING THEORY','Dr. Nithyashri J',999999999,706,32,36,88.8889,4,'-','FA2211003011199','b2'),('as8819',4,'21CSC204J','DESIGN AND ANALYSIS OF ALGORITHMS','Dr. T. Karthick',999999999,706,39,44,88.6364,4,'-','FA2211003011376','b2'),('as8819',4,'21CSE251T','DIGITAL IMAGE PROCESSING','Dr. Kanisha B',999999999,806,24,26,92.3077,3,'-','FA2211003011143','b2'),('as8819',4,'21CSC205P','DATABASE MANAGEMENT SYSTEMS','Dr. Ramamoorthy S',999999999,706,27,33,81.8182,4,'-','FA2211003011165','b2'),('as8819',4,'21PDH201T','SOCIAL ENGINEERING','Dr. Nithyashri J',999999999,706,13,16,81.25,2,'-','FA2211003011199','b2'),('as8819',4,'21CSC206T','ARTIFICIAL INTELLIGENCE','Dr. T. Karthick',999999999,706,22,26,84.6154,3,'-','FA2211003011376','b2'),('as8819',4,'21LEM202T','UHV-II','Dr. Kanisha B',999999999,706,24,27,88.8889,3,'-','FA2211003011143','b2'),('as8819',2,'21CSC101T','OBJECT ORIENTED DESIGN AND PROGRAMMING','Dr. Ramamoorthy S',999999999,1003,40,47,85.1064,3,'-','FA2211003011165','b2'),('as8819',2,'21PYB102J','SEMICONDUCTOR PHYSICS AND COMPUTATIONAL METHODS','Dr. Kanisha B',999999999,1003,50,60,83.3333,5,'-','FA2211003011143','b2'),('ac6729',1,'21BTB201T','INTRODUCTION TO COMPUTATIONAL BIOLOGY','Dr. Kanisha B',999999999,1003,18,20,90,2,'O','FA2211003011143','f1'),('ac6729',3,'21CSC202J','OPERATING SYSTEMS','Dr. T. Karthick',999999999,1005,43,50,86,4,'-','FA2211003011376','f1'),('ac6729',3,'21CSC203P','ADVANCED PROGRAMMING PRACTICE','Dr. Nithyashri J',999999999,1005,56,58,96.5517,4,'-','FA2211003011199','f1'),('ac6729',3,'21CSS201T','COMPUTER ORGANIZATION AND ARCHITECTURE','Dr. Ramamoorthy S',999999999,1005,40,50,80,4,'-','FA2211003011165','f1'),('ac6729',1,'21CYB101J','CHEMISTRY','Dr. T. Karthick',999999999,1003,55,60,91.6667,5,'O','FA22110030110376','f1'),('ac6729',2,'21LEH101T','COMMUNICATIVE ENGLISH','Dr. T. Karthick',999999999,1003,26,30,86.6667,3,'-','FA22110030110376','f1'),('ac6729',3,'21DCS201P','DESIGN THINKING AND METHODOLOGY','Dr. Nithyashri J',999999999,1005,27,32,84.375,3,'-','FA2211003011199','f1'),('ac6729',1,'21LEH104T','GERMAN','Dr. Ramamoorthy S',999999999,1013,29,34,85.2941,3,'O','FA2211003011165','f1'),('ac6729',2,'21LEM201T','ELECTRICAL AND ELECTRONICS ENGINEERING','Dr. Ramamoorthy S',999999999,1002,36,45,80,4,'B','FA2211003011165','f1'),('ac6729',2,'21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS','Dr. T. Karthick',999999999,1003,42,46,91.3043,4,'A','FA2211003011376','f1'),('ac6729',3,'21MAB201T','TRANSFORMS AND BOUNDARY VALUE PROBLEMS','Dr. Nithyashri J',999999999,1005,40,48,83.3333,4,'-','FA2211003011199','f1'),('ac6729',1,'21PDM102L','CALCULUS AND LINEAR ALGEBRA','Dr. Kanisha B',999999999,1002,43,48,89.5833,4,'O','FA2211003011143','f1'),('ac6729',4,'21MAB204T','PROBABILITY AND QUEUEING THEORY','Dr. Nithyashri J',999999999,706,33,36,91.6667,4,'-','FA2211003011199','f1'),('ac6729',4,'21CSC204J','DESIGN AND ANALYSIS OF ALGORITHMS','Dr. T. Karthick',999999999,706,40,44,90.9091,4,'-','FA2211003011376','f1'),('ac6729',4,'21CSE251T','DIGITAL IMAGE PROCESSING','Dr. Kanisha B',999999999,806,23,26,88.4615,3,'-','FA2211003011143','f1'),('ac6729',4,'21CSC205P','DATABASE MANAGEMENT SYSTEMS','Dr. Ramamoorthy S',999999999,706,29,33,87.8788,4,'-','FA2211003011165','f1'),('ac6729',4,'21PDH201T','SOCIAL ENGINEERING','Dr. Nithyashri J',999999999,706,14,16,87.5,2,'-','FA2211003011199','f1'),('ac6729',4,'21CSC206T','ARTIFICIAL INTELLIGENCE','Dr. T. Karthick',999999999,706,21,26,80.7692,3,'-','FA2211003011376','f1'),('ac6729',4,'21LEM202T','UHV-II','Dr. Kanisha B',999999999,706,23,27,85.1852,3,'-','FA2211003011143','f1'),('ac6729',2,'21CSC101T','OBJECT ORIENTED DESIGN AND PROGRAMMING','Dr. Ramamoorthy S',999999999,1003,43,47,91.4894,3,'-','FA2211003011165','f1'),('ac6729',2,'21PYB102J','SEMICONDUCTOR PHYSICS AND COMPUTATIONAL METHODS','Dr. Kanisha B',999999999,1003,51,60,85,5,'-','FA2211003011143','f1'),('yn1028',1,'21BTB201T','INTRODUCTION TO COMPUTATIONAL BIOLOGY','Dr. Kanisha B',999999999,1003,15,20,75,2,'O','FA2211003011143','f1'),('yn1028',3,'21CSC202J','OPERATING SYSTEMS','Dr. T. Karthick',999999999,1005,44,50,88,4,'-','FA2211003011376','f1'),('yn1028',3,'21CSC203P','ADVANCED PROGRAMMING PRACTICE','Dr. Nithyashri J',999999999,1005,55,58,94.8276,4,'-','FA2211003011199','f1'),('yn1028',3,'21CSS201T','COMPUTER ORGANIZATION AND ARCHITECTURE','Dr. Ramamoorthy S',999999999,1005,42,50,84,4,'-','FA2211003011165','f1'),('yn1028',1,'21CYB101J','CHEMISTRY','Dr. T. Karthick',999999999,1003,54,60,90,5,'O','FA22110030110376','f1'),('yn1028',2,'21LEH101T','COMMUNICATIVE ENGLISH','Dr. T. Karthick',999999999,1003,24,30,80,3,'-','FA22110030110376','f1'),('yn1028',3,'21DCS201P','DESIGN THINKING AND METHODOLOGY','Dr. Nithyashri J',999999999,1005,28,32,87.5,3,'-','FA2211003011199','f1'),('yn1028',1,'21LEH104T','GERMAN','Dr. Ramamoorthy S',999999999,1013,30,34,88.2353,3,'O','FA2211003011165','f1'),('yn1028',2,'21LEM201T','ELECTRICAL AND ELECTRONICS ENGINEERING','Dr. Ramamoorthy S',999999999,1002,34,45,75.5556,4,'B','FA2211003011165','f1'),('yn1028',2,'21MAB102T','ADVANCED CALCULUS AND COMPLEX ANALYSIS','Dr. T. Karthick',999999999,1003,40,46,86.9565,4,'A','FA2211003011376','f1'),('yn1028',3,'21MAB201T','TRANSFORMS AND BOUNDARY VALUE PROBLEMS','Dr. Nithyashri J',999999999,1005,38,48,79.1667,4,'-','FA2211003011199','f1'),('yn1028',1,'21PDM102L','CALCULUS AND LINEAR ALGEBRA','Dr. Kanisha B',999999999,1002,42,48,87.5,4,'O','FA2211003011143','f1'),('yn1028',4,'21MAB204T','PROBABILITY AND QUEUEING THEORY','Dr. Nithyashri J',999999999,706,31,36,86.1111,4,'-','FA2211003011199','f1'),('yn1028',4,'21CSC204J','DESIGN AND ANALYSIS OF ALGORITHMS','Dr. T. Karthick',999999999,706,39,44,88.6364,4,'-','FA2211003011376','f1'),('yn1028',4,'21CSE251T','DIGITAL IMAGE PROCESSING','Dr. Kanisha B',999999999,806,24,26,92.3077,3,'-','FA2211003011143','f1'),('yn1028',4,'21CSC205P','DATABASE MANAGEMENT SYSTEMS','Dr. Ramamoorthy S',999999999,706,28,33,84.8485,4,'-','FA2211003011165','f1'),('yn1028',4,'21PDH201T','SOCIAL ENGINEERING','Dr. Nithyashri J',999999999,706,15,16,93.75,2,'-','FA2211003011199','f1'),('yn1028',4,'21CSC206T','ARTIFICIAL INTELLIGENCE','Dr. T. Karthick',999999999,706,22,26,84.6154,3,'-','FA2211003011376','f1'),('yn1028',4,'21LEM202T','UHV-II','Dr. Kanisha B',999999999,706,24,27,88.8889,3,'-','FA2211003011143','f1'),('yn1028',2,'21CSC101T','OBJECT ORIENTED DESIGN AND PROGRAMMING','Dr. Ramamoorthy S',999999999,1003,42,47,89.3617,3,'-','FA2211003011165','f1'),('yn1028',2,'21PYB102J','SEMICONDUCTOR PHYSICS AND COMPUTATIONAL METHODS','Dr. Kanisha B',999999999,1003,55,60,91.6667,5,'-','FA2211003011143','f1');
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `calculate_attendance_percentage` BEFORE UPDATE ON `attendance` FOR EACH ROW BEGIN   IF NEW.Class_attended IS NOT NULL AND NEW.Class_conducted IS NOT NULL THEN     SET NEW.Attendance = (NEW.Class_attended / NEW.Class_conducted) * 100;   END IF; END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `course`
@@ -91,7 +106,8 @@ DROP TABLE IF EXISTS `dept`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dept` (
   `dept_ID` varchar(45) NOT NULL,
-  `department` varchar(45) DEFAULT NULL
+  `department` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`dept_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -101,33 +117,34 @@ CREATE TABLE `dept` (
 
 LOCK TABLES `dept` WRITE;
 /*!40000 ALTER TABLE `dept` DISABLE KEYS */;
-INSERT INTO `dept` VALUES ('CSC203J','Data Science and Business Systems'),('CSC202J','Computing Technologies'),('CSC204J','CINTEL'),('CSC202J','Computing Technologies');
+INSERT INTO `dept` VALUES ('CSC202J','Computing Technologies'),('CSC203J','Data Science and Business Systems'),('CSC204J','CINTEL'),('CSC205J','BIOTECH');
 /*!40000 ALTER TABLE `dept` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `faculty_info`
+-- Table structure for table `facultyad_info`
 --
 
-DROP TABLE IF EXISTS `faculty_info`;
+DROP TABLE IF EXISTS `facultyad_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `faculty_info` (
+CREATE TABLE `facultyad_info` (
   `reg_id` varchar(45) NOT NULL,
   `faculty_advisor` varchar(45) DEFAULT NULL,
   `fa_phno` int DEFAULT NULL,
-  `FA_EMAIL` varchar(45) DEFAULT NULL
+  `FA_EMAIL` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`reg_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `faculty_info`
+-- Dumping data for table `facultyad_info`
 --
 
-LOCK TABLES `faculty_info` WRITE;
-/*!40000 ALTER TABLE `faculty_info` DISABLE KEYS */;
-INSERT INTO `faculty_info` VALUES ('RA2211003010374','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in'),('RA2211003010382','Dr Sathyapriya l',983279239,'yn1028@srmist.edu.in'),('RA2211003010387','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in'),('RA2211003011185','DR. NITHYASHRI J',999999999,'nj2234@srmist.edu.in'),('RA2211033010112','DR. ar arunirani',984023182,'arunaraa@srmist.edu.in');
-/*!40000 ALTER TABLE `faculty_info` ENABLE KEYS */;
+LOCK TABLES `facultyad_info` WRITE;
+/*!40000 ALTER TABLE `facultyad_info` DISABLE KEYS */;
+INSERT INTO `facultyad_info` VALUES ('RA2211003010374','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in'),('RA2211003010382','Dr Sathyapriya l',983279239,'yn1028@srmist.edu.in'),('RA2211003010387','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in'),('RA2211003011185','DR. NITHYASHRI J',999999999,'nj2234@srmist.edu.in'),('RA2211033010112','DR. ar arunirani',984023182,'arunaraa@srmist.edu.in');
+/*!40000 ALTER TABLE `facultyad_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -138,9 +155,11 @@ DROP TABLE IF EXISTS `information`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `information` (
-  `SUBJECT_NAME` varchar(45) NOT NULL,
-  `SUBJECT_CODE` varchar(45) NOT NULL,
-  PRIMARY KEY (`SUBJECT_CODE`)
+  `subject_code` varchar(45) NOT NULL,
+  `subject_name` varchar(45) NOT NULL,
+  `dates` date DEFAULT NULL,
+  `notifications` varchar(70) DEFAULT NULL,
+  PRIMARY KEY (`subject_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -150,7 +169,7 @@ CREATE TABLE `information` (
 
 LOCK TABLES `information` WRITE;
 /*!40000 ALTER TABLE `information` DISABLE KEYS */;
-INSERT INTO `information` VALUES ('DAA','21CSC204J'),('DBMS','21CSC205P'),('MATHS','21MAB204T');
+INSERT INTO `information` VALUES ('21CSC204J','DAA','2024-03-12','NPTEL course needs to be updated in GCR'),('21CSC205P','DBMS','2024-02-27','DBMS CLA 2 Exam'),('21MAB204T','MATHS','2024-03-17','MATHS CT2');
 /*!40000 ALTER TABLE `information` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,13 +234,13 @@ INSERT INTO `marks` VALUES ('sk1903','21BTB102T','INTRODUCTION TO COMPUTATIONAL 
 UNLOCK TABLES;
 
 --
--- Table structure for table `notify`
+-- Table structure for table `notification`
 --
 
-DROP TABLE IF EXISTS `notify`;
+DROP TABLE IF EXISTS `notification`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `notify` (
+CREATE TABLE `notification` (
   `NOTIFICATIONS` varchar(70) DEFAULT NULL,
   `DATES` date DEFAULT NULL,
   `SUBJECT_CODE` varchar(45) NOT NULL,
@@ -230,13 +249,13 @@ CREATE TABLE `notify` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `notify`
+-- Dumping data for table `notification`
 --
 
-LOCK TABLES `notify` WRITE;
-/*!40000 ALTER TABLE `notify` DISABLE KEYS */;
-INSERT INTO `notify` VALUES ('NPTEL course needs to be updated in GCR','2024-03-12','21CSC204J'),('DBMS CLA 2 Exam','2024-02-27','21CSC205P'),('MATHS CT2','2024-03-17','21MAB204T');
-/*!40000 ALTER TABLE `notify` ENABLE KEYS */;
+LOCK TABLES `notification` WRITE;
+/*!40000 ALTER TABLE `notification` DISABLE KEYS */;
+INSERT INTO `notification` VALUES ('NPTEL course needs to be updated in GCR','2024-03-12','21CSC204J'),('DBMS CLA 2 Exam','2024-02-27','21CSC205P'),('MATHS CT2','2024-03-17','21MAB204T');
+/*!40000 ALTER TABLE `notification` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -250,8 +269,9 @@ CREATE TABLE `student_contact` (
   `reg_id` varchar(45) NOT NULL,
   `city` varchar(10) DEFAULT NULL,
   `state` varchar(10) DEFAULT NULL,
-  `phno` int DEFAULT NULL,
-  `personal_mail_id` varchar(45) DEFAULT NULL
+  `phno` int NOT NULL,
+  `personal_mail_id` varchar(45) NOT NULL,
+  PRIMARY KEY (`reg_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -275,7 +295,8 @@ DROP TABLE IF EXISTS `student_credentials`;
 CREATE TABLE `student_credentials` (
   `reg_id` varchar(45) NOT NULL,
   `net_id` varchar(20) NOT NULL,
-  `password` varchar(45) NOT NULL
+  `password` varchar(45) NOT NULL,
+  PRIMARY KEY (`reg_id`,`net_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -314,7 +335,7 @@ CREATE TABLE `studentdb` (
   `Net_id` varchar(20) NOT NULL,
   `Desingnation` varchar(45) DEFAULT NULL,
   `password` varchar(45) NOT NULL,
-  PRIMARY KEY (`REG_ID`),
+  PRIMARY KEY (`REG_ID`,`Net_id`),
   UNIQUE KEY `Net_id_UNIQUE` (`Net_id`),
   UNIQUE KEY `REG_ID_UNIQUE` (`REG_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -326,7 +347,7 @@ CREATE TABLE `studentdb` (
 
 LOCK TABLES `studentdb` WRITE;
 /*!40000 ALTER TABLE `studentdb` DISABLE KEYS */;
-INSERT INTO `studentdb` VALUES ('Aryavart Chandel','RA2211003010374','CTECH','CSE CORE',4,'F1','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in','2003-11-09','LUCKNOW','UP',780060055,'aryavartchandel2@gmail.com','ac6729','student','ac6729'),('Yashwanth NV','RA2211003010382','CTECH','CSE CORE',4,'F1','Dr Sathyapriya l',983279239,'yn1028@srmist.edu.in','2004-11-15','BANGALORE','KARNATAKA',978919400,'yashwanthvn04@gmail.com','yn1028','student','yn1028'),('Shreyansh khandelwal','RA2211003010387','ctech','CSE CORE',4,'F1','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in','2004-06-09','jaipur','rajasthan',982953035,'khandelwal.happy.hk@gmail.com','sk1903','student','sk1903'),('Abhishek Soni','RA2211003011185','CTECH','CSE',4,'B2','DR. NITHYASHRI J',999999999,'nj2234@srmist.edu.in','2017-06-04','JAIPUR','RAJASTHAN',894983467,'abhisoni1764@gmail.com','as8819','Student','as8819'),('shantanu gahtori','RA2211033010112','cintel','cse swe',4,'aa-2','DR. ar arunirani',984023182,'arunaraa@srmist.edu.in','2003-09-09','chandigarh','chandigarh',964648254,'shantanugahtori4@gmail.com','sg2982','student','sg2982');
+INSERT INTO `studentdb` VALUES ('Aryavart Chandel','RA2211003010374','CTECH','CSE CORE',4,'F1','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in','2003-11-09','LUCKNOW','UP',780060055,'aryavartchandel2@gmail.com','ac6729','student','ac6729'),('Yashwanth NV','RA2211003010382','CTECH','CSE CORE',4,'F1','Dr Sathyapriya l',983279239,'yn1028@srmist.edu.in','2004-11-15','BANGALORE','KARNATAKA',978919400,'yashwanthvn04@gmail.com','yn1028','student','yn1028'),('Shreyansh khandelwal','RA2211003010387','ctech','CSE CORE',4,'F1','Dr Sathyapriya l',983279239,'sl1203@srmist.edu.in','2004-06-09','jaipur','rajasthan',982953035,'khandelwal.happy.hk@gmail.com','sk1903','student','sk1903'),('Abhishek Soni','RA2211003011185','CTECH','CSE CORE',4,'B2','DR. NITHYASHRI J',999999999,'nj2234@srmist.edu.in','2017-06-04','JAIPUR','RAJASTHAN',894983467,'abhisoni1764@gmail.com','as8819','Student','as8819');
 /*!40000 ALTER TABLE `studentdb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,7 +360,8 @@ DROP TABLE IF EXISTS `teacher`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `teacher` (
   `NET_ID` varchar(45) NOT NULL,
-  `NAME` varchar(45) NOT NULL
+  `NAME` varchar(45) NOT NULL,
+  PRIMARY KEY (`NET_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -371,7 +393,8 @@ CREATE TABLE `teacher_course` (
   `course7` varchar(200) DEFAULT NULL,
   `course8` varchar(200) DEFAULT NULL,
   `course9` varchar(200) DEFAULT NULL,
-  `course10` varchar(200) DEFAULT NULL
+  `course10` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`NET_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -386,6 +409,38 @@ INSERT INTO `teacher_course` VALUES ('kb7676','Computer Networks','Soft Computin
 UNLOCK TABLES;
 
 --
+-- Table structure for table `teacher_data`
+--
+
+DROP TABLE IF EXISTS `teacher_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `teacher_data` (
+  `net_id` varchar(45) NOT NULL,
+  `faculty_id` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `email_id` varchar(45) DEFAULT NULL,
+  `dept_id` varchar(45) NOT NULL,
+  `ph_no` int DEFAULT NULL,
+  `designation` varchar(45) DEFAULT NULL,
+  `qualification` varchar(45) NOT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `password` varchar(45) NOT NULL,
+  PRIMARY KEY (`net_id`,`dept_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `teacher_data`
+--
+
+LOCK TABLES `teacher_data` WRITE;
+/*!40000 ALTER TABLE `teacher_data` DISABLE KEYS */;
+INSERT INTO `teacher_data` VALUES ('kb7676','FA2211003011143','Dr. Kanisha B','kanishab@srmist.edu.in','CSC205J',76543456,'Associate Professor','Ph.D in ICE','Chennai','kb7676'),('kt2345','FA2211003010376','Dr. T. Karthick','karthict@srmist.edu.in','CSC203J',94444172,'Assiciate Professor','Ph.D in ICE','Chennai','kt2345'),('nj4321','FA2211003011199','Dr. Nithyashri J','nj2358@srmist.edu.in','CSC202J',78967856,'Assistant Teacher','Ph D in CSE','Chennai','nj4321'),('rs9981','FA2211003011165','Dr. Ramamoorthy S','ramamoos@srmist.edu.in','CSC204J',98786756,'Professor','Ph.D in CSE','Chennai','rs9981');
+/*!40000 ALTER TABLE `teacher_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `teacher_exp`
 --
 
@@ -397,7 +452,8 @@ CREATE TABLE `teacher_exp` (
   `campus` varchar(45) NOT NULL,
   `member` varchar(100) DEFAULT NULL,
   `experience` varchar(100) NOT NULL,
-  `research` varchar(200) DEFAULT NULL
+  `research` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`NET_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -409,29 +465,6 @@ LOCK TABLES `teacher_exp` WRITE;
 /*!40000 ALTER TABLE `teacher_exp` DISABLE KEYS */;
 INSERT INTO `teacher_exp` VALUES ('kb7676','Computing Technologies','Assistant Professor','11.2 years','Wireless Network'),('kt2345','Electrical and Electronics Engineering','Assistant Professor','21.8 Years','Power Electronics and Drives: Drives Applications, Fuzzy Logic and Neural Network, DSP, FPGA, Modeling of Electrical Machines, Soft computing'),('nj4321','Chemistry','Assistant Professor','8.3 years','Nanomaterials, Biomass-derived Nano compounds'),('rs9981','Computing Technologies','Assistant Professor','2 years','Wireless Sensor Networks, Machine Learning');
 /*!40000 ALTER TABLE `teacher_exp` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `teacher_id`
---
-
-DROP TABLE IF EXISTS `teacher_id`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `teacher_id` (
-  `NET_ID` varchar(45) NOT NULL,
-  `FACULTY_ID` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `teacher_id`
---
-
-LOCK TABLES `teacher_id` WRITE;
-/*!40000 ALTER TABLE `teacher_id` DISABLE KEYS */;
-INSERT INTO `teacher_id` VALUES ('kt2345','FA2211003010376'),('kb7676','FA2211003011143'),('rs9981','FA2211003011165'),('nj4321','FA2211003011199');
-/*!40000 ALTER TABLE `teacher_id` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -451,7 +484,8 @@ CREATE TABLE `teacher_qual` (
   `year2` int DEFAULT NULL,
   `qualification3` varchar(200) DEFAULT NULL,
   `subq3` varchar(200) DEFAULT NULL,
-  `year3` int DEFAULT NULL
+  `year3` int DEFAULT NULL,
+  PRIMARY KEY (`NET_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -531,7 +565,7 @@ CREATE TABLE `teacherdb` (
   `QUALIFICATION` varchar(45) NOT NULL,
   `CITY` varchar(45) DEFAULT NULL,
   `PASSWORD` varchar(45) NOT NULL,
-  PRIMARY KEY (`FACULTY_ID`)
+  PRIMARY KEY (`FACULTY_ID`,`DEPT_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -541,7 +575,7 @@ CREATE TABLE `teacherdb` (
 
 LOCK TABLES `teacherdb` WRITE;
 /*!40000 ALTER TABLE `teacherdb` DISABLE KEYS */;
-INSERT INTO `teacherdb` VALUES ('kt2345','FA2211003010376','Dr. T. Karthick','karthict@srmist.edu.in',94444172,'CSC203J','Data Science and Business Systems','Assiciate Professor','Ph.D in ICE','Chennai','kt2345'),('kb7676','FA2211003011143','Dr. Kanisha B','kanishab@srmist.edu.in',76543456,'CSC202J','Computing Technologies','Associate Professor','Ph.D in ICE','Chennai','kb7676'),('rs9981','FA2211003011165','Dr. Ramamoorthy S','ramamoos@srmist.edu.in',98786756,'CSC204J','CINTEL','Professor','Ph.D in CSE','Chennai','rs9981'),('nj4321','FA2211003011199','Dr. Nithyashri J','nj2358@srmist.edu.in',78967856,'CSC202J','Computing Technologies','Assistant Teacher','Ph D in CSE','Chennai','nj4321');
+INSERT INTO `teacherdb` VALUES ('kt2345','FA2211003010376','Dr. T. Karthick','karthict@srmist.edu.in',94444172,'CSC203J','Data Science and Business Systems','Assiciate Professor','Ph.D in ICE','Chennai','kt2345'),('kb7676','FA2211003011143','Dr. Kanisha B','kanishab@srmist.edu.in',76543456,'CSC205J','BIOTECH','Associate Professor','Ph.D in ICE','Chennai','kb7676'),('rs9981','FA2211003011165','Dr. Ramamoorthy S','ramamoos@srmist.edu.in',98786756,'CSC204J','CINTEL','Professor','Ph.D in CSE','Chennai','rs9981'),('nj4321','FA2211003011199','Dr. Nithyashri J','nj2358@srmist.edu.in',78967856,'CSC202J','Computing Technologies','Assistant Teacher','Ph D in CSE','Chennai','nj4321');
 /*!40000 ALTER TABLE `teacherdb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -620,6 +654,30 @@ INSERT INTO `timetable` VALUES ('ac6729','maths',NULL,NULL,NULL,NULL,NULL,NULL,N
 UNLOCK TABLES;
 
 --
+-- Table structure for table `update_info`
+--
+
+DROP TABLE IF EXISTS `update_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `update_info` (
+  `subject_code` varchar(45) NOT NULL,
+  `subject_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`subject_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `update_info`
+--
+
+LOCK TABLES `update_info` WRITE;
+/*!40000 ALTER TABLE `update_info` DISABLE KEYS */;
+INSERT INTO `update_info` VALUES ('21CSC204J','DAA'),('21CSC205P','DBMS'),('21MAB204T','MATHS');
+/*!40000 ALTER TABLE `update_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping events for database 'scholarwise_temp'
 --
 
@@ -636,4 +694,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-16  4:40:03
+-- Dump completed on 2024-04-17  2:47:39
