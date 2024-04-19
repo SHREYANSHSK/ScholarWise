@@ -3,6 +3,7 @@ package com.scholarwise.scholarwise;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -37,6 +38,44 @@ public class TeacherView {
 	private MenuButton Marks_subject_drop1;
 	@FXML
 	private MenuButton Marks_section_drop1;
+	@FXML
+	private MenuButton Marks_semester_drop;
+
+	@FXML
+	private MenuButton Marks_regid_drop;
+
+	@FXML
+	private MenuButton Marks_section_drop;
+
+	@FXML
+	private MenuButton Marks_subject_drop;
+
+	@FXML
+	private Label std_cgpa;
+
+	@FXML
+	private Button std_contact;
+
+	@FXML
+	private Button std_email_id;
+
+	@FXML
+	private Label std_fa_name;
+
+	@FXML
+	private Label std_fa_ph;
+
+	@FXML
+	private Label std_name;
+
+	@FXML
+	private Label std_netid;
+
+	@FXML
+	private Label std_regid;
+
+	@FXML
+	private Label std_section;
 
 	@FXML
 	private Label d1h1;
@@ -201,6 +240,11 @@ public class TeacherView {
 	private String selectedSubject;
 	private String selectedSection;
 
+	private String selectedSubject1;
+	private String selectedRegId;
+	private String selectedSection1;
+	private String selectedSemester;
+
 	@FXML
 	private Label faculty_id ;
 
@@ -300,6 +344,35 @@ public class TeacherView {
 
 	@FXML
 	private Label year3;
+
+	@FXML
+	private TextField ct_1_i;
+
+	@FXML
+	private TextField ct_1_p;
+
+	@FXML
+	private TextField ct_1_t;
+
+	@FXML
+	private TextField ct_2_i;
+
+	@FXML
+	private TextField ct_2_p;
+
+	@FXML
+	private TextField ct_2_t;
+
+	@FXML
+	private TextField ct_3_i;
+
+	@FXML
+	private TextField ct_3_p;
+
+	@FXML
+	private TextField ct_3_t;
+
+
 	@FXML
 	private ListView<String> attendanceNameList;
 
@@ -659,12 +732,24 @@ public class TeacherView {
 					// Update class_conducted for all students
 					updateAttendanceStatus(regNo,NAME,selectedSection,selectedSubject, "Class_Conducted");
 				}
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setTitle("Attendance Updated");
+				alert.setHeaderText(null);
+				alert.setContentText("Attendance has been updated successfully!");
+				alert.showAndWait();
+
 			} catch (SQLException e) {
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setTitle("ERROR!!");
+				alert.setHeaderText(null);
+				alert.setContentText("error in updating attendance");
+				alert.showAndWait();
+
 				e.printStackTrace();
 			}
 		}
 
-		private void updateAttendanceStatus(String regNo,String Faculty_name,String section,String Subject_Name, String statusColumn) throws SQLException {
+	private void updateAttendanceStatus(String regNo,String Faculty_name,String section,String Subject_Name, String statusColumn) throws SQLException {
 
 			String query = "UPDATE attendance AS a JOIN studentdb AS s ON a.Net_id = s.Net_id SET a." + statusColumn + " = a." + statusColumn + " + 1 WHERE a.Faculty_name = ? AND a.section = ? AND a.Subject_Name = ? AND s.REG_ID = ?";
 
@@ -677,11 +762,7 @@ public class TeacherView {
 			pst.setString(4, regNo);
 			pst.executeUpdate();
 
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			alert.setTitle("Attendance Updated");
-			alert.setHeaderText(null);
-			alert.setContentText("Attendance has been updated successfully!");
-			alert.showAndWait();
+
 
 
 
@@ -697,7 +778,156 @@ public class TeacherView {
 		MARKS_PAGE.setVisible(true);
 		TIME_TABLE_PAGE.setVisible(false);
 		ATTENDANCE_PAGE.setVisible(false);
+
+		Marks_subject_drop.getItems().clear();
+		Marks_section_drop.getItems().clear();
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			con2 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+
+			pst2 = con2.prepareStatement("SELECT DISTINCT Semester FROM marks WHERE Faculty=? ORDER BY Semester");
+			pst2.setString(1, NAME);
+			rs2 = pst2.executeQuery();
+
+			while (rs2.next()) {
+				String semesterName = rs2.getString("Semester");
+				MenuItem semesterMenuItem = new MenuItem(semesterName);
+				semesterMenuItem.setOnAction(e -> {
+					Marks_section_drop.setText("Section");
+					Marks_subject_drop.setText("Subject");
+					Marks_regid_drop.setText("Registration Number");
+					Marks_semester_drop.setText(semesterMenuItem.getText());
+					selectedSemester = semesterMenuItem.getText();
+					fetchSections();
+				});
+				Marks_semester_drop.getItems().add(semesterMenuItem);
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
+
+	private void fetchSections() {
+		try {
+			pst2 = con2.prepareStatement("SELECT DISTINCT section FROM marks WHERE Faculty=? AND Semester=?");
+			pst2.setString(1, NAME);
+			pst2.setString(2, selectedSemester);
+			rs2 = pst2.executeQuery();
+
+			Marks_section_drop.getItems().clear();
+			while (rs2.next()) {
+				String sectionName = rs2.getString("section");
+				MenuItem sectionMenuItem = new MenuItem(sectionName);
+				sectionMenuItem.setOnAction(e -> {
+					Marks_subject_drop.setText("Subject");
+					Marks_regid_drop.setText("Registration Number");
+					Marks_section_drop.setText(sectionMenuItem.getText());
+					selectedSection1 = sectionMenuItem.getText();
+					fetchSubjects();
+				});
+				Marks_section_drop.getItems().add(sectionMenuItem);
+			}
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	private void fetchSubjects() {
+		try {
+			pst = con.prepareStatement("SELECT DISTINCT Subject_Name FROM marks WHERE Faculty=? AND Semester=? AND section=?");
+			pst.setString(1, NAME);
+			pst.setString(2, selectedSemester);
+			pst.setString(3, selectedSection1);
+			rs = pst.executeQuery();
+
+			Marks_subject_drop.getItems().clear();
+			while (rs.next()) {
+				String subjectName = rs.getString("Subject_Name");
+				MenuItem subjectMenuItem = new MenuItem(subjectName);
+				subjectMenuItem.setOnAction(e -> {
+					Marks_regid_drop.setText("Registration Number");
+					Marks_subject_drop.setText(subjectMenuItem.getText());
+					selectedSubject1 = subjectMenuItem.getText();
+					fetchRegIds();
+				});
+				Marks_subject_drop.getItems().add(subjectMenuItem);
+			}
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	private void fetchRegIds() {
+		try {
+			pst = con.prepareStatement("SELECT DISTINCT studentdb.Reg_id FROM studentdb, marks WHERE marks.Net_id = studentdb.Net_id AND marks.semester=? AND marks.Faculty=? AND marks.section=? AND marks.Subject_Name = ?");
+			pst.setString(1, selectedSemester);
+			pst.setString(2, NAME);
+			pst.setString(3, selectedSection1);
+			pst.setString(4, selectedSubject1);
+			rs = pst.executeQuery();
+
+			Marks_regid_drop.getItems().clear();
+			while (rs.next()) {
+				String regId = rs.getString("Reg_id");
+				MenuItem regIdMenuItem = new MenuItem(regId);
+				regIdMenuItem.setOnAction(e -> {
+					Marks_regid_drop.setText(regIdMenuItem.getText());
+					selectedRegId = regIdMenuItem.getText();
+					if (!selectedSemester.isBlank() && selectedSection1 != null && selectedSubject1 != null && !selectedRegId.isBlank()) {
+						try {
+							marksSectionDataRetrieval();
+						} catch (SQLException ex) {
+							throw new RuntimeException(ex);
+						}
+					}
+				});
+				Marks_regid_drop.getItems().add(regIdMenuItem);
+			}
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+
+
+
+
+
+void marksSectionDataRetrieval() throws SQLException {
+String name,reg_id,section,faculty_advisor,fa_phno,net_id;
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+		pst = con.prepareStatement("SELECT * FROM studentdb where REG_ID=?");
+
+		pst.setString(1, selectedRegId);
+
+
+		rs = pst.executeQuery();
+
+		if (rs.next()) {
+			std_name.setText(rs.getString("NAME"));
+			std_regid.setText(rs.getString("REG_ID"));
+			std_section.setText(rs.getString("SECTION"));
+			std_fa_name.setText(rs.getString("FACULTY_ADVISOR"));
+			std_fa_ph.setText(rs.getString("FA_PHNO"));
+			std_netid.setText(rs.getString("Net_id"));
+
+		}
+	} catch (ClassNotFoundException | SQLException e) {
+		e.printStackTrace();
+	}
+}
+
+
+
+
 
 	@FXML
 	private void TeacherView_PROFILEVIEW(ActionEvent event) {
