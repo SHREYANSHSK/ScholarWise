@@ -1125,6 +1125,7 @@ public  class StudentView extends TeacherView {
 		 List<String> Course_Name_data = new ArrayList<>();
 		 List<String> Course_Code_data = new ArrayList<>();
 		 List<String> Faculty_data = new ArrayList<>();
+		 List<String> Faculty_PhNo_data = new ArrayList<>();
 		 List<String> CT_1_THEORY_data = new ArrayList<>();
 		 List<String> CT_1_P_data = new ArrayList<>();
 		 List<String> CT_1_I_data = new ArrayList<>();
@@ -1152,6 +1153,7 @@ while(rs.next()) {
 	String Course_Name = rs.getString("Subject_Name");
 	String Course_Code=rs.getString("Subject_Code");
 	String Faculty=rs.getString("Faculty");
+	String Faculty_PhNo=rs.getString("Faculty_PhNo");
 	String CT_1_THEORY=rs.getString("CT_1_THEORY");
 	String CT_1_P=rs.getString("CT_1_P");
 	String CT_1_I=rs.getString("CT_1_I");
@@ -1165,6 +1167,7 @@ while(rs.next()) {
 	Course_Name_data.add(Course_Name);
 	Course_Code_data.add(Course_Code);
 	Faculty_data.add(Faculty);
+	Faculty_PhNo_data.add(Faculty_PhNo);
 	  CT_1_THEORY_data.add(CT_1_THEORY);
 	  CT_1_P_data.add(CT_1_P);
 	  CT_1_I_data.add(CT_1_I);
@@ -1249,7 +1252,7 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
             }
             for (int row = 1; row < Faculty_data.size(); row++) {
                 Label label = new Label();
-                label.setText(Faculty_data.get(row));
+                label.setText(Faculty_data.get(row)+ "\n" +"(" + Faculty_PhNo_data.get(row) +")");
                 label.setTextFill(Paint.valueOf("white"));
                 label.setPadding(new Insets(0,0,0,10));
                 label.setWrapText(true);

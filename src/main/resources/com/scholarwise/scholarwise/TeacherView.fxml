@@ -8,7 +8,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.DropShadow?>
@@ -1170,18 +1169,14 @@
                </children>
             </VBox>
          </children></AnchorPane>
-      <AnchorPane fx:id="MARKS_PAGE" layoutX="181.0" prefHeight="1080.0" prefWidth="1734.0" visible="false">
+      <AnchorPane fx:id="MARKS_PAGE" layoutX="181.0" prefHeight="1080.0" prefWidth="1734.0">
          <children>
             <Label layoutX="69.0" layoutY="51.0" prefHeight="68.0" prefWidth="663.0" text="Modify Marks" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="39.0" />
                </font>
             </Label>
-            <MenuButton fx:id="Marks_branch_drop" alignment="CENTER" layoutX="136.0" layoutY="169.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" stylesheets="@style.css" text="Branch" textFill="WHITE">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
+            <MenuButton fx:id="Marks_semester_drop" alignment="CENTER" layoutX="136.0" layoutY="169.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" stylesheets="@style.css" text="Semester" textFill="WHITE">
                <styleClass>
                   <String fx:value="box-border" />
                   <String fx:value="box-borderRadius" />
@@ -1193,10 +1188,6 @@
                </font>
             </MenuButton>
             <MenuButton fx:id="Marks_section_drop" alignment="CENTER" layoutX="367.0" layoutY="168.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" stylesheets="@style.css" text="Section" textFill="WHITE">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
                <styleClass>
                   <String fx:value="box-border" />
                   <String fx:value="box-borderRadius" />
@@ -1208,10 +1199,6 @@
                </font>
             </MenuButton>
             <MenuButton fx:id="Marks_subject_drop" alignment="CENTER" layoutX="597.0" layoutY="168.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" stylesheets="@style.css" text="Subject" textFill="WHITE">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
                <styleClass>
                   <String fx:value="box-border" />
                   <String fx:value="box-borderRadius" />
@@ -1318,10 +1305,6 @@
                </children>
             </AnchorPane>
             <MenuButton fx:id="Marks_regid_drop" alignment="CENTER" layoutX="273.0" layoutY="247.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="390.0" stylesheets="@style.css" text="Registration Number" textFill="WHITE">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
-               </items>
                <styleClass>
                   <String fx:value="box-border" />
                   <String fx:value="box-borderRadius" />
@@ -1366,17 +1349,17 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                            <children>
-                              <Label fx:id="ct_1_t" alignment="CENTER" layoutX="8.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <TextField fx:id="ct_1_t" layoutX="13.0" layoutY="15.0" prefHeight="34.0" prefWidth="94.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
-                              <Label fx:id="ct_1_p" alignment="CENTER" layoutX="8.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <TextField fx:id="ct_1_p" layoutX="13.0" layoutY="15.0" prefHeight="34.0" prefWidth="94.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                            <children>
-                              <Label layoutX="21.0" layoutY="13.0" prefHeight="30.0" prefWidth="210.0" styleClass="text_white" stylesheets="@style.css" text="CT - 2 iNTERNAL" />
+                              <Label layoutX="21.0" layoutY="13.0" prefHeight="30.0" prefWidth="210.0" styleClass="text_white" stylesheets="@style.css" text="CT - 2 INTERNAL" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -1386,12 +1369,12 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
                            <children>
-                              <Label fx:id="ct_2_i" alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <TextField fx:id="ct_2_i" layoutX="11.0" layoutY="15.0" prefHeight="34.0" prefWidth="94.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <children>
-                              <Label fx:id="ct_3_t" alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <TextField fx:id="ct_3_t" layoutX="11.0" layoutY="15.0" prefHeight="34.0" prefWidth="94.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -1401,7 +1384,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <children>
-                              <Label fx:id="ct_1_i" alignment="CENTER" layoutX="8.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <TextField fx:id="ct_1_i" layoutX="13.0" layoutY="15.0" prefHeight="34.0" prefWidth="94.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
@@ -1411,7 +1394,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                            <children>
-                              <Label fx:id="ct_3_p" alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <TextField fx:id="ct_3_p" layoutX="11.0" layoutY="15.0" prefHeight="34.0" prefWidth="94.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
@@ -1421,7 +1404,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <children>
-                              <Label fx:id="ct_2_t" alignment="CENTER" layoutX="8.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <TextField fx:id="ct_2_t" layoutX="13.0" layoutY="15.0" prefHeight="34.0" prefWidth="94.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
@@ -1431,7 +1414,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
                            <children>
-                              <Label fx:id="ct_3_i" alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <TextField fx:id="ct_3_i" layoutX="11.0" layoutY="15.0" prefHeight="34.0" prefWidth="94.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
@@ -1441,7 +1424,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <children>
-                              <Label fx:id="ct_2_p" alignment="CENTER" layoutX="8.0" layoutY="14.0" prefHeight="32.0" prefWidth="94.0" styleClass="text_white" stylesheets="@style.css" text="13.5/15" textFill="WHITE" />
+                              <TextField fx:id="ct_2_p" layoutX="13.0" layoutY="15.0" prefHeight="34.0" prefWidth="94.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
@@ -1526,7 +1509,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="ATTENDANCE_PAGE" layoutX="185.0" prefHeight="1080.0" prefWidth="1734.0">
+      <AnchorPane fx:id="ATTENDANCE_PAGE" layoutX="185.0" prefHeight="1080.0" prefWidth="1734.0" visible="false">
          <children>
             <Label layoutX="61.0" layoutY="43.0" prefHeight="56.0" prefWidth="466.0" text="STUDENT ATTENDANCE" textFill="WHITE">
                <font>
