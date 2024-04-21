@@ -858,7 +858,11 @@ public  class StudentView extends TeacherView {
     @FXML
     protected TableColumn<TableView_Details, String> TableView_SubjectName;
     Integer[] CourseDetails_SemesterButton_list = {1,2,3,4,5,6,7,8};
-   
+    @FXML
+    private ListView<String> attendanceViewATTENDANCE_required;
+
+    @FXML
+    private ListView<String> attendanceViewATTENDANCE_subject;
 
    
     ObservableList<TableView_Details> listM;
@@ -885,7 +889,6 @@ public  class StudentView extends TeacherView {
     String Subject_Code ,Subject_Name ,Faculty_Name,Grade,Room_Number,Credits,Class_Conducted,Class_Attended,Semester,Class_Held,FacultyNumber;
 
    static double roundOff;
-    static List classConductedList=new ArrayList<>();
 
 
 
@@ -924,7 +927,7 @@ public  class StudentView extends TeacherView {
 	   
 	   //CourseDetails components
        CourseDetails_SemesterButton.getItems().addAll(CourseDetails_SemesterButton_list);
-        System.out.println(Subject_Code);
+
        TableView_SubjectCode.setCellValueFactory(new PropertyValueFactory<>("Subject_Code"));
 		TableView_SubjectName.setCellValueFactory(new PropertyValueFactory<>("Subject_Name"));
 		TableView_FacultyName.setCellValueFactory(new PropertyValueFactory<>("Faculty_Name"));
@@ -961,11 +964,6 @@ public  class StudentView extends TeacherView {
 
 
 
-
-
-
-
-
     public static ObservableList<TableView_Details> getDataUsers()  throws SQLException{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -991,22 +989,14 @@ public  class StudentView extends TeacherView {
                     roomNo,
                     rs.getString("Faculty_Number"),
                     rs.getString("Credits"),
-//                    Integer.parseInt(rs.getString("Class_Ratio")),
                     rs.getString("Class_Attended"),
                     rs.getString("Class_Conducted"),
-//                    Integer.parseInt(String.valueOf((Integer.parseInt(rs.getString("Class_Attended"))/Integer.parseInt(rs.getString("Class_Conducted")))*100))
                     attendance
-
-
-
-
             ) );
-            System.out.println(rs.getString("Attendance"));
 
-            classConductedList.add(Integer.parseInt(rs.getString("Class_Conducted")));
-            for (TableView_Details element : list) {
-                System.out.println(element);
-            }
+//            classConductedList.add(Integer.parseInt(rs.getString("Class_Conducted")));
+//            for (TableView_Details element : list) {
+//            }
 
         }
 
@@ -1026,15 +1016,15 @@ public  class StudentView extends TeacherView {
  
  
     @FXML
-    void CourseView(ActionEvent event) {
+    void CourseView(ActionEvent event) throws SQLException {
     	CourseDetails.setVisible(true);
     	ProfileDetails.setVisible(false);
     	TimeTable.setVisible(false);
     	Marks.setVisible(false);
     	MarksAnalyse.setVisible(false);
-
-
-
+        attendanceViewATTENDANCE_subject.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #121212;");
+        attendanceViewATTENDANCE_required.setStyle("-fx-control-inner-background: #373737;-fx-border-color: #373737;-fx-text-fill: #000000;");
+        courseAttendanceRetrieval();
 
         CourseDetails_SemesterButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -1053,13 +1043,22 @@ public  class StudentView extends TeacherView {
                 SemesterButton_value=Integer.toString(CourseDetails_SemesterButton.getValue());
                 try {
                     listM=getDataUsers();
+
+
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 CourseDetails_TableView.setItems(listM);
                 try {
-                    SGPA_calculator();
+                    Double CGPA= SGPA_calculator(SemesterButton_value,Net_id);
+                    if(CGPA==0.0) {
+                        sgpa.setText("-");
+                    }
+                    else {
+
+                        sgpa.setText(Double.toString(roundOff));
+                    }
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -1142,8 +1141,9 @@ public  class StudentView extends TeacherView {
 
 
        
-pst=con.prepareStatement("select* from Marks where semester=? and Net_id=?");
-pst2=con2.prepareStatement("select SUBJECT_NAME,DATES from information");
+pst=con.prepareStatement("select* from marks where semester=? and Net_id=?");
+pst2=con2.prepareStatement("select SUBJECT_NAME, DATES from  notification join  update_info where notification.SUBJECT_CODE = update_info.SUBJECT_CODE;");
+//        select * from scholarwise_temp.notification join  scholarwise_temp.update_info where scholarwise_temp.notification.SUBJECT_CODE = scholarwise_temp.update_info.SUBJECT_CODE;
 
 pst.setString(1,SEMESTER);
 pst.setString(2,Net_id);
@@ -1167,7 +1167,7 @@ while(rs.next()) {
 	Course_Name_data.add(Course_Name);
 	Course_Code_data.add(Course_Code);
 	Faculty_data.add(Faculty);
-	Faculty_PhNo_data.add(Faculty_PhNo);
+ 	Faculty_PhNo_data.add(Faculty_PhNo);
 	  CT_1_THEORY_data.add(CT_1_THEORY);
 	  CT_1_P_data.add(CT_1_P);
 	  CT_1_I_data.add(CT_1_I);
@@ -1197,8 +1197,7 @@ while (rs2.next()){
     Information_DATES.add(DATES);
 }
 
-        //System.out.println(Float.parseFloat((CT_3_I_data.get(2).substring(0,CT_3_I_data.get(2).indexOf("/"))))
-        // +Float.parseFloat((CT_3_THEORY_data.get(2).substring(0,CT_3_THEORY_data.get(2).indexOf("/"))))+Float.parseFloat((CT_3_P_data.get(2).substring(0,CT_3_P_data.get(2).indexOf("/")))))
+
 
 try {
 for(int i=0;i<CT_1_THEORY_data.size();i++) {
@@ -1632,10 +1631,6 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
     	TimeTable.setVisible(false);
     	Marks.setVisible(false);
     	MarksAnalyse.setVisible(false);
-
-
-
-
     }
 
     @FXML
@@ -1719,7 +1714,12 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
 
                 } else {
                     // Handle the case where no matching record is found
-                    System.out.println("No matching record found.");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Not Found");
+                    alert.setHeaderText(null);
+                    alert.setContentText("No matching record found.");
+                    alert.showAndWait();
+
                 }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
@@ -1737,14 +1737,78 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
             }
         }
     }
-    
-   
-    
 
 
-    
-	
-    void SGPA_calculator() throws SQLException {
+
+    void courseAttendanceRetrieval() throws SQLException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000")) {
+            pst = con.prepareStatement("SELECT * FROM attendance WHERE semester=? AND Net_Id=?;");
+            pst.setString(1, SEMESTER);
+            pst.setString(2, Net_id);
+            rs = pst.executeQuery();
+
+            ObservableList<String> presentSubjects = FXCollections.observableArrayList();
+            ObservableList<String> requiredSubjects = FXCollections.observableArrayList();
+            presentSubjects.clear();
+            requiredSubjects.clear();
+            float totalAttendance = 0;
+            float totalClassesConductedForSubject = 0;
+            while (rs.next()) {
+                float attendance = rs.getFloat("Attendance");
+                String subjectName = rs.getString("Subject_Name");
+                totalAttendance = Float.parseFloat(rs.getString("Class_Attended"));;
+                totalClassesConductedForSubject = rs.getInt("Class_Conducted");
+                presentSubjects.add(subjectName);
+                if (attendance < 75.00) {
+
+
+                    float currentAttendancePercentage = attendance / 100;
+                    float requiredAttendancePercentage = 0.75f;
+                    int requiredClasses = (int) Math.ceil((requiredAttendancePercentage * totalClassesConductedForSubject - totalAttendance) / (1-requiredAttendancePercentage));
+
+
+                    if (currentAttendancePercentage < requiredAttendancePercentage) {
+
+                        requiredSubjects.add("Required: " + requiredClasses);
+                    }
+
+
+
+
+                    attendanceViewATTENDANCE_subject.setItems(presentSubjects);
+                    attendanceViewATTENDANCE_required.setItems(requiredSubjects);
+                }
+                else {
+
+
+                    float currentAttendancePercentage = attendance / 100;
+                    float requiredAttendancePercentage = 0.75f;
+//                    int requiredClasses = (int) Math.ceil((requiredAttendancePercentage * totalClassesConductedForSubject - totalAttendance) / (1-requiredAttendancePercentage));
+
+
+
+                    int marginClasses=(int) Math.ceil((totalAttendance/requiredAttendancePercentage)-totalClassesConductedForSubject);
+
+                    requiredSubjects.add("Margin: "+ marginClasses);
+                }
+            }
+
+
+
+
+        }
+    }
+
+
+
+
+    static Double SGPA_calculator(String semester, String netId) throws SQLException {
     	try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -1761,8 +1825,8 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
         float SGPA=0;
         int Grade_point=0;
 pst=con.prepareStatement("select Credits,Grade from attendance where semester=? and Net_id=?");
-pst.setString(1,SemesterButton_value);
-pst.setString(2,Net_id);
+pst.setString(1,semester);
+pst.setString(2,netId);
 rs=pst.executeQuery();
 
 while(rs.next()) {
@@ -1813,25 +1877,12 @@ for(int i=0;i<grade_data.size();i++) {
 SGPA=data1/data2;
 
  roundOff = Math.round(SGPA * 100.00) / 100.00;
-
+return roundOff;
 
 
     // Close resources in a finally block to ensure they are always closed
-    try {
-        if (rs != null) rs.close();
-        if (pst != null) pst.close();
-        if (con != null) con.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-    if(roundOff==0.0) {
-    	sgpa.setText("-");
-    }
-    else {
-        System.out.println(grade_data);
-        System.out.println(credit_data);
-      sgpa.setText(Double.toString(roundOff));
-    }
+
+
     }
 
 
@@ -2426,11 +2477,6 @@ SGPA=data1/data2;
 		mainstage.show();
 
     }
-
-
-
-
-
 
 
 
