@@ -886,7 +886,6 @@ public  class StudentView extends TeacherView {
    static String REG_ID ;
    static String DEPARTMENT;
     static String COURSE,SEMESTER, SECTION, FACULTY_ADVISOR, FA_PHNO, FA_EMAIL, DOB, CITY, STATE, PHNO, PERSONAL_MAIL_ID, Net_id, Desingnation;
-    String Subject_Code ,Subject_Name ,Faculty_Name,Grade,Room_Number,Credits,Class_Conducted,Class_Attended,Semester,Class_Held,FacultyNumber;
 
    static double roundOff;
 
@@ -1750,7 +1749,7 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
         try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000")) {
             pst = con.prepareStatement("SELECT * FROM attendance WHERE semester=? AND Net_Id=?;");
             pst.setString(1, SEMESTER);
-            pst.setString(2, Net_id);
+            pst.setString(2, net_id);
             rs = pst.executeQuery();
 
             ObservableList<String> presentSubjects = FXCollections.observableArrayList();
@@ -1759,29 +1758,24 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
             requiredSubjects.clear();
             float totalAttendance = 0;
             float totalClassesConductedForSubject = 0;
+            if(!rs.next()){
+                System.out.println("it is null");
+            }
             while (rs.next()) {
+                System.out.println("it is not null");
                 float attendance = rs.getFloat("Attendance");
                 String subjectName = rs.getString("Subject_Name");
                 totalAttendance = Float.parseFloat(rs.getString("Class_Attended"));;
                 totalClassesConductedForSubject = rs.getInt("Class_Conducted");
                 presentSubjects.add(subjectName);
+                attendanceViewATTENDANCE_subject.setItems(presentSubjects);
                 if (attendance < 75.00) {
 
-
-                    float currentAttendancePercentage = attendance / 100;
+//                    float currentAttendancePercentage = attendance / 100;
                     float requiredAttendancePercentage = 0.75f;
                     int requiredClasses = (int) Math.ceil((requiredAttendancePercentage * totalClassesConductedForSubject - totalAttendance) / (1-requiredAttendancePercentage));
 
-
-                    if (currentAttendancePercentage < requiredAttendancePercentage) {
-
                         requiredSubjects.add("Required: " + requiredClasses);
-                    }
-
-
-
-
-                    attendanceViewATTENDANCE_subject.setItems(presentSubjects);
                     attendanceViewATTENDANCE_required.setItems(requiredSubjects);
                 }
                 else {
@@ -1792,10 +1786,10 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
 //                    int requiredClasses = (int) Math.ceil((requiredAttendancePercentage * totalClassesConductedForSubject - totalAttendance) / (1-requiredAttendancePercentage));
 
 
-
                     int marginClasses=(int) Math.ceil((totalAttendance/requiredAttendancePercentage)-totalClassesConductedForSubject);
 
                     requiredSubjects.add("Margin: "+ marginClasses);
+                    attendanceViewATTENDANCE_required.setItems(requiredSubjects);
                 }
             }
 
@@ -2444,6 +2438,11 @@ return roundOff;
     }
 
 
+
+
+
+
+
     @FXML
     void logoutBtn(ActionEvent event) throws IOException {
     	Stage primaryStage;
@@ -2477,15 +2476,6 @@ return roundOff;
 		mainstage.show();
 
     }
-
-
-
-
-
-
-
-
-
 
 
 
