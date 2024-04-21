@@ -86,7 +86,7 @@ public class TableView_Details {
         return FacultyNumber;
     }
 
-    public TableView_Details(String Subject_Code, String Subject_Name, String Faculty_Name, String Grade, String FacultyNumber, String Room_Number, String Credits, String Class_Conducted, String Class_Attended,String Attendance) {
+    public TableView_Details(String Subject_Code, String Subject_Name, String Faculty_Name, String Grade, String FacultyNumber, String Room_Number, String Credits, String Class_Attended,String Class_Conducted, String Attendance) {
         this.Subject_Code = Subject_Code;
         this.Subject_Name = Subject_Name;
         this.Faculty_Name = Faculty_Name;

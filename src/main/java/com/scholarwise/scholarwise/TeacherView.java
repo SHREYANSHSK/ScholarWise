@@ -436,6 +436,8 @@ public class TeacherView {
 	ObservableList<String> nameList = FXCollections.observableArrayList();
 	ObservableList<String> regIdList = FXCollections.observableArrayList();
 
+	private boolean changesMade = false;
+
 
 	public void initialize() {
 
@@ -666,7 +668,7 @@ public class TeacherView {
 			while (rs2.next()) {
 				 totalStudents_attendance_var = (rs2.getString(1));
 				totalStudents_attendance.setText(rs2.getString(1));
-				System.out.println(rs2.getString(1));
+
 			}
 
 		} catch (SQLException q) {
@@ -696,7 +698,7 @@ public class TeacherView {
 					totalStudentsAbsent_attendance.setText(String.valueOf(selectedRegNo.size()));
 					var temp= TotalStudents_attendance_var - selectedRegNo.size();
 					totalStudentsPresent_attendance.setText(String.valueOf(temp));
-					System.out.println(selectedRegNo);
+
 				}
 			}
 			if (event.getClickCount() > 1) {
@@ -709,7 +711,7 @@ public class TeacherView {
 					var temp= TotalStudents_attendance_var - selectedRegNo.size();
 					totalStudentsPresent_attendance.setText(String.valueOf(temp));
 
-					System.out.println(selectedRegNo);
+
 				}
 			}
 
@@ -781,6 +783,8 @@ public class TeacherView {
 
 		Marks_subject_drop.getItems().clear();
 		Marks_section_drop.getItems().clear();
+		Marks_semester_drop.getItems().clear();
+
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -791,26 +795,30 @@ public class TeacherView {
 			pst2.setString(1, NAME);
 			rs2 = pst2.executeQuery();
 
-			while (rs2.next()) {
+
+			while(rs2.next()) {
 				String semesterName = rs2.getString("Semester");
 				MenuItem semesterMenuItem = new MenuItem(semesterName);
+
 				semesterMenuItem.setOnAction(e -> {
 					Marks_section_drop.setText("Section");
 					Marks_subject_drop.setText("Subject");
 					Marks_regid_drop.setText("Registration Number");
 					Marks_semester_drop.setText(semesterMenuItem.getText());
 					selectedSemester = semesterMenuItem.getText();
+
 					fetchSections();
 				});
 				Marks_semester_drop.getItems().add(semesterMenuItem);
 			}
-
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	private void fetchSections() {
+
 		try {
 			pst2 = con2.prepareStatement("SELECT DISTINCT section FROM marks WHERE Faculty=? AND Semester=?");
 			pst2.setString(1, NAME);
@@ -881,6 +889,8 @@ public class TeacherView {
 					if (!selectedSemester.isBlank() && selectedSection1 != null && selectedSubject1 != null && !selectedRegId.isBlank()) {
 						try {
 							marksSectionDataRetrieval();
+							marksSectionMarksDataRetrieval();
+
 						} catch (SQLException ex) {
 							throw new RuntimeException(ex);
 						}
@@ -900,7 +910,7 @@ public class TeacherView {
 
 
 void marksSectionDataRetrieval() throws SQLException {
-String name,reg_id,section,faculty_advisor,fa_phno,net_id;
+
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
@@ -923,9 +933,136 @@ String name,reg_id,section,faculty_advisor,fa_phno,net_id;
 	} catch (ClassNotFoundException | SQLException e) {
 		e.printStackTrace();
 	}
+	Double sgpa_calculator= StudentView.SGPA_calculator(selectedSemester, rs.getString("Net_id"));
+	if(sgpa_calculator==0.0) {
+		std_cgpa.setText("-");
+	}
+	else {
+		std_cgpa.setText(Double.toString(sgpa_calculator));
+	}
 }
 
 
+void marksSectionMarksDataRetrieval(){
+
+
+	try {
+		pst = con.prepareStatement("SELECT* from marks WHERE  marks.semester=? AND marks.Faculty=? AND marks.section=? AND marks.Subject_Name = ?");
+		pst.setString(1, selectedSemester);
+		pst.setString(2, NAME);
+		pst.setString(3, selectedSection1);
+		pst.setString(4, selectedSubject1);
+		rs = pst.executeQuery();
+
+		Marks_regid_drop.getItems().clear();
+		while (rs.next()) {
+			ct_1_i.setText(rs.getString("CT_1_I"));
+			ct_1_p.setText(rs.getString("CT_1_P"));
+			ct_1_t.setText(rs.getString("CT_1_THEORY"));
+
+			ct_2_i.setText(rs.getString("CT_2_I"));
+			ct_2_p.setText(rs.getString("CT_2_P"));
+			ct_2_t.setText(rs.getString("CT_2_THEORY"));
+
+			ct_3_i.setText(rs.getString("CT_3_I"));
+			ct_3_p.setText(rs.getString("CT_3_P"));
+			ct_3_t.setText(rs.getString("CT_3_THEORY"));
+		}
+
+	} catch (SQLException ex) {
+		ex.printStackTrace();
+	}
+}
+
+
+
+
+	@FXML
+	private void Update_MarksAct(ActionEvent event) {
+		ct_1_i.textProperty().addListener((observable, oldValue, newValue) -> {
+			changesMade = true;
+		});
+		ct_1_p.textProperty().addListener((observable, oldValue, newValue) -> {
+			changesMade = true;
+		});
+		ct_1_t.textProperty().addListener((observable, oldValue, newValue) -> {
+			changesMade = true;
+		});
+
+		ct_2_i.textProperty().addListener((observable, oldValue, newValue) -> {
+			changesMade = true;
+		});
+		ct_2_p.textProperty().addListener((observable, oldValue, newValue) -> {
+			changesMade = true;
+		});
+		ct_2_t.textProperty().addListener((observable, oldValue, newValue) -> {
+			changesMade = true;
+		});
+
+		ct_3_i.textProperty().addListener((observable, oldValue, newValue) -> {
+			changesMade = true;
+		});
+		ct_3_p.textProperty().addListener((observable, oldValue, newValue) -> {
+			changesMade = true;
+		});
+		ct_3_t.textProperty().addListener((observable, oldValue, newValue) -> {
+			changesMade = true;
+		});
+		if (!changesMade) {
+
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("No Changes");
+			alert.setHeaderText(null);
+			alert.setContentText("No changes were made.");
+			alert.showAndWait();
+			return;
+		}
+
+			try {
+				pst = con.prepareStatement("UPDATE marks SET CT_1_I=?, CT_1_P=?, CT_1_THEORY=?, CT_2_I=?, CT_2_P=?, CT_2_THEORY=?, CT_3_I=?, CT_3_P=?, CT_3_THEORY=? WHERE semester=? AND Faculty=? AND section=? AND Subject_Name=?");
+				pst.setString(1, ct_1_i.getText());
+				pst.setString(2, ct_1_p.getText());
+				pst.setString(3, ct_1_t.getText());
+				pst.setString(4, ct_2_i.getText());
+				pst.setString(5, ct_2_p.getText());
+				pst.setString(6, ct_2_t.getText());
+				pst.setString(7, ct_3_i.getText());
+				pst.setString(8, ct_3_p.getText());
+				pst.setString(9, ct_3_t.getText());
+				pst.setString(10, selectedSemester);
+				pst.setString(11, NAME);
+				pst.setString(12, selectedSection1);
+				pst.setString(13, selectedSubject1);
+
+				int rowsUpdated = pst.executeUpdate();
+
+				if (rowsUpdated > 0) {
+					// Update successful
+					Alert alert = new Alert(Alert.AlertType.INFORMATION);
+					alert.setTitle("Success");
+					alert.setHeaderText(null);
+					alert.setContentText("Changes have been successfully updated in the database.");
+					alert.showAndWait();
+				} else {
+					// No changes were made
+					Alert alert = new Alert(Alert.AlertType.INFORMATION);
+					alert.setTitle("No Changes");
+					alert.setHeaderText(null);
+					alert.setContentText("No changes were made.");
+					alert.showAndWait();
+				}
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+				// Handle database error
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setTitle("Error");
+				alert.setHeaderText(null);
+				alert.setContentText("An error occurred while updating the database.");
+				alert.showAndWait();
+			}
+
+
+	}
 
 
 
@@ -974,7 +1111,7 @@ String name,reg_id,section,faculty_advisor,fa_phno,net_id;
 		Net_id = netId;
 		Password = password;
 		Designation = designation;
-		System.out.println(Net_id+" "+Password);
+
 
 
 		try {
@@ -1020,7 +1157,6 @@ String name,reg_id,section,faculty_advisor,fa_phno,net_id;
 				COURSE9 = rs.getString("course9");
 				COURSE10 = rs.getString("course10");
 
-//				System.out.println(NAME + "" + FACULTY_ID);
 
 			}
 
@@ -1615,10 +1751,6 @@ while (rs.next()){netIdList.add(rs.getString("net_id"));}
 
 
 
-	@FXML
-	private void Update_MarksAct(ActionEvent event) {
-
-	}
 
 	public void d1h1_clicked(MouseEvent event) {
 		if(d1h1.getText()!=null) {
