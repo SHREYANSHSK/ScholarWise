@@ -27,7 +27,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080.0" minWidth="1920.0" prefHeight="600.0" prefWidth="900.0" styleClass="Main_page" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scholarwise.scholarwise.StudentView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080.0" minWidth="1920.0" prefHeight="600.0" prefWidth="900.0" styleClass="Main_page" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scholarwise.scholarwise.StudentView">
     <children>
         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="Main_page" stylesheets="@style.css">
             <children>
