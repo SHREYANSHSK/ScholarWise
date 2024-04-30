@@ -54,6 +54,9 @@ public class TeacherView {
 	private Label std_cgpa;
 
 	@FXML
+	private Label TeacherView_username;
+
+	@FXML
 	private Button std_contact;
 
 	@FXML
@@ -442,9 +445,7 @@ public class TeacherView {
 
 
 	public void initialize() {
-
 //		running trigger
-
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
 			Statement stmt = con.createStatement();
@@ -481,15 +482,7 @@ public class TeacherView {
 		}
 
 
-
-
-
-
-
-
-
-
-
+TeacherView_username.setText(NAME);
 		name.setText(NAME);
 		campus.setText(CAMPUS);
 		research.setText(RESEARCH);
@@ -725,55 +718,71 @@ public class TeacherView {
 
 
 	public void TeacherView_update_attendanceAct(ActionEvent event) {
+		try {
+			// Start transaction
+			con.setAutoCommit(false);
 
-			try {
-				// Update the class_attended and class_conducted sections in the database
-				// Iterate through all students in the attendance list
-				for (String regNo : regIdList) {
-					// Check if the student's regNo is not in the selectedRegNo list
-					if (!selectedRegNo.contains(regNo)) {
-						// Update class_attended for students not in the selectedRegNo list
-						updateAttendanceStatus(regNo,NAME,selectedSection,selectedSubject, "Class_Attended");
-					}
-					// Update class_conducted for all students
-					updateAttendanceStatus(regNo,NAME,selectedSection,selectedSubject, "Class_Conducted");
+
+			for (String regNo : regIdList) {
+				// Check if the student's regNo is not in the selectedRegNo list
+				if (!selectedRegNo.contains(regNo)) {
+					// Update class_attended for students not in the selectedRegNo list
+					updateAttendanceStatus(regNo, NAME, selectedSection, selectedSubject, "Class_Attended");
 				}
-				Alert alert = new Alert(Alert.AlertType.INFORMATION);
-				alert.setTitle("Attendance Updated");
-				alert.setHeaderText(null);
-				alert.setContentText("Attendance has been updated successfully!");
-				alert.showAndWait();
+				// Update class_conducted for all students
+				updateAttendanceStatus(regNo, NAME, selectedSection, selectedSubject, "Class_Conducted");
+			}
 
-			} catch (SQLException e) {
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-				alert.setTitle("ERROR!!");
-				alert.setHeaderText(null);
-				alert.setContentText("error in updating attendance");
-				alert.showAndWait();
+			// Commit transaction when everything is successfully
+			con.commit();
 
-				e.printStackTrace();
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+			alert.setTitle("Attendance Updated");
+			alert.setHeaderText(null);
+			alert.setContentText("Attendance has been updated successfully!");
+			alert.showAndWait();
+		} catch (SQLException e) {
+			try {
+				// Rollback the transaction if there is an error
+				con.rollback();
+			} catch (SQLException rollbackEx) {
+				rollbackEx.printStackTrace();
+			}
+
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("ERROR!!");
+			alert.setHeaderText(null);
+			alert.setContentText("Error in updating attendance. Transaction rolled back.");
+			alert.showAndWait();
+
+			e.printStackTrace();
+		} finally {
+			try {
+				// Set auto-commit back to true
+				con.setAutoCommit(true);
+			} catch (SQLException autoCommitEx) {
+				autoCommitEx.printStackTrace();
 			}
 		}
+	}
 
-	private void updateAttendanceStatus(String regNo,String Faculty_name,String section,String Subject_Name, String statusColumn) throws SQLException {
+	private void updateAttendanceStatus(String regNo, String Faculty_name, String section, String Subject_Name, String statusColumn) throws SQLException {
+
+		if (regNo.equals("RA2211003010389")) {
+			throw new SQLException("Intentional error occurred. Rolling back transaction.");
+		}
 
 		String query = "UPDATE attendance AS a JOIN studentdb AS s ON a.Net_id = s.Net_id SET a." + statusColumn + " = a." + statusColumn + " + 1 WHERE a.Faculty_name = ? AND a.section = ? AND a.Subject_Name = ? AND s.REG_ID = ?";
 
-			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
-
-			pst = con.prepareStatement(query);
-			pst.setString(1, Faculty_name);
-			pst.setString(2, section);
-			pst.setString(3, Subject_Name);
-			pst.setString(4, regNo);
-			pst.executeUpdate();
-
-
-
-
-
-
+		pst = con.prepareStatement(query);
+		pst.setString(1, Faculty_name);
+		pst.setString(2, section);
+		pst.setString(3, Subject_Name);
+		pst.setString(4, regNo);
+		pst.executeUpdate();
 	}
+
+
 
 
 
