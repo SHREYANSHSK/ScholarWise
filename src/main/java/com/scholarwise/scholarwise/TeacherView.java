@@ -1002,91 +1002,111 @@ void marksSectionMarksDataRetrieval(){
 
 	@FXML
 	private void Update_MarksAct(ActionEvent event) {
-		ct_1_i.textProperty().addListener((observable, oldValue, newValue) -> {
-			changesMade = true;
-		});
-		ct_1_p.textProperty().addListener((observable, oldValue, newValue) -> {
-			changesMade = true;
-		});
-		ct_1_t.textProperty().addListener((observable, oldValue, newValue) -> {
-			changesMade = true;
-		});
+		try {
+			// Start transaction
+			con.setAutoCommit(false);
 
-		ct_2_i.textProperty().addListener((observable, oldValue, newValue) -> {
-			changesMade = true;
-		});
-		ct_2_p.textProperty().addListener((observable, oldValue, newValue) -> {
-			changesMade = true;
-		});
-		ct_2_t.textProperty().addListener((observable, oldValue, newValue) -> {
-			changesMade = true;
-		});
 
-		ct_3_i.textProperty().addListener((observable, oldValue, newValue) -> {
-			changesMade = true;
-		});
-		ct_3_p.textProperty().addListener((observable, oldValue, newValue) -> {
-			changesMade = true;
-		});
-		ct_3_t.textProperty().addListener((observable, oldValue, newValue) -> {
-			changesMade = true;
-		});
-		if (!changesMade) {
+			ct_1_i.textProperty().addListener((observable, oldValue, newValue) -> {
+				changesMade = true;
+			});
+			ct_1_p.textProperty().addListener((observable, oldValue, newValue) -> {
+				changesMade = true;
+			});
+			ct_1_t.textProperty().addListener((observable, oldValue, newValue) -> {
+				changesMade = true;
+			});
 
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			alert.setTitle("No Changes");
-			alert.setHeaderText(null);
-			alert.setContentText("No changes were made.");
-			alert.showAndWait();
-			return;
-		}
+			ct_2_i.textProperty().addListener((observable, oldValue, newValue) -> {
+				changesMade = true;
+			});
+			ct_2_p.textProperty().addListener((observable, oldValue, newValue) -> {
+				changesMade = true;
+			});
+			ct_2_t.textProperty().addListener((observable, oldValue, newValue) -> {
+				changesMade = true;
+			});
 
-			try {
-				pst = con.prepareStatement("UPDATE marks SET CT_1_I=?, CT_1_P=?, CT_1_THEORY=?, CT_2_I=?, CT_2_P=?, CT_2_THEORY=?, CT_3_I=?, CT_3_P=?, CT_3_THEORY=? WHERE semester=? AND Faculty=? AND section=? AND Subject_Name=?");
-				pst.setString(1, ct_1_i.getText());
-				pst.setString(2, ct_1_p.getText());
-				pst.setString(3, ct_1_t.getText());
-				pst.setString(4, ct_2_i.getText());
-				pst.setString(5, ct_2_p.getText());
-				pst.setString(6, ct_2_t.getText());
-				pst.setString(7, ct_3_i.getText());
-				pst.setString(8, ct_3_p.getText());
-				pst.setString(9, ct_3_t.getText());
-				pst.setString(10, selectedSemester);
-				pst.setString(11, NAME);
-				pst.setString(12, selectedSection1);
-				pst.setString(13, selectedSubject1);
+			ct_3_i.textProperty().addListener((observable, oldValue, newValue) -> {
+				changesMade = true;
+			});
+			ct_3_p.textProperty().addListener((observable, oldValue, newValue) -> {
+				changesMade = true;
+			});
+			ct_3_t.textProperty().addListener((observable, oldValue, newValue) -> {
+				changesMade = true;
+			});
 
-				int rowsUpdated = pst.executeUpdate();
-
-				if (rowsUpdated > 0) {
-					// Update successful
-					Alert alert = new Alert(Alert.AlertType.INFORMATION);
-					alert.setTitle("Success");
-					alert.setHeaderText(null);
-					alert.setContentText("Changes have been successfully updated in the database.");
-					alert.showAndWait();
-				} else {
-					// No changes were made
-					Alert alert = new Alert(Alert.AlertType.INFORMATION);
-					alert.setTitle("No Changes");
-					alert.setHeaderText(null);
-					alert.setContentText("No changes were made.");
-					alert.showAndWait();
-				}
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-				// Handle database error
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-				alert.setTitle("Error");
+			// Check if any changes were made
+			if (!changesMade) {
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setTitle("No Changes");
 				alert.setHeaderText(null);
-				alert.setContentText("An error occurred while updating the database.");
+				alert.setContentText("No changes were made.");
 				alert.showAndWait();
+				return;
 			}
 
+			// Prepare and execute the update statement
+			pst = con.prepareStatement("UPDATE marks SET CT_1_I=?, CT_1_P=?, CT_1_THEORY=?, CT_2_I=?, CT_2_P=?, CT_2_THEORY=?, CT_3_I=?, CT_3_P=?, CT_3_THEORY=? WHERE semester=? AND Faculty=? AND section=? AND Subject_Name=?");
+			pst.setString(1, ct_1_i.getText());
+			pst.setString(2, ct_1_p.getText());
+			pst.setString(3, ct_1_t.getText());
+			pst.setString(4, ct_2_i.getText());
+			pst.setString(5, ct_2_p.getText());
+			pst.setString(6, ct_2_t.getText());
+			pst.setString(7, ct_3_i.getText());
+			pst.setString(8, ct_3_p.getText());
+			pst.setString(9, ct_3_t.getText());
+			pst.setString(10, selectedSemester);
+			pst.setString(11, NAME);
+			pst.setString(12, selectedSection1);
+			pst.setString(13, selectedSubject1);
 
+			int rowsUpdated = pst.executeUpdate();
+
+			if (rowsUpdated > 0) {
+				// Commit transaction if update is successful
+				con.commit();
+
+				// Update successful
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setTitle("Success");
+				alert.setHeaderText(null);
+				alert.setContentText("Changes have been successfully updated in the database.");
+				alert.showAndWait();
+			} else {
+				// No changes were made
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setTitle("No Changes");
+				alert.setHeaderText(null);
+				alert.setContentText("No changes were made.");
+				alert.showAndWait();
+			}
+		} catch (SQLException ex) {
+			try {
+				// Rollback transaction if there is an error
+				con.rollback();
+			} catch (SQLException rollbackEx) {
+				rollbackEx.printStackTrace();
+			}
+
+			ex.printStackTrace();
+
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("An error occurred while updating the database. Transaction rolled back.");
+			alert.showAndWait();
+		} finally {
+			try {
+
+				con.setAutoCommit(true);
+			} catch (SQLException autoCommitEx) {
+				autoCommitEx.printStackTrace();
+			}
+		}
 	}
-
 
 
 	@FXML
