@@ -1683,8 +1683,12 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
-                pst = con.prepareStatement("SELECT * FROM studentdb where Net_id  IN(SELECT password FROM login where " +
-                        "net_id=?)");
+                pst = con.prepareStatement("SELECT si.*, sc.city, sc.state, sc.phno, sc.personal_mail_id, scred.net_id, fai.faculty_advisor, fai.fa_phno, fai.fa_email " +
+                        "FROM student_info si " +
+                        "JOIN student_contact sc ON si.reg_id = sc.reg_id " +
+                        "JOIN student_credentials scred ON si.reg_id = scred.reg_id " +
+                        "JOIN facultyad_info fai ON si.reg_id = fai.reg_id " +
+                        "WHERE scred.net_id IN (SELECT net_id FROM login WHERE net_id = ?)");
 
                 pst.setString(1, net_id);
 
