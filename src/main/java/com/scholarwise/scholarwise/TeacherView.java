@@ -419,6 +419,8 @@ public class TeacherView {
 	static String Desingnation;
 	static String QUALIFICATION;
 	static String Net_id;
+
+	static String Semester;
 	static String Password;
 	static String Designation;
 
@@ -639,6 +641,7 @@ public class TeacherView {
 					"attendance.Subject_Name=? AND " +
 					"studentdb.Net_id=attendance.Net_id");
 
+
 			pst.setString(1, NAME);
 			pst.setString(2, selectedSection);
 			pst.setString(3, selectedSubject);
@@ -646,6 +649,7 @@ public class TeacherView {
 			pst2.setString(1, NAME);
 			pst2.setString(2, selectedSection);
 			pst2.setString(3, selectedSubject);
+
 			rs = pst.executeQuery();
 			rs2 = pst2.executeQuery();
 			nameList.clear();
@@ -753,7 +757,7 @@ public class TeacherView {
 
 	private void updateAttendanceStatus(String regNo,String Faculty_name,String section,String Subject_Name, String statusColumn) throws SQLException {
 
-			String query = "UPDATE attendance AS a JOIN studentdb AS s ON a.Net_id = s.Net_id SET a." + statusColumn + " = a." + statusColumn + " + 1 WHERE a.Faculty_name = ? AND a.section = ? AND a.Subject_Name = ? AND s.REG_ID = ?";
+		String query = "UPDATE attendance AS a JOIN studentdb AS s ON a.Net_id = s.Net_id SET a." + statusColumn + " = a." + statusColumn + " + 1 WHERE a.Faculty_name = ? AND a.section = ? AND a.Subject_Name = ? AND s.REG_ID = ?";
 
 			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
 
@@ -872,11 +876,16 @@ public class TeacherView {
 
 	private void fetchRegIds() {
 		try {
-			pst = con.prepareStatement("SELECT DISTINCT studentdb.Reg_id FROM studentdb, marks WHERE marks.Net_id = studentdb.Net_id AND marks.semester=? AND marks.Faculty=? AND marks.section=? AND marks.Subject_Name = ?");
+			pst = con.prepareStatement("SELECT DISTINCT si.reg_id " +
+					"FROM student_info si " +
+					"JOIN student_credentials scred ON si.reg_id = scred.reg_id " +
+					"JOIN marks m ON scred.net_id = m.net_id " +
+					"WHERE m.semester = ? AND m.faculty = ? AND m.section = ? AND m.subject_name = ?");
 			pst.setString(1, selectedSemester);
 			pst.setString(2, NAME);
 			pst.setString(3, selectedSection1);
 			pst.setString(4, selectedSubject1);
+
 			rs = pst.executeQuery();
 
 			Marks_regid_drop.getItems().clear();
@@ -914,9 +923,14 @@ void marksSectionDataRetrieval() throws SQLException {
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
-		pst = con.prepareStatement("SELECT * FROM studentdb where REG_ID=?");
-
+		pst = con.prepareStatement("SELECT si.*, sc.city, sc.state, sc.phno, sc.personal_mail_id, scred.net_id, fai.faculty_advisor, fai.fa_phno, fai.fa_email " +
+				"FROM student_info si " +
+				"JOIN student_contact sc ON si.reg_id = sc.reg_id " +
+				"JOIN student_credentials scred ON si.reg_id = scred.reg_id " +
+				"JOIN facultyad_info fai ON si.reg_id = fai.reg_id " +
+				"WHERE si.reg_id = ?");
 		pst.setString(1, selectedRegId);
+
 
 
 		rs = pst.executeQuery();
@@ -1117,8 +1131,18 @@ void marksSectionMarksDataRetrieval(){
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
-			pst = con.prepareStatement("SELECT * FROM teacherdb JOIN teacherabout on teacherdb.NET_ID=teacherabout.net_id where teacherabout.net_id  IN(SELECT net_id FROM login where teacherdb.NET_ID=?);");
 
+			pst = con.prepareStatement("SELECT td.*, d.department, tq1.qualification1, tq1.subq1, tq1.year1, tq1" +
+					".qualification2, tq1.subq2, tq1.year2, tq1.qualification3,tq1.subq3,tq1.year3 ,te.campus, te" +
+					".experience, " +
+					"te.research, te.member, tc.course1, tc.course2, tc.course3, tc.course4, tc.course5, tc.course6, tc.course7, tc.course8, tc.course9, tc.course10 " +
+					"FROM teacher_data td " +
+					"JOIN dept d ON td.dept_id = d.dept_id " +
+					"JOIN teacher_qual tq1 ON td.net_id = tq1.net_id " +
+					"JOIN teacher_exp te ON td.net_id = te.net_id " +
+					"JOIN teacher_course tc ON td.net_id = tc.net_id " +
+					"JOIN teacher t ON td.net_id = t.net_id " +
+					"WHERE td.net_id IN (SELECT net_id FROM login WHERE net_id = ?)");
 			pst.setString(1, Net_id);
 			rs = pst.executeQuery();
 
