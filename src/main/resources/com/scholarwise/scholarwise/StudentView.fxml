@@ -37,9 +37,7 @@
                             <children>
                                 <AnchorPane prefHeight="1080.0" prefWidth="170.0" styleClass="content-border" stylesheets="@style.css">
                                     <children>
-                                        <ImageView fx:id="Profile_Photo" fitHeight="130.0" fitWidth="130.0"
-                                                   layoutX="27.0" layoutY="28.0" pickOnBounds="true"
-                                                   preserveRatio="true">
+                                        <ImageView fx:id="Profile_Photo" fitHeight="142.0" fitWidth="142.0" focusTraversable="true" layoutX="22.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="18.599999999999994" AnchorPane.rightAnchor="22.400000000000006">
                                             <image>
                                                 <Image url="@images/icons png/boy3.png" />
                                             </image>

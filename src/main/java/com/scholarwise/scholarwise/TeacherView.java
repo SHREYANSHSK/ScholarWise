@@ -465,7 +465,7 @@ public class TeacherView {
 	public void initialize() {
 //		running trigger
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 			Statement stmt = con.createStatement();
 
 			// Check if the trigger already exists
@@ -473,7 +473,7 @@ public class TeacherView {
 			if (!resultSet.next()) { // If trigger does not exist
 				// Creating the trigger
 				stmt.executeUpdate("SET SQL_SAFE_UPDATES = 0");
-				stmt.executeUpdate("USE scholarwise_temp");
+				stmt.executeUpdate("USE scholarwise");
 				stmt.executeUpdate("CREATE TRIGGER calculate_attendance_percentage " +
 						"BEFORE UPDATE ON attendance " +
 						"FOR EACH ROW " +
@@ -566,7 +566,7 @@ TeacherView_username.setText(NAME);
 
 
 		try {
-			con3 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+			con3 = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 			String sql = "SELECT profile_photo FROM login WHERE net_id = ?";
 			pst3 = con3.prepareStatement(sql);
 			pst3.setString(1, Net_id);
@@ -646,7 +646,7 @@ TeacherView_username.setText(NAME);
 			e.printStackTrace();
 		}
 
-		con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+		con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 		pst = con.prepareStatement("SELECT DISTINCT Subject_Name FROM attendance WHERE Faculty_name=?");
 		pst.setString(1, NAME);
 		rs = pst.executeQuery();
@@ -664,7 +664,7 @@ TeacherView_username.setText(NAME);
 			Marks_subject_drop1.getItems().add(subjectMenuItem);
 		}
 
-		con2 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+		con2 = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 		pst2 = con2.prepareStatement("SELECT DISTINCT section FROM attendance WHERE Faculty_name=?");
 		pst2.setString(1, NAME);
 		rs2 = pst2.executeQuery();
@@ -690,22 +690,20 @@ TeacherView_username.setText(NAME);
 
 
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
-			con2 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
+			con2 = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 
-			pst = con.prepareStatement("SELECT studentdb.NAME, studentdb.REG_ID " +
-					"FROM studentdb, attendance " +
+			pst = con.prepareStatement("SELECT student_info.NAME, student_info.REG_ID FROM student_info JOIN " +
+					"student_credentials on student_info.REG_ID = student_credentials.reg_id, attendance WHERE " +
+					"attendance.Faculty_name=? AND attendance.section=? AND attendance.Subject_Name=? AND " +
+					"student_credentials.Net_id=attendance.Net_id;");
+
+			pst2 = con2.prepareStatement("SELECT count(student_info.REG_ID) " +
+					"FROM student_info JOIN student_credentials on student_info.REG_ID = student_credentials.reg_id, attendance " +
 					"WHERE attendance.Faculty_name=? AND " +
 					"attendance.section=? AND " +
 					"attendance.Subject_Name=? AND " +
-					"studentdb.Net_id=attendance.Net_id");
-
-			pst2 = con2.prepareStatement("SELECT count(studentdb.REG_ID) " +
-					"FROM studentdb, attendance " +
-					"WHERE attendance.Faculty_name=? AND " +
-					"attendance.section=? AND " +
-					"attendance.Subject_Name=? AND " +
-					"studentdb.Net_id=attendance.Net_id");
+					"student_credentials.Net_id=attendance.Net_id");
 
 
 			pst.setString(1, NAME);
@@ -875,7 +873,7 @@ TeacherView_username.setText(NAME);
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			con2 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+			con2 = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 
 			pst2 = con2.prepareStatement("SELECT DISTINCT Semester FROM marks WHERE Faculty=? ORDER BY Semester");
 			pst2.setString(1, NAME);
@@ -977,10 +975,11 @@ TeacherView_username.setText(NAME);
 				regIdMenuItem.setOnAction(e -> {
 					Marks_regid_drop.setText(regIdMenuItem.getText());
 					selectedRegId = regIdMenuItem.getText();
-					if (!selectedSemester.isBlank() && selectedSection1 != null && selectedSubject1 != null && !selectedRegId.isBlank()) {
+					if (!selectedSemester.isBlank() && selectedSection1 != null && selectedSubject1 != null) {
 						try {
 							marksSectionDataRetrieval();
 							marksSectionMarksDataRetrieval();
+//							fetchRegIds();
 
 						} catch (SQLException ex) {
 							throw new RuntimeException(ex);
@@ -1004,7 +1003,7 @@ void marksSectionDataRetrieval() throws SQLException {
 
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+		con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 		pst = con.prepareStatement("SELECT si.*, sc.city, sc.state, sc.phno, sc.personal_mail_id, scred.net_id, fai.faculty_advisor, fai.fa_phno, fai.fa_email " +
 				"FROM student_info si " +
 				"JOIN student_contact sc ON si.reg_id = sc.reg_id " +
@@ -1050,7 +1049,7 @@ void marksSectionMarksDataRetrieval(){
 		pst.setString(4, selectedSubject1);
 		rs = pst.executeQuery();
 
-		Marks_regid_drop.getItems().clear();
+
 		while (rs.next()) {
 			ct_1_i.setText(rs.getString("CT_1_I"));
 			ct_1_p.setText(rs.getString("CT_1_P"));
@@ -1075,6 +1074,7 @@ void marksSectionMarksDataRetrieval(){
 
 	@FXML
 	private void Update_MarksAct(ActionEvent event) {
+
 		try {
 			// Start transaction
 			con.setAutoCommit(false);
@@ -1121,7 +1121,9 @@ void marksSectionMarksDataRetrieval(){
 			}
 
 			// Prepare and execute the update statement
-			pst = con.prepareStatement("UPDATE marks SET CT_1_I=?, CT_1_P=?, CT_1_THEORY=?, CT_2_I=?, CT_2_P=?, CT_2_THEORY=?, CT_3_I=?, CT_3_P=?, CT_3_THEORY=? WHERE semester=? AND Faculty=? AND section=? AND Subject_Name=?");
+			pst = con.prepareStatement("UPDATE marks SET CT_1_I=?, CT_1_P=?, CT_1_THEORY=?, CT_2_I=?, CT_2_P=?, " +
+					"CT_2_THEORY=?, CT_3_I=?, CT_3_P=?, CT_3_THEORY=? WHERE semester=? AND Faculty=? AND section=? " +
+					"AND Subject_Name=?");
 			pst.setString(1, ct_1_i.getText());
 			pst.setString(2, ct_1_p.getText());
 			pst.setString(3, ct_1_t.getText());
@@ -1198,7 +1200,7 @@ void marksSectionMarksDataRetrieval(){
 		ATTENDANCE_PAGE.setVisible(false);
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 			pst = con.prepareStatement("SELECT * FROM timetable where net_id=?;");
 			pst.setString(1, Net_id);
 			rs=pst.executeQuery();
@@ -1232,7 +1234,7 @@ void marksSectionMarksDataRetrieval(){
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 
 			pst = con.prepareStatement("SELECT td.*, d.department, tq1.qualification1, tq1.subq1, tq1.year1, tq1" +
 					".qualification2, tq1.subq2, tq1.year2, tq1.qualification3,tq1.subq3,tq1.year3 ,te.campus, te" +
@@ -1305,7 +1307,7 @@ void marksSectionMarksDataRetrieval(){
 	private void TimeTable_dataDeletion() throws SQLException, ClassNotFoundException {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+		con=DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 
 
 		String columnName = "d" + TimeTable_DayOrder.getText() + "h" + TimeTable_Hour.getText();
@@ -1341,7 +1343,7 @@ void marksSectionMarksDataRetrieval(){
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+		con=DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 		pst=con.prepareStatement("select* from timetable;");
 
 
