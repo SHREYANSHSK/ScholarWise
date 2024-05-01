@@ -3,8 +3,9 @@ package com.scholarwise.scholarwise;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Arrays;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -384,6 +385,9 @@ public class TeacherView {
 	@FXML
 	private TextField ct_3_t;
 
+	@FXML
+	private TextField tchr_about_class;
+
 
 	@FXML
 	private ListView<String> attendanceNameList;
@@ -630,12 +634,36 @@ TeacherView_username.setText(NAME);
 
 	@FXML
 	private void TeacherView_ATTENDANCEVIEW(ActionEvent event) throws SQLException {
+		classdatepicker.setValue(LocalDate.now());
 		PROFILE_PAGE.setVisible(false);
 		MARKS_PAGE.setVisible(false);
 		TIME_TABLE_PAGE.setVisible(false);
 		ATTENDANCE_PAGE.setVisible(true);
 		attendanceNameList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		attendanceRegIdList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+		classdatepicker.setOnAction(classdatepickerEvent -> {
+			LocalDate selectedDate = classdatepicker.getValue();
+			LocalDate currentDate = LocalDate.now();
+
+			// Compare selected date with current date
+			if (selectedDate != null && (selectedDate.isBefore(currentDate) || selectedDate.isEqual(currentDate))) {
+				// Fetch details from the database
+				try {
+					Attendance_absentStudentRegNo_listView.getItems().clear();
+					tchr_about_class.clear();
+					fetchAbsentStudentDetailsFromDatabase(selectedDate);
+				} catch (SQLException e) {
+					throw new RuntimeException(e);
+				}
+			} else {
+				tchr_about_class.clear();
+				Attendance_absentStudentRegNo_listView.getItems().clear();
+			}
+		});
+
+
+
 
 		Marks_subject_drop1.getItems().clear();
 		Marks_section_drop1.getItems().clear();
@@ -789,6 +817,18 @@ TeacherView_username.setText(NAME);
 
 
 	public void TeacherView_update_attendanceAct(ActionEvent event) {
+		if(tchr_about_class.getText().isBlank() && tchr_about_class.getText().isEmpty()){
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("Warning!!");
+
+			alert.setHeaderText(null);
+			alert.setContentText("Enter Description of class!");
+			alert.showAndWait();
+			return;
+		}
+
+
+
 		try {
 			// Start transaction
 			con.setAutoCommit(false);
@@ -804,6 +844,9 @@ TeacherView_username.setText(NAME);
 				updateAttendanceStatus(regNo, NAME, selectedSection, selectedSubject, "Class_Conducted");
 			}
 
+
+
+
 			// Commit transaction when everything is successfully
 			con.commit();
 
@@ -812,6 +855,23 @@ TeacherView_username.setText(NAME);
 			alert.setHeaderText(null);
 			alert.setContentText("Attendance has been updated successfully!");
 			alert.showAndWait();
+
+
+
+
+			LocalDate selectedDate = classdatepicker.getValue();
+			String query = "INSERT INTO class_info (faculty_id, date, subject_name, reg_ids, section, class_description) VALUES (?, ?, ?, ?, ?, ?);";
+
+			pst = con.prepareStatement(query);
+			pst.setString(1, FACULTY_ID);
+			pst.setString(2, String.valueOf(selectedDate));
+			pst.setString(3, selectedSubject);
+			pst.setString(4, String.valueOf(selectedRegNo));
+			pst.setString(5, selectedSection);
+			pst.setString(6, tchr_about_class.getText());
+
+			pst.execute();
+
 		} catch (SQLException e) {
 			try {
 				// Rollback the transaction if there is an error
@@ -837,9 +897,44 @@ TeacherView_username.setText(NAME);
 		}
 	}
 
+	private void fetchAbsentStudentDetailsFromDatabase(LocalDate selectedDate) throws SQLException {
+		String temp="";
+		con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
+
+
+		pst = con.prepareStatement("SELECT* FROM class_info  WHERE faculty_id=? and date=? and subject_name=? and section=?");
+
+
+		pst.setString(1, FACULTY_ID);
+		pst.setString(2, selectedDate.toString());
+		pst.setString(3, selectedSubject);
+		pst.setString(4, selectedSection);
+
+
+		rs = pst.executeQuery();
+while (rs.next()){
+
+temp= rs.getString("reg_ids");
+tchr_about_class.setText(rs.getString("class_description"));
+
+
+}
+		temp = temp.substring(1, temp.length() - 1);
+		String[] regIdsArray = temp.split(",\\s*");
+
+		// Convert the array to an ArrayList
+		ArrayList<String> tempList = new ArrayList<>(Arrays.asList(regIdsArray));
+		ObservableList<String> observableList = FXCollections.observableArrayList(tempList);
+
+
+Attendance_absentStudentRegNo_listView.getItems().clear();
+		Attendance_absentStudentRegNo_listView.setItems(observableList);
+
+	}
+
 	private void updateAttendanceStatus(String regNo, String Faculty_name, String section, String Subject_Name, String statusColumn) throws SQLException {
 
-		if (regNo.equals("RA2211003010387")) {
+		if (regNo.equals("RA2211003010389")) {
 			throw new SQLException("Intentional error occurred. Rolling back transaction.");
 		}
 
