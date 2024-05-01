@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class TeacherView {
@@ -435,6 +436,9 @@ public class TeacherView {
 	static String Password;
 	static String Designation;
 
+	@FXML
+	private DatePicker classdatepicker;
+
 
 	static Connection con;
 	static Connection con2;
@@ -467,7 +471,7 @@ public class TeacherView {
 			// Check if the trigger already exists
 			ResultSet resultSet = stmt.executeQuery("SHOW TRIGGERS WHERE `Trigger`like 'calculate_attendance_percentage';");
 			if (!resultSet.next()) { // If trigger does not exist
-				// Create the trigger
+				// Creating the trigger
 				stmt.executeUpdate("SET SQL_SAFE_UPDATES = 0");
 				stmt.executeUpdate("USE scholarwise_temp");
 				stmt.executeUpdate("CREATE TRIGGER calculate_attendance_percentage " +
@@ -489,8 +493,8 @@ public class TeacherView {
 			}
 
 
-			resultSet.close(); // Close the result set
-			stmt.close(); // Close the statement
+			resultSet.close();
+			stmt.close();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -538,6 +542,29 @@ TeacherView_username.setText(NAME);
 	}
 
 	public void setProfileImage() {
+		Rectangle clip1 = new Rectangle();
+		Rectangle clip2 = new Rectangle();
+
+
+		clip1.setWidth(Teacher_Profile_Photo.getFitWidth());
+		clip1.setHeight(Teacher_Profile_Photo.getFitHeight());
+		clip1.setArcWidth(130); // Adjust this value to change the roundness of corners
+		clip1.setArcHeight(130); // Adjust this value to change the roundness of corners
+
+
+		clip2.setWidth(T_Profile_Photo.getFitWidth());
+		clip2.setHeight(T_Profile_Photo.getFitWidth());
+		clip2.setArcWidth(30); // Adjust this value to change the roundness of corners
+		clip2.setArcHeight(30);
+
+
+
+
+		// Apply the rounded Rectangle as a clip to the ImageView
+		T_Profile_Photo.setClip(clip2);
+		Teacher_Profile_Photo.setClip(clip1);
+
+
 		try {
 			con3 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
 			String sql = "SELECT profile_photo FROM login WHERE net_id = ?";
@@ -814,11 +841,11 @@ TeacherView_username.setText(NAME);
 
 	private void updateAttendanceStatus(String regNo, String Faculty_name, String section, String Subject_Name, String statusColumn) throws SQLException {
 
-		if (regNo.equals("RA2211003010389")) {
+		if (regNo.equals("RA2211003010387")) {
 			throw new SQLException("Intentional error occurred. Rolling back transaction.");
 		}
 
-		String query = "UPDATE attendance AS a JOIN studentdb AS s ON a.Net_id = s.Net_id SET a." + statusColumn + " = a." + statusColumn + " + 1 WHERE a.Faculty_name = ? AND a.section = ? AND a.Subject_Name = ? AND s.REG_ID = ?";
+		String query = "UPDATE attendance AS a JOIN student_credentials AS s ON a.Net_id = s.Net_id SET a." + statusColumn + " = a." + statusColumn + " + 1 WHERE a.Faculty_name = ? AND a.section = ? AND a.Subject_Name = ? AND s.REG_ID = ?";
 
 		pst = con.prepareStatement(query);
 		pst.setString(1, Faculty_name);

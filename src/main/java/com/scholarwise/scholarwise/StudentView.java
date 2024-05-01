@@ -28,6 +28,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 
@@ -957,6 +958,20 @@ public  class StudentView extends TeacherView {
 
 
     public void setProfileImage() {
+
+        Rectangle clip1 = new Rectangle();
+
+
+
+        clip1.setWidth(Profile_Photo.getFitWidth());
+        clip1.setHeight(Profile_Photo.getFitHeight());
+        clip1.setArcWidth(10); // Adjust this value to change the roundness of corners
+        clip1.setArcHeight(10); // Adjust this value to change the roundness of corners
+
+        Profile_Photo.setClip(clip1);
+
+
+
         try {
             con3 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
             String sql = "SELECT profile_photo FROM login WHERE net_id = ?";
