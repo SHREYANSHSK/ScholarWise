@@ -75,13 +75,14 @@ DROP TABLE IF EXISTS `class_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `class_info` (
+  `net_id` varchar(45) NOT NULL,
   `faculty_id` varchar(20) NOT NULL,
   `date` date NOT NULL,
   `subject_name` varchar(45) DEFAULT NULL,
   `reg_ids` varchar(200) DEFAULT NULL,
   `section` varchar(45) DEFAULT NULL,
   `class_description` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`faculty_id`)
+  PRIMARY KEY (`net_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -91,7 +92,7 @@ CREATE TABLE `class_info` (
 
 LOCK TABLES `class_info` WRITE;
 /*!40000 ALTER TABLE `class_info` DISABLE KEYS */;
-INSERT INTO `class_info` VALUES ('FA2211003011165','2024-05-01','Database Management System','[RA2211003011185,RA2211003011178]','B2','Basics of DBMS and Normalization');
+INSERT INTO `class_info` VALUES ('rs9981','FA2211003011165','2024-05-01','Database Management System','[RA2211003011185,RA2211003011178]','B2','Basics of DBMS and Normalization');
 /*!40000 ALTER TABLE `class_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -738,10 +739,6 @@ INSERT INTO `update_info` VALUES ('21CSC204J','DAA'),('21CSC205P','DBMS'),('21MA
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'scholarwise_temp'
---
-
---
 -- Dumping routines for database 'scholarwise_temp'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -754,4 +751,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-01 11:42:55
+-- Dump completed on 2024-05-01 11:47:18
