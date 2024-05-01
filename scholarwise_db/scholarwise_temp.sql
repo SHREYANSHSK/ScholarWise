@@ -68,6 +68,34 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
+-- Table structure for table `class_info`
+--
+
+DROP TABLE IF EXISTS `class_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `class_info` (
+  `faculty_id` varchar(20) NOT NULL,
+  `date` date NOT NULL,
+  `subject_name` varchar(45) DEFAULT NULL,
+  `reg_ids` varchar(200) DEFAULT NULL,
+  `section` varchar(45) DEFAULT NULL,
+  `class_description` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`faculty_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `class_info`
+--
+
+LOCK TABLES `class_info` WRITE;
+/*!40000 ALTER TABLE `class_info` DISABLE KEYS */;
+INSERT INTO `class_info` VALUES ('FA2211003011165','2024-05-01','Database Management System','[RA2211003011185,RA2211003011178]','B2','Basics of DBMS and Normalization');
+/*!40000 ALTER TABLE `class_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `course`
 --
 
@@ -726,4 +754,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-01 11:17:47
+-- Dump completed on 2024-05-01 11:42:55
