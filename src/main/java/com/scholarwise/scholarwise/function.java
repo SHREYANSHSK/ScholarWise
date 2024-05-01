@@ -149,7 +149,7 @@
 					Class.forName("com.mysql.cj.jdbc.Driver");
 					
 	
-					con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp","root","0000");
+					con=DriverManager.getConnection("jdbc:mysql://localhost/scholarwise","root","0000");
 					pst=con.prepareStatement("select net_id,password,designation from login where net_id=? and " +
 							"password=? and designation=?;");
 					pst.setString(1, Netid.getText());

@@ -960,20 +960,18 @@ public  class StudentView extends TeacherView {
     public void setProfileImage() {
 
         Rectangle clip1 = new Rectangle();
-
-
-
-        clip1.setWidth(Profile_Photo.getFitWidth());
-        clip1.setHeight(Profile_Photo.getFitHeight());
-        clip1.setArcWidth(10); // Adjust this value to change the roundness of corners
-        clip1.setArcHeight(10); // Adjust this value to change the roundness of corners
+        clip1.setWidth(Profile_Photo.getFitHeight() - 10);
+        clip1.setHeight(Profile_Photo.getFitWidth() - 20);
+        clip1.setArcWidth((Profile_Photo.getFitWidth() - 10)/2); // Adjust this value to change the roundness of
+        // corners
+        clip1.setArcHeight((Profile_Photo.getFitHeight() - 10)/2); // Adjust this value to change the roundness of corners
 
         Profile_Photo.setClip(clip1);
 
 
 
         try {
-            con3 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+            con3 = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
             String sql = "SELECT profile_photo FROM login WHERE net_id = ?";
             pst3 = con3.prepareStatement(sql);
             pst3.setString(1, net_id);
@@ -1014,7 +1012,7 @@ public  class StudentView extends TeacherView {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+        con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
         pst = con.prepareStatement("SELECT * FROM attendance where semester=? and Net_Id=?;");
         ObservableList<TableView_Details> list = FXCollections.observableArrayList();
 
@@ -1161,8 +1159,8 @@ public  class StudentView extends TeacherView {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
-        con2 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+        con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
+        con2 = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 
 		 List<String> Course_Name_data = new ArrayList<>();
 		 List<String> Course_Code_data = new ArrayList<>();
@@ -1186,7 +1184,7 @@ public  class StudentView extends TeacherView {
        
 pst=con.prepareStatement("select* from marks where semester=? and Net_id=?");
 pst2=con2.prepareStatement("select SUBJECT_NAME, DATES from  notification join  update_info where notification.SUBJECT_CODE = update_info.SUBJECT_CODE;");
-//        select * from scholarwise_temp.notification join  scholarwise_temp.update_info where scholarwise_temp.notification.SUBJECT_CODE = scholarwise_temp.update_info.SUBJECT_CODE;
+//        select * from scholarwise.notification join  scholarwise.update_info where scholarwise.notification.SUBJECT_CODE = scholarwise.update_info.SUBJECT_CODE;
 
 pst.setString(1,SEMESTER);
 pst.setString(2,Net_id);
@@ -1493,7 +1491,7 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
     	
     	try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 			pst = con.prepareStatement("SELECT * FROM timetable where net_id=?;");
 			pst.setString(1, Net_id);
 			rs=pst.executeQuery();
@@ -1533,7 +1531,7 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
 
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
                 pst = con.prepareStatement("SELECT si.*, sc.city, sc.state, sc.phno, sc.personal_mail_id, scred.net_id, fai.faculty_advisor, fai.fa_phno, fai.fa_email " +
                         "FROM student_info si " +
                         "JOIN student_contact sc ON si.reg_id = sc.reg_id " +
@@ -1599,7 +1597,7 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
             e.printStackTrace();
         }
 
-        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000")) {
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000")) {
             pst = con.prepareStatement("SELECT * FROM attendance WHERE semester=? AND Net_Id=?;");
             pst.setString(1, SEMESTER);
             pst.setString(2, net_id);
@@ -1659,7 +1657,7 @@ for(int i=0;i<CT_1_THEORY_data.size();i++) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        con = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+        con = DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
 		
 		 List<String> grade_data = new ArrayList<>();
 		 List<String> credit_data = new ArrayList<>();
@@ -2216,7 +2214,7 @@ return roundOff;
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+        con=DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
         pst=con.prepareStatement("select* from timetable;");
 
         rs=pst.executeQuery();
@@ -2263,7 +2261,7 @@ return roundOff;
     void TimeTable_dataDeletion() throws SQLException, ClassNotFoundException {
  
     			Class.forName("com.mysql.cj.jdbc.Driver");
-    			con=DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+    			con=DriverManager.getConnection("jdbc:mysql://localhost/scholarwise", "root", "0000");
         
    	 
     	    		String columnName = "d" + TimeTable_DayOrder.getText() + "h" + TimeTable_Hour.getText();
