@@ -1,5 +1,6 @@
 package com.scholarwise.scholarwise;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -771,7 +773,8 @@ public  class StudentView extends TeacherView {
     private GridPane Course_attendance;
 
 
-
+    @FXML
+    private ImageView Profile_Photo;
     @FXML
     private Label SrmMail;
    
@@ -874,11 +877,17 @@ public  class StudentView extends TeacherView {
     
     static Connection con;
     static Connection con2;
+
+    static Connection con3;
     static PreparedStatement pst;
     static PreparedStatement pst2;
 
+    static PreparedStatement pst3;
+
     static ResultSet rs;
     static ResultSet rs2;
+
+    static ResultSet rs3;
    static String net_id;
    static String Password;
    static String Designation;
@@ -901,6 +910,7 @@ public  class StudentView extends TeacherView {
 	   MarksAnalyse.setVisible(false);
 
 	   //ProfileView components
+       setProfileImage();
 	   Profile_Name.setText(NAME.toUpperCase());
 	   Profile_Department.setText(DEPARTMENT.toUpperCase());
 	   Profile_RegId.setText(REG_ID.toUpperCase());
@@ -946,6 +956,36 @@ public  class StudentView extends TeacherView {
 
 
 
+    public void setProfileImage() {
+        try {
+            con3 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+            String sql = "SELECT profile_photo FROM login WHERE net_id = ?";
+            pst3 = con3.prepareStatement(sql);
+            pst3.setString(1, net_id);
+            rs3 = pst3.executeQuery();
+
+            if (rs3.next()) {
+                byte[] imageData = rs3.getBytes("profile_photo");
+
+                if (imageData != null) {
+                    ByteArrayInputStream inputStream = new ByteArrayInputStream(imageData);
+                    Image image = new Image(inputStream);
+                    Profile_Photo.setImage(image);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (rs3 != null) rs3.close();
+                if (pst3 != null) pst3.close();
+                if (con3 != null) con3.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
 

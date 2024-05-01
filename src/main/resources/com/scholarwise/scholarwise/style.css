@@ -50,11 +50,9 @@
 .box-borderRadius {
     -fx-background-radius: 35px;
 }
-
 .btn:hover {
     -fx-cursor: hand;
     -fx-background-color: #000000;
-
 }
 
 .table-view {

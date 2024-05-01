@@ -27,7 +27,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080.0" minWidth="1920.0" prefHeight="600.0" prefWidth="900.0" styleClass="Main_page" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scholarwise.scholarwise.StudentView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080.0" minWidth="1920.0" prefHeight="600.0" prefWidth="900.0" styleClass="Main_page" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scholarwise.scholarwise.StudentView">
     <children>
         <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="Main_page" stylesheets="@style.css">
             <children>
@@ -37,7 +37,9 @@
                             <children>
                                 <AnchorPane prefHeight="1080.0" prefWidth="170.0" styleClass="content-border" stylesheets="@style.css">
                                     <children>
-                                        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="18.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="Profile_Photo" fitHeight="130.0" fitWidth="130.0"
+                                                   layoutX="27.0" layoutY="28.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
                                                 <Image url="@images/icons png/boy3.png" />
                                             </image>

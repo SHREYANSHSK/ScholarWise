@@ -1,5 +1,6 @@
 package com.scholarwise.scholarwise;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -22,6 +24,12 @@ import javafx.stage.Stage;
 public class TeacherView {
 	@FXML
 	private TextField TimeTable_Hour;
+
+	@FXML
+	private ImageView Teacher_Profile_Photo;
+
+	@FXML
+	private ImageView T_Profile_Photo;
 
 	@FXML
 	private ListView<String> Attendance_absentStudent_listView;
@@ -430,11 +438,17 @@ public class TeacherView {
 
 	static Connection con;
 	static Connection con2;
+
+	static Connection con3;
 	static PreparedStatement pst;
-	static ResultSet rs;
+
 	static PreparedStatement pst2;
 
+	static PreparedStatement pst3;
+	static ResultSet rs;
 	static ResultSet rs2;
+
+	static ResultSet rs3;
 
 	ObservableList<String> selectedNames = FXCollections.observableArrayList();
 	ObservableList<String> selectedRegNo = FXCollections.observableArrayList();
@@ -513,7 +527,7 @@ TeacherView_username.setText(NAME);
 		year1.setText(YEAR1);
 		year2.setText(YEAR2);
 		year3.setText(YEAR3);
-
+		setProfileImage();
 
 
 		PROFILE_PAGE.setVisible(true);
@@ -521,6 +535,38 @@ TeacherView_username.setText(NAME);
 		TIME_TABLE_PAGE.setVisible(false);
 		ATTENDANCE_PAGE.setVisible(false);
 		attendanceRegIdList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+	}
+
+	public void setProfileImage() {
+		try {
+			con3 = DriverManager.getConnection("jdbc:mysql://localhost/ScholarWise_temp", "root", "0000");
+			String sql = "SELECT profile_photo FROM login WHERE net_id = ?";
+			pst3 = con3.prepareStatement(sql);
+			pst3.setString(1, Net_id);
+			rs3 = pst3.executeQuery();
+
+			if (rs3.next()) {
+				byte[] imageData = rs3.getBytes("profile_photo");
+
+				if (imageData != null) {
+					ByteArrayInputStream inputStream = new ByteArrayInputStream(imageData);
+					Image image = new Image(inputStream);
+					Teacher_Profile_Photo.setImage(image);
+					T_Profile_Photo.setImage(image);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// Close resources
+			try {
+				if (rs3 != null) rs3.close();
+				if (pst3 != null) pst3.close();
+				if (con3 != null) con3.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@FXML

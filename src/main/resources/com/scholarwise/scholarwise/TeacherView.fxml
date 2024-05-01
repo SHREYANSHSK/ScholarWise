@@ -31,7 +31,7 @@
             <children>
                 <AnchorPane prefHeight="1080.0" prefWidth="210.0" styleClass="NavBar" stylesheets="@style.css">
                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="13.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="13.0">
+                        <ImageView fx:id="Teacher_Profile_Photo" fitHeight="130.0" fitWidth="130.0" layoutX="26.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="26.0">
                             <image>
                                 <Image url="@images/icons png/boy3.png" />
                             </image>
@@ -141,7 +141,7 @@
                 </AnchorPane>
             </children>
         </VBox>
-        <AnchorPane fx:id="PROFILE_PAGE" layoutX="181.0" prefHeight="1080.0" prefWidth="1734.0" visible="false">
+        <AnchorPane fx:id="PROFILE_PAGE" layoutX="181.0" prefHeight="1080.0" prefWidth="1734.0">
          <children>
             <AnchorPane focusTraversable="true" layoutX="43.0" layoutY="36.0" prefHeight="350.0" prefWidth="466.0" stylesheets="@style.css">
                <styleClass>
@@ -150,7 +150,7 @@
                   <String fx:value="box-border" />
                </styleClass>
                <children>
-                  <ImageView fitHeight="255.0" fitWidth="232.0" layoutX="26.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" styleClass="box-borderRadius">
+                  <ImageView fx:id="T_Profile_Photo" fitHeight="255.0" fitWidth="200.0" layoutX="26.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" styleClass="box-borderRadius">
                      <image>
                         <Image url="@images/icons png/boy3.png" />
                      </image>
@@ -1169,7 +1169,7 @@
                </children>
             </VBox>
          </children></AnchorPane>
-      <AnchorPane fx:id="MARKS_PAGE" layoutX="181.0" prefHeight="1080.0" prefWidth="1734.0">
+      <AnchorPane fx:id="MARKS_PAGE" layoutX="181.0" prefHeight="1080.0" prefWidth="1734.0" visible="false">
          <children>
             <Label layoutX="69.0" layoutY="51.0" prefHeight="68.0" prefWidth="663.0" text="Modify Marks" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
