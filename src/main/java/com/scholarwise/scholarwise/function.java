@@ -1,37 +1,25 @@
 	package com.scholarwise.scholarwise;
-	
-	
-	import java.io.IOException;
-	import java.net.URL;
-	import java.sql.Connection;
-	import java.sql.DriverManager;
-	import java.sql.PreparedStatement;
-	import java.sql.ResultSet;
-	import java.sql.SQLException;
 
-    import java.util.Objects;
-    import java.util.ResourceBundle;
-	import java.util.prefs.Preferences;
-	
+
 	import javafx.animation.PauseTransition;
-
-	import javafx.event.ActionEvent;
 	import javafx.fxml.FXML;
 	import javafx.fxml.FXMLLoader;
 	import javafx.fxml.Initializable;
 	import javafx.scene.Parent;
 	import javafx.scene.Scene;
-	import javafx.scene.control.Button;
-	import javafx.scene.control.CheckBox;
-	import javafx.scene.control.ComboBox;
-	import javafx.scene.control.Label;
-	import javafx.scene.control.PasswordField;
-	import javafx.scene.control.TextField;
+	import javafx.scene.control.*;
 	import javafx.scene.image.Image;
 	import javafx.scene.image.ImageView;
 	import javafx.scene.paint.Color;
 	import javafx.stage.Stage;
 	import javafx.util.Duration;
+
+	import java.io.IOException;
+	import java.net.URL;
+	import java.sql.*;
+	import java.util.Objects;
+	import java.util.ResourceBundle;
+	import java.util.prefs.Preferences;
 	
 	public class function extends StudentView implements Initializable {
 		@FXML

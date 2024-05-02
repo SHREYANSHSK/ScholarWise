@@ -1,16 +1,5 @@
 package com.scholarwise.scholarwise;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,6 +20,12 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public  class StudentView extends TeacherView {
 
@@ -43,20 +38,12 @@ public  class StudentView extends TeacherView {
 
 
     @FXML
-    private GridPane CT_DATES_UPDATES;
-    @FXML
     private GridPane Marks_Grid;
     @FXML
     private GridPane Marks_Analyse_grid;
 
 
-    @FXML
-    private Button Course_Button;
 
-    @FXML
-    private Button Marks_Button;
-    @FXML
-    private Button Marks_Analyse_button;
     
     @FXML
     private Button logout_btn;
@@ -64,14 +51,12 @@ public  class StudentView extends TeacherView {
     @FXML
     private AnchorPane ProfileDetails;
 
-    @FXML
-    private Button Profile_Button;
+
 
     @FXML
     private AnchorPane TimeTable;
 
-    @FXML
-    private Button TimeTable_Button;
+
 
 
     @FXML
@@ -83,161 +68,13 @@ public  class StudentView extends TeacherView {
     @FXML
     private TextField TimeTable_DayOrder;
 
-    @FXML
-    private Button TimeTable_EnterButton;
 
     @FXML
     private TextField TimeTable_Hour;
 
-    @FXML
-    private Button TimeTable_RemoveButton;
 
     @FXML
     private TextField TimeTable_SubName;
-    
-    @FXML
-    private Label cc1;
-
-    @FXML
-    private Label cc2;
-
-    @FXML
-    private Label cc3;
-
-    @FXML
-    private Label cc4;
-
-    @FXML
-    private Label cc5;
-
-    @FXML
-    private Label cc6;
-
-    @FXML
-    private Label cc7;
-
-    @FXML
-    private Label cc8;
-
-    @FXML
-    private Label cn1;
-
-    @FXML
-    private Label cn2;
-
-    @FXML
-    private Label cn3;
-
-    @FXML
-    private Label cn4;
-
-    @FXML
-    private Label cn5;
-
-    @FXML
-    private Label cn6;
-
-    @FXML
-    private Label cn7;
-
-    @FXML
-    private Label cn8;
-
-    @FXML
-    private Label ct1;
-
-    @FXML
-    private Label ct2;
-
-    @FXML
-    private Label ct3;
-
-    @FXML
-    private Label ct4;
-
-    @FXML
-    private Label ct5;
-
-    @FXML
-    private Label ct6;
-
-    @FXML
-    private Label ct7;
-
-    @FXML
-    private Label ct8;
-
-    @FXML
-    private Label cta1;
-
-    @FXML
-    private Label cta2;
-
-    @FXML
-    private Label cta3;
-
-    @FXML
-    private Label cta4;
-
-    @FXML
-    private Label cta5;
-
-    @FXML
-    private Label cta6;
-
-    @FXML
-    private Label cta7;
-
-    @FXML
-    private Label cta8;
-
-    @FXML
-    private Label ctb1;
-
-    @FXML
-    private Label ctb2;
-
-    @FXML
-    private Label ctb3;
-
-    @FXML
-    private Label ctb4;
-
-    @FXML
-    private Label ctb5;
-
-    @FXML
-    private Label ctb6;
-
-    @FXML
-    private Label ctb7;
-
-    @FXML
-    private Label ctb8;
-
-    @FXML
-    private Label ctc1;
-
-    @FXML
-    private Label ctc2;
-
-    @FXML
-    private Label ctc3;
-
-    @FXML
-    private Label ctc4;
-
-    @FXML
-    private Label ctc5;
-
-    @FXML
-    private Label ctc6;
-
-    @FXML
-    private Label ctc7;
-    
-    @FXML
-    private Label ctc8;
 
     @FXML
     private Label sgpa;
@@ -391,393 +228,11 @@ public  class StudentView extends TeacherView {
     @FXML
     private Label d5h9;
     
-    @FXML
-    private Label a1;
-
-    @FXML
-    private Label a2;
-
-    @FXML
-    private Label a3;
-
-    @FXML
-    private Label a4;
-
-    @FXML
-    private Label a5;
-
-    @FXML
-    private Label a6;
-
-    @FXML
-    private Label a7;
-
-    @FXML
-    private Label a8;
-
-    @FXML
-    private Label b1;
-
-    @FXML
-    private Label b2;
-
-    @FXML
-    private Label b3;
-
-    @FXML
-    private Label b4;
-
-    @FXML
-    private Label b5;
-
-    @FXML
-    private Label b6;
-
-    @FXML
-    private Label b7;
-
-    @FXML
-    private Label b8;
-    
-    @FXML
-    private Label c1;
-
-    @FXML
-    private Label c2;
-
-    @FXML
-    private Label c3;
-
-    @FXML
-    private Label c4;
-
-    @FXML
-    private Label c5;
-
-    @FXML
-    private Label c6;
-
-    @FXML
-    private Label c7;
-
-    @FXML
-    private Label c8;
-    
-    @FXML
-    private Label d1;
-    @FXML
-    private Label d2;
-    @FXML
-    private Label d3;
-    @FXML
-    private Label d4;
-    @FXML
-    private Label d5;
-    @FXML
-    private Label d6;
-    @FXML
-    private Label d7;
-    @FXML
-    private Label d8;
-
-    
-    @FXML
-    private Label e1;
-
-    @FXML
-    private Label e2;
-
-    @FXML
-    private Label e3;
-
-    @FXML
-    private Label e4;
-
-    @FXML
-    private Label e5;
-
-    @FXML
-    private Label e6;
-
-    @FXML
-    private Label e7;
-
-    @FXML
-    private Label e8;
-
-    @FXML
-    private Label f1;
-
-    @FXML
-    private Label f2;
-
-    @FXML
-    private Label f3;
-
-    @FXML
-    private Label f4;
-
-    @FXML
-    private Label f5;
-
-    @FXML
-    private Label f6;
-
-    @FXML
-    private Label f7;
-
-    @FXML
-    private Label f8;
-
-    @FXML
-    private Label h1;
-
-    @FXML
-    private Label h2;
-
-    @FXML
-    private Label h3;
-
-    @FXML
-    private Label h4;
-
-    @FXML
-    private Label h5;
-
-    @FXML
-    private Label h6;
-
-    @FXML
-    private Label h7;
-
-    @FXML
-    private Label h8;
-
-    @FXML
-    private Label i1;
-
-    @FXML
-    private Label i2;
-
-    @FXML
-    private Label i3;
-
-    @FXML
-    private Label i4;
-
-    @FXML
-    private Label i5;
-
-    @FXML
-    private Label i6;
-
-    @FXML
-    private Label i7;
-
-    @FXML
-    private Label i8;
-
-    @FXML
-    private Label j1;
-
-    @FXML
-    private Label j2;
-
-    @FXML
-    private Label j3;
-
-    @FXML
-    private Label j4;
-
-    @FXML
-    private Label j5;
-
-    @FXML
-    private Label j6;
-
-    @FXML
-    private Label j7;
-
-    @FXML
-    private Label j8;
-
-    @FXML
-    private Label k1;
-
-    @FXML
-    private Label k2;
-
-    @FXML
-    private Label k3;
-
-    @FXML
-    private Label k4;
-
-    @FXML
-    private Label k5;
-
-    @FXML
-    private Label k6;
-
-    @FXML
-    private Label k7;
-
-    @FXML
-    private Label k8;
-
-    @FXML
-    private Label l1;
-
-    @FXML
-    private Label l2;
-
-    @FXML
-    private Label l3;
-
-    @FXML
-    private Label l4;
-
-    @FXML
-    private Label l5;
-
-    @FXML
-    private Label l6;
-
-    @FXML
-    private Label l7;
-
-    @FXML
-    private Label l8;
-
-
-    @FXML
-    private Label m1;
-
-    @FXML
-    private Label m2;
-
-    @FXML
-    private Label m3;
-
-    @FXML
-    private Label m4;
-
-    @FXML
-    private Label m5;
-
-    @FXML
-    private Label m6;
-
-    @FXML
-    private Label m7;
-
-    @FXML
-    private Label m8;
-
-    @FXML
-    private Label n1;
-
-    @FXML
-    private Label n2;
-
-    @FXML
-    private Label n3;
-
-    @FXML
-    private Label n4;
-
-    @FXML
-    private Label n5;
-
-    @FXML
-    private Label n6;
-
-    @FXML
-    private Label n7;
-
-    @FXML
-    private Label n8;
-
-    @FXML
-    private Label o1;
-
-    @FXML
-    private Label o2;
-
-    @FXML
-    private Label o3;
-
-    @FXML
-    private Label o4;
-
-    @FXML
-    private Label o5;
-
-    @FXML
-    private Label o6;
-
-    @FXML
-    private Label o7;
-
-    @FXML
-    private Label o8;
-
-    @FXML
-    private Label r1;
-
-    @FXML
-    private Label r2;
-
-    @FXML
-    private Label r3;
-
-    @FXML
-    private Label r4;
-
-    @FXML
-    private Label r5;
-
-    @FXML
-    private Label r6;
-
-    @FXML
-    private Label r7;
-
-    @FXML
-    private Label r8;
-
-    @FXML
-    private Label s1;
-
-    @FXML
-    private Label s2;
-
-    @FXML
-    private Label s3;
-
-    @FXML
-    private Label s4;
-
-    @FXML
-    private Label s5;
-
-    @FXML
-    private Label s6;
-
-    @FXML
-    private Label s7;
-
-    @FXML
-    private Label s8;
-
-    @FXML
-    private GridPane Course_attendance;
 
 
     @FXML
     private ImageView Profile_Photo;
-    @FXML
-    private Label SrmMail;
+
    
     @FXML
     private Label user_name;
@@ -870,7 +325,6 @@ public  class StudentView extends TeacherView {
 
    
     ObservableList<TableView_Details> listM;
-    int index=-1;
     static String SemesterButton_value;
     
    

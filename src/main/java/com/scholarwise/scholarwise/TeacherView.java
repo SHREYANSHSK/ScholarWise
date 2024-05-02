@@ -66,11 +66,6 @@ public class TeacherView {
 	@FXML
 	private Label TeacherView_username;
 
-	@FXML
-	private Button std_contact;
-
-	@FXML
-	private Button std_email_id;
 
 	@FXML
 	private Label std_fa_name;
@@ -247,8 +242,6 @@ public class TeacherView {
 	private AnchorPane PROFILE_PAGE;
 	@FXML
 	private AnchorPane TIME_TABLE_PAGE;
-	@FXML
-	private Button Course_Button;
 
 	private String selectedSubject;
 	private String selectedSection;
@@ -261,8 +254,7 @@ public class TeacherView {
 	@FXML
 	private Label faculty_id ;
 
-	@FXML
-	private Button Marks_Button ;
+
 
 	@FXML
 	private Label name ;
@@ -276,11 +268,7 @@ public class TeacherView {
 	@FXML
 	private Label totalStudents_attendance;
 
-	@FXML
-	private Button Profile_Button ;
 
-	@FXML
-	private Button TimeTable_Button ;
 
 	@FXML
 	private Label campus ;
@@ -436,7 +424,6 @@ public class TeacherView {
 	static String QUALIFICATION;
 	static String Net_id;
 
-	static String Semester;
 	static String Password;
 	static String Designation;
 
@@ -1068,10 +1055,12 @@ Attendance_absentStudentRegNo_listView.getItems().clear();
 				String regId = rs.getString("Reg_id");
 				MenuItem regIdMenuItem = new MenuItem(regId);
 				regIdMenuItem.setOnAction(e -> {
+
 					Marks_regid_drop.setText(regIdMenuItem.getText());
 					selectedRegId = regIdMenuItem.getText();
-					if (!selectedSemester.isBlank() && selectedSection1 != null && selectedSubject1 != null) {
+                    if (!selectedSemester.isBlank() && selectedSection1 != null && selectedSubject1 != null) {
 						try {
+
 							marksSectionDataRetrieval();
 							marksSectionMarksDataRetrieval();
 //							fetchRegIds();
@@ -1080,6 +1069,7 @@ Attendance_absentStudentRegNo_listView.getItems().clear();
 							throw new RuntimeException(ex);
 						}
 					}
+
 				});
 				Marks_regid_drop.getItems().add(regIdMenuItem);
 			}
@@ -1137,12 +1127,14 @@ void marksSectionMarksDataRetrieval(){
 
 
 	try {
-		pst = con.prepareStatement("SELECT* from marks WHERE  marks.semester=? AND marks.Faculty=? AND marks.section=? AND marks.Subject_Name = ?");
+		pst = con.prepareStatement("select* from marks join student_credentials WHERE semester=? AND Faculty=? AND section=? AND Subject_Name=? and marks.Net_id=(select student_credentials.Net_id where student_credentials.reg_id=?)");
 		pst.setString(1, selectedSemester);
 		pst.setString(2, NAME);
 		pst.setString(3, selectedSection1);
 		pst.setString(4, selectedSubject1);
+		pst.setString(5, selectedRegId);
 		rs = pst.executeQuery();
+
 
 
 		while (rs.next()) {
@@ -1168,11 +1160,10 @@ void marksSectionMarksDataRetrieval(){
 
 
 	@FXML
-	private void Update_MarksAct(ActionEvent event) {
+	private void Update_MarksAct(ActionEvent event) throws SQLException {
 
 		try {
-			// Start transaction
-			con.setAutoCommit(false);
+
 
 
 			ct_1_i.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -1216,9 +1207,14 @@ void marksSectionMarksDataRetrieval(){
 			}
 
 			// Prepare and execute the update statement
-			pst = con.prepareStatement("UPDATE marks SET CT_1_I=?, CT_1_P=?, CT_1_THEORY=?, CT_2_I=?, CT_2_P=?, " +
-					"CT_2_THEORY=?, CT_3_I=?, CT_3_P=?, CT_3_THEORY=? WHERE semester=? AND Faculty=? AND section=? " +
-					"AND Subject_Name=?");
+			pst = con.prepareStatement("UPDATE marks AS m " +
+					"INNER JOIN student_credentials AS s ON m.net_id = s.net_id " +
+					"SET m.CT_1_I=?, m.CT_1_P=?, m.CT_1_THEORY=?, m.CT_2_I=?, m.CT_2_P=?, " +
+					"m.CT_2_THEORY=?, m.CT_3_I=?, m.CT_3_P=?, m.CT_3_THEORY=? " +
+					"WHERE m.semester=? AND m.Faculty=? AND m.section=? " +
+					"AND m.Subject_Name=? AND s.reg_id=?");
+
+
 			pst.setString(1, ct_1_i.getText());
 			pst.setString(2, ct_1_p.getText());
 			pst.setString(3, ct_1_t.getText());
@@ -1232,12 +1228,13 @@ void marksSectionMarksDataRetrieval(){
 			pst.setString(11, NAME);
 			pst.setString(12, selectedSection1);
 			pst.setString(13, selectedSubject1);
+			pst.setString(14, selectedRegId);
+
 
 			int rowsUpdated = pst.executeUpdate();
 
 			if (rowsUpdated > 0) {
-				// Commit transaction if update is successful
-				con.commit();
+
 
 				// Update successful
 				Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -1245,6 +1242,7 @@ void marksSectionMarksDataRetrieval(){
 				alert.setHeaderText(null);
 				alert.setContentText("Changes have been successfully updated in the database.");
 				alert.showAndWait();
+
 			} else {
 				// No changes were made
 				Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -1254,29 +1252,16 @@ void marksSectionMarksDataRetrieval(){
 				alert.showAndWait();
 			}
 		} catch (SQLException ex) {
-			try {
-				// Rollback transaction if there is an error
-				con.rollback();
-			} catch (SQLException rollbackEx) {
-				rollbackEx.printStackTrace();
-			}
 
-			ex.printStackTrace();
+            ex.printStackTrace();
 
-			Alert alert = new Alert(Alert.AlertType.ERROR);
-			alert.setTitle("Error");
-			alert.setHeaderText(null);
-			alert.setContentText("An error occurred while updating the database. Transaction rolled back.");
-			alert.showAndWait();
 		} finally {
-			try {
 
-				con.setAutoCommit(true);
-			} catch (SQLException autoCommitEx) {
-				autoCommitEx.printStackTrace();
-			}
+            marksSectionMarksDataRetrieval();
+
 		}
 	}
+
 
 
 	@FXML
