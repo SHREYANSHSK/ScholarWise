@@ -921,7 +921,7 @@ Attendance_absentStudentRegNo_listView.getItems().clear();
 
 	private void updateAttendanceStatus(String regNo, String Faculty_name, String section, String Subject_Name, String statusColumn) throws SQLException {
 
-		if (regNo.equals("RA2211003010389")) {
+		if (regNo.equals("RA2211003011189")) {
 			throw new SQLException("Intentional error occurred. Rolling back transaction.");
 		}
 

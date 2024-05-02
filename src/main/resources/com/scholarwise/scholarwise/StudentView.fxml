@@ -37,11 +37,6 @@
                             <children>
                                 <AnchorPane prefHeight="1080.0" prefWidth="170.0" styleClass="content-border" stylesheets="@style.css">
                                     <children>
-                                        <ImageView fx:id="Profile_Photo" fitHeight="142.0" fitWidth="142.0" focusTraversable="true" layoutX="22.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="18.599999999999994" AnchorPane.rightAnchor="22.400000000000006">
-                                            <image>
-                                                <Image url="@images/icons png/boy3.png" />
-                                            </image>
-                                        </ImageView>
                                         <Label fx:id="user_name" alignment="TOP_CENTER" layoutX="6.0" layoutY="190.0" prefHeight="58.0" prefWidth="170.0" style="-fx-font-weight: 900; -fx-font-size: 19PX;" stylesheets="@style.css" text="USERNAME" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                                             <font>
                                                 <Font size="14.0" />
@@ -130,6 +125,11 @@
                                                     </image></ImageView>
                                             </graphic>
                                         </Button>
+                                        <ImageView fx:id="Profile_Photo" fitHeight="142.0" fitWidth="142.0" focusTraversable="true" layoutX="22.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="18.599999999999994" AnchorPane.rightAnchor="22.400000000000006">
+                                            <image>
+                                                <Image url="@images/icons png/boy3.png" />
+                                            </image>
+                                        </ImageView>
                                     </children>
                                 </AnchorPane>
                             </children>
