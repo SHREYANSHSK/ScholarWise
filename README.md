@@ -62,7 +62,6 @@ In summary, ScholarWise stands as a versatile and indispensable tool, transformi
 <hr>
 <h2>DEMO</h2>
 
-https://github.com/SHREYANSHSK/ScholarWise/assets/113760615/339e4ed7-ec0f-4826-a626-b3218b831870
 
 <hr>
 <h2>Contributers</h2>
