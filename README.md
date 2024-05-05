@@ -1,3 +1,5 @@
+
+https://github.com/SHREYANSHSK/ScholarWise/assets/113760615/62d4c1f3-ea8d-4984-b71f-6d32f235218a
 <h1>ScholarWise</h1>
 # ScholarWise - Academic Performance Management System
 
@@ -59,7 +61,9 @@ In summary, ScholarWise stands as a versatile and indispensable tool, transformi
 
 <hr>
 <h2>DEMO</h2>
-Shreyansh Khandelwal
+
+https://github.com/SHREYANSHSK/ScholarWise/assets/113760615/339e4ed7-ec0f-4826-a626-b3218b831870
+
 <hr>
 <h2>Contributers</h2>
 <ul>
