@@ -57,10 +57,16 @@ In summary, ScholarWise stands as a versatile and indispensable tool, transformi
 <img src="https://github.com/SHREYANSHSK/ScholarWise/assets/113760615/1138ac12-570d-4b85-a0e6-abc53e89b515" width="560">
 <br><br>
 <img src="https://github.com/SHREYANSHSK/ScholarWise/assets/113760615/a1823119-9a12-4a46-9b08-0b6c4b31507a" width="560">
-
+<br><br>
 <hr>
 <h2>DEMO</h2>
 
+https://github.com/SHREYANSHSK/ScholarWise/assets/113760615/580048b8-ab84-4b4d-8376-86ac68dd5cd9
+<br><br>
+<hr>
+<h2>Documentation</h2>
+
+[Documentation_ScholarWise.zip](https://github.com/SHREYANSHSK/ScholarWise/files/15214285/Documentation_ScholarWise.zip)
 
 <hr>
 <h2>Contributers</h2>
