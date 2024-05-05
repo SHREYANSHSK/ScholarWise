@@ -1,5 +1,4 @@
 
-https://github.com/SHREYANSHSK/ScholarWise/assets/113760615/62d4c1f3-ea8d-4984-b71f-6d32f235218a
 <h1>ScholarWise</h1>
 # ScholarWise - Academic Performance Management System
 
